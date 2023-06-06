@@ -1,18 +1,31 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Next.js",
+  name: "MCSR Ranked",
   description:
-    "Beautifully designed components built with Radix UI and Tailwind CSS.",
+    "Home of MCSR Ranked, a Minecraft Mod that adds a ranked system to Minecraft Speedruns.",
   mainNav: [
     {
       title: "Home",
       href: "/",
     },
+    {
+      title: "Leaderboard",
+      href: "/leaderboard",
+    },
+    {
+      title: "Download",
+      href: "/download",
+    },
+    {
+      title: "Guidelines",
+      href: "/guidelines",
+    },
   ],
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn/ui",
-    docs: "https://ui.shadcn.com",
+    github: "https://github.com/lowgy",
+    discord: "https://discord.com/invite/nnjUSyDErj",
+    apiDocs: "https://docs.mcsrranked.com/",
+    privacyPolicy: "/privacy",
   },
 }
