@@ -1,9 +1,19 @@
-export default function LeaderboardPage() {
+import { Runner, columns } from "./columns"
+import { DataTable } from "./data-table"
+
+async function getLeaderboard() {
+  const response = await fetch("https://mcsrranked.com/api/leaderboard")
+  const data = await response.json()
+  return data.data.users as Runner[]
+}
+
+export default async function LeaderboardPage() {
+  const data = await getLeaderboard()
+
   return (
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-      <div className="flex flex-col items-center gap-2">
-        <h1 className="text-2xl">Leaderboard</h1>
-      </div>
+      <h1 className="text-2xl">Leaderboard</h1>
+      <DataTable columns={columns} data={data} />
     </section>
   )
 }
