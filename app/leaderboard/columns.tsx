@@ -7,12 +7,14 @@ import { ColumnDef } from "@tanstack/react-table"
 export type Runner = {
   // Look at api docs for object structure
   uuid: string
-  elo_rank: number
   nickname: string
-  elo_rate: number
+  elo_rank?: number
+  elo_rate?: number
+  final_time_rank?: number
+  final_time?: number
 }
 
-export const columns: ColumnDef<Runner>[] = [
+export const eloColumns: ColumnDef<Runner>[] = [
   {
     accessorKey: "elo_rank",
     header: "Rank",
@@ -44,5 +46,50 @@ export const columns: ColumnDef<Runner>[] = [
   {
     accessorKey: "elo_rate",
     header: "Elo",
+  },
+]
+
+export const timeColumns: ColumnDef<Runner>[] = [
+  {
+    accessorKey: "final_time_rank",
+    header: "Rank",
+  },
+  {
+    accessorKey: "nickname",
+    header: "Name",
+    cell: ({ row }) => {
+      return (
+        <div className="flex items-center">
+          <Image
+            src={`https://crafatar.com/avatars/${row.original.uuid}?overlay`}
+            alt={row.original.nickname}
+            height={32}
+            width={32}
+            className="mr-2 h-8 w-8 rounded-full"
+          />
+          <Link
+            href={`/profile/${row.original.nickname}`}
+            className="hover:underline"
+          >
+            {" "}
+            {row.original.nickname}
+          </Link>
+        </div>
+      )
+    },
+  },
+  {
+    accessorKey: "final_time",
+    header: "Time",
+    cell: ({ row }) => {
+      if (row.original.final_time !== undefined) {
+        const time = new Date(row.original.final_time)
+        return (
+          <div className="flex items-center">
+            {time.toISOString().substr(14, 8)}
+          </div>
+        )
+      }
+    },
   },
 ]
