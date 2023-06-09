@@ -4,7 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ColumnDef } from "@tanstack/react-table"
 
-import { timeFormat } from "@/lib/utils"
+import { eloColor, timeFormat } from "@/lib/utils"
 
 export type Runner = {
   // Look at api docs for object structure
@@ -48,6 +48,19 @@ export const eloColumns: ColumnDef<Runner>[] = [
   {
     accessorKey: "elo_rate",
     header: "Elo",
+    cell: ({ row }) => {
+      return (
+        <div
+          className={`flex items-center ${
+            row.original.elo_rate !== undefined
+              ? eloColor(row.original.elo_rate)
+              : ""
+          }`}
+        >
+          {row.original.elo_rate !== undefined ? row.original.elo_rate : "N/A"}
+        </div>
+      )
+    },
   },
 ]
 
