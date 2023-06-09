@@ -4,6 +4,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { ColumnDef } from "@tanstack/react-table"
 
+import { timeFormat } from "@/lib/utils"
+
 export type Runner = {
   // Look at api docs for object structure
   uuid: string
@@ -83,10 +85,9 @@ export const timeColumns: ColumnDef<Runner>[] = [
     header: "Time",
     cell: ({ row }) => {
       if (row.original.final_time !== undefined) {
-        const time = new Date(row.original.final_time)
         return (
           <div className="flex items-center">
-            {time.toISOString().substr(14, 8)}
+            {timeFormat(row.original.final_time)}
           </div>
         )
       }
