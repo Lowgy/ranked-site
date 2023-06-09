@@ -26,8 +26,7 @@ export default async function ProfilePage({ params: { nickname } }: Params) {
       </div>
       <div className="mb-6 flex items-center pl-10">
         <h2 className="text-gray-500">
-          Rank:{" "}
-          {!userData.data.elo_rank ? "N/A" : `# ${userData.data.elo_rank}`}
+          Rank: {!userData.data.elo_rank ? "N/A" : `#${userData.data.elo_rank}`}
         </h2>
         <h2 className="pl-4 text-gray-500">
           Elo: [
@@ -38,7 +37,7 @@ export default async function ProfilePage({ params: { nickname } }: Params) {
         </h2>
       </div>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
-        {/* <div className="rounded-lg border-2 border-white p-6 shadow-lg">
+        <div className="rounded-lg border-2 border-white p-6 shadow-lg">
           <h3 className="mb-4 text-xl font-bold">Total Games</h3>
           <p className="">{userData.data.total_played}</p>
         </div>
@@ -81,7 +80,7 @@ export default async function ProfilePage({ params: { nickname } }: Params) {
         <div className="rounded-lg border-2 border-white p-6 shadow-lg">
           <h3 className="mb-4 text-xl font-bold">Best Time</h3>
           <p className="">{timeFormat(userData.data.best_record_time)}</p>
-        </div> */}
+        </div>
       </div>
     </section>
   )
