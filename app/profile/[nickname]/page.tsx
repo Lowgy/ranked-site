@@ -2,6 +2,7 @@ import Image from "next/image"
 
 import getProfile from "@/lib/actions/getProfile"
 import { addRank, eloColor, timeFormat } from "@/lib/utils"
+import StatsCarousel from "@/components/carousel"
 
 type Params = {
   params: {
@@ -11,7 +12,7 @@ type Params = {
 
 export default async function ProfilePage({ params: { nickname } }: Params) {
   const userData = await getProfile(nickname)
-  console.log(userData)
+  // console.log(userData)
   return (
     <section className="container grid items-center pb-8 pl-10 pt-6 md:py-10">
       <div className="flex items-center">
@@ -36,7 +37,8 @@ export default async function ProfilePage({ params: { nickname } }: Params) {
           ]
         </h2>
       </div>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      <StatsCarousel data={userData.data} />
+      {/* <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
         <div className="rounded-lg border-2 border-white p-6 shadow-lg">
           <h3 className="mb-4 text-xl font-bold">Total Games</h3>
           <p className="">{userData.data.total_played}</p>
@@ -81,7 +83,7 @@ export default async function ProfilePage({ params: { nickname } }: Params) {
           <h3 className="mb-4 text-xl font-bold">Best Time</h3>
           <p className="">{timeFormat(userData.data.best_record_time)}</p>
         </div>
-      </div>
+      </div> */}
     </section>
   )
 }

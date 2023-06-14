@@ -26,6 +26,7 @@
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-multi-carousel": "^2.8.4",
     "recharts": "^2.6.2",
     "sharp": "^0.31.3",
     "tailwind-merge": "^1.12.0",
