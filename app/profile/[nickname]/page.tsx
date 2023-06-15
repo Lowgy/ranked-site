@@ -1,8 +1,10 @@
 import Image from "next/image"
 
 import getProfile from "@/lib/actions/getProfile"
+import getUserMatches from "@/lib/actions/getUserMatches"
 import { addRank, eloColor, timeFormat } from "@/lib/utils"
 import StatsCarousel from "@/components/carousel"
+import EloChart from "@/components/elo-chart"
 
 type Params = {
   params: {
@@ -12,7 +14,7 @@ type Params = {
 
 export default async function ProfilePage({ params: { nickname } }: Params) {
   const userData = await getProfile(nickname)
-  // console.log(userData)
+  const matches = await getUserMatches(userData.data.uuid, nickname)
   return (
     <section className="container grid items-center pb-8 pl-10 pt-6 md:py-10">
       <div className="flex items-center">
@@ -38,6 +40,8 @@ export default async function ProfilePage({ params: { nickname } }: Params) {
         </h2>
       </div>
       <StatsCarousel data={userData.data} />
+      <EloChart data={matches} />
+      {/* Without Carousel */}
       {/* <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
         <div className="rounded-lg border-2 border-white p-6 shadow-lg">
           <h3 className="mb-4 text-xl font-bold">Total Games</h3>

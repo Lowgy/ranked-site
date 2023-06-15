@@ -4,8 +4,6 @@ import React from "react"
 import Carousel from "react-multi-carousel"
 
 import "react-multi-carousel/lib/styles.css"
-import { ChevronRight } from "lucide-react"
-
 import { addRank, eloColor, timeFormat } from "@/lib/utils"
 
 const responsive = {
