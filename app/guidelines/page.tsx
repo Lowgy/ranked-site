@@ -9,7 +9,7 @@ export default function GuidelinesPage() {
     <section className="container grid  items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="flex flex-col items-start gap-2 md:items-center">
         <h1 className="text-3xl font-bold">MCSR Ranked - Guidelines</h1>
-        <Card className="w-3/4">
+        <Card className=" w-full md:w-3/4">
           <div className="px-6 py-4">
             1. Do not modify the mod or attempt to cheat.
           </div>
@@ -38,7 +38,7 @@ export default function GuidelinesPage() {
       </div>
       <div className="flex flex-col items-start gap-2 md:items-center">
         <h1 className="text-3xl font-bold">MCSR Ranked - Allowed Mods</h1>
-        <Card className="w-3/4">
+        <Card className="w-full md:w-3/4">
           <div className="px-6 py-4">
             <Button className="w-full">
               <Link
