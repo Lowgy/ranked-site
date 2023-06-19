@@ -52,7 +52,7 @@ export default function GuidelinesPage() {
           <Separator />
           <div className="px-6 py-4">
             Some mods are unofficial versions created separately for
-            speedrunning So we would recommended to download the mod with use
+            speedrunning. So we would recommended to download the mod with the
             MCSR Ranked Launcher.
           </div>
         </Card>
