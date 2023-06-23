@@ -1,59 +1,37 @@
+import Image from "next/image"
 import Link from "next/link"
+
+import FeaturesCarousel from "@/components/features-carousel"
 
 export default function IndexPage() {
   return (
     <main>
-      <section className="bg-blue-500 px-4 py-16 text-white">
-        <div className="container mx-auto text-center">
-          <h1 className="mb-4 text-4xl font-bold">Welcome to MCSR Ranked</h1>
-          <p className="text-lg">
-            Take on the challenge of completing Minecraft in record time and
-            climb the ranks to become the ultimate speedrunning champion.
-          </p>
-          <Link
-            href="/download"
-            className="mt-6 inline-block rounded bg-white px-4 py-2 font-bold text-blue-500 transition-colors duration-200 hover:bg-gray-200"
-          >
-            Get Started
-          </Link>
+      <section className="bg-hero-image px-4 py-48 text-white ">
+        <div className="mx-auto grid max-w-screen-xl px-4 py-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
+          <div className="mr-auto place-self-center lg:col-span-7">
+            <h1 className="mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tight dark:text-white md:text-5xl xl:text-6xl">
+              Welcome to MCSR Ranked!
+            </h1>
+            <p className="mb-4 max-w-2xl font-light text-white md:text-lg lg:mb-2 lg:text-xl">
+              Take on the challenge of completing Minecraft in record time and
+              climb the ranks to become the ultimate speedrunning champion.
+            </p>
+            <Link
+              href="/download"
+              className="mt-6 inline-block rounded bg-white px-4 py-2 font-bold text-blue-500 transition-colors duration-200 hover:bg-gray-200"
+            >
+              Get started
+            </Link>
+          </div>
+          <div className="ml-24 hidden lg:col-span-5 lg:mt-0 lg:flex">
+            <Image src="/test1.png" width={400} height={400} alt="test" />
+          </div>
         </div>
       </section>
       <section className="px-4 py-16">
         <div className="container mx-auto text-center">
           <h2 className="mb-8 text-3xl font-bold">Features</h2>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="rounded-lg bg-white p-6 shadow-lg">
-              <h3 className="mb-4 text-xl font-bold">Ranked Mode</h3>
-              <p className="text-gray-700">
-                Race in a speedrun against an opponent of simiiar skill, in the
-                same seed and at the same time. Putting your elo on the line to
-                climb the ranks!
-              </p>
-            </div>
-            <div className="rounded-lg bg-white p-6 shadow-lg">
-              <h3 className="mb-4 text-xl font-bold">Casual Mode</h3>
-              <p className="text-gray-700">
-                Don&apos;t feel like risking elo or just want to play with
-                friends? Then casual mode is for you! No risk of dropping on the
-                leaderboard, and great for practice!
-              </p>
-            </div>
-            <div className="rounded-lg bg-white p-6 shadow-lg">
-              <h3 className="mb-4 text-xl font-bold">Private Rooms</h3>
-              <p className="text-gray-700">
-                Want to play with friends? Create a private room and invite
-                them, up to 33 players! Custom settings and more!
-              </p>
-            </div>
-            <div className="rounded-lg bg-white p-6 shadow-lg">
-              <h3 className="mb-4 text-xl font-bold">Leaderboard and Stats</h3>
-              <p className="text-gray-700">
-                See how you stack up against the competition with a built in
-                leaderboard and profile stats, including your elo, wins, losses,
-                and more!
-              </p>
-            </div>
-          </div>
+          <FeaturesCarousel />
         </div>
       </section>
       <section className="px-4 py-16">

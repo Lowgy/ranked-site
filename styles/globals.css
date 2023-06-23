@@ -79,3 +79,9 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+.bg-hero-image {
+  background-image: url("/hero-image.png");
+  background-size: cover;
+  background-position: center;
+}

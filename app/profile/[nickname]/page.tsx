@@ -3,8 +3,8 @@ import Image from "next/image"
 import getProfile from "@/lib/actions/getProfile"
 import getUserMatches from "@/lib/actions/getUserMatches"
 import { addRank, eloColor, timeFormat } from "@/lib/utils"
-import StatsCarousel from "@/components/carousel"
 import EloChart from "@/components/elo-chart"
+import StatsCarousel from "@/components/stats-carousel"
 
 type Params = {
   params: {
