@@ -4,13 +4,18 @@ import { Runner, eloColumns, timeColumns } from "./columns"
 import { DataTable } from "./data-table"
 
 async function getEloLeaderboard() {
-  const response = await fetch("https://mcsrranked.com/api/leaderboard")
+  const response = await fetch("https://mcsrranked.com/api/leaderboard", {
+    cache: "no-cache",
+  })
   const data = await response.json()
   return data.data.users as Runner[]
 }
 
 async function getTimeLeaderboard() {
-  const response = await fetch("https://mcsrranked.com/api/record-leaderboard")
+  const response = await fetch(
+    "https://mcsrranked.com/api/record-leaderboard",
+    { cache: "no-cache" }
+  )
   const data = await response.json()
   let runners = []
   for (let i = 0; i < data.data.length; i++) {

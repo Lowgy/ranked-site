@@ -1,6 +1,7 @@
 export default async function getUserMatches(uuid: string, nickname: string) {
   const response = await fetch(
-    `https://mcsrranked.com/api/users/${nickname}/matches?filter=2`
+    `https://mcsrranked.com/api/users/${nickname}/matches?filter=2`,
+    { cache: "no-cache" }
   )
 
   let data = await response.json()
