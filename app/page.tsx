@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
+import { Separator } from "@/components/ui/separator"
 import FeaturesCarousel from "@/components/features-carousel"
 
 export default function IndexPage() {
@@ -28,12 +29,13 @@ export default function IndexPage() {
           </div>
         </div>
       </section>
-      <section className="px-4 py-16">
+      <section className="px-4 py-24">
         <div className="container mx-auto text-center">
           <h2 className="mb-8 text-3xl font-bold">Features</h2>
           <FeaturesCarousel />
         </div>
       </section>
+      <Separator />
       <section className="px-4 py-16">
         <div className="container mx-auto text-center">
           <h1 className="mb-8 text-4xl font-bold">Join the Discord!</h1>

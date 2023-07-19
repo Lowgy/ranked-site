@@ -26,13 +26,13 @@ const responsive = {
 const features = [
   {
     title: "Ranked Mode",
-    image: "/eye.png",
+    image: "/headtohead.png",
     description:
       "Race in a speedrun against an opponent of similar skill, in the same seed and at the same time. Putting your elo on the line to climb the ranks!",
   },
   {
     title: "Casual Mode",
-    image: "/diamond.png",
+    image: "/eye.png",
     description:
       "Don't feel like risking elo or just want to play with friends? Then casual mode is for you! No risk of dropping on the leaderboard, and great for practice!",
   },
@@ -44,7 +44,7 @@ const features = [
   },
   {
     title: "Leaderboard and Stats",
-    image: "/trophy.png",
+    image: "/ranking.png",
     description:
       "See how you stack up against the competition with a built in leaderboard and profile stats, including your elo, wins, losses, and more!",
   },
@@ -99,23 +99,25 @@ export default function FeaturesCarousel() {
         </div> */}
         {features.map((feature, index) => (
           <div
-            className="bg-test flex flex-col items-center overflow-hidden rounded-lg p-24 shadow-lg dark:bg-white md:flex-row"
+            className="flex flex-col items-center overflow-hidden rounded-lg bg-test p-24 shadow-lg dark:bg-white md:flex-row"
             key={index}
           >
             <div className="ml-24 md:w-1/2">
               <Image
                 src={feature.image}
                 alt="Image"
-                width={50}
-                height={50}
+                width={200}
+                height={200}
                 className="w-1/2"
               />
             </div>
             <div className="mr-24 p-4 md:w-1/2">
-              <h2 className="mb-4 text-2xl font-bold text-gray-700">
+              <h2 className="mb-4 text-2xl font-bold text-white dark:text-gray-700">
                 {feature.title}
               </h2>
-              <p className="text-gray-700">{feature.description}</p>
+              <p className=" text-white dark:text-gray-700">
+                {feature.description}
+              </p>
             </div>
           </div>
         ))}
