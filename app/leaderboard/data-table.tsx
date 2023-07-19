@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -101,9 +102,19 @@ export function DataTable<TData, TValue>({
               <TableRow>
                 <TableCell
                   colSpan={columns.length}
-                  className="h-24 text-center"
+                  className="h-24 text-center text-lg font-bold"
                 >
-                  No results.
+                  Player is currently not in the Top 150! 😢 BUT you can still
+                  view their profile{" "}
+                  <Link
+                    href={`http://localhost:3000/profile/${
+                      table.getColumn("nickname")?.getFilterValue() as string
+                    }`}
+                    className="text-blue-500 hover:text-purple-300"
+                  >
+                    {" "}
+                    here!
+                  </Link>
                 </TableCell>
               </TableRow>
             )}
