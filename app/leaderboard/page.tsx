@@ -37,8 +37,14 @@ export default async function LeaderboardPage() {
     <section className="container grid items-center pb-8 pt-6 md:py-10">
       <h1 className="text-2xl">Leaderboard</h1>
       <Tabs defaultValue="elo">
-        <div className="relative">
+        <div className="hidden md:relative">
           <TabsList className="absolute right-0 top-12 grid w-[300px] grid-cols-2">
+            <TabsTrigger value="elo">Elo</TabsTrigger>
+            <TabsTrigger value="time">Time</TabsTrigger>
+          </TabsList>
+        </div>
+        <div className="relative">
+          <TabsList className="absolute right-0 top-12 grid w-[200px] grid-cols-2 md:w-[300px]">
             <TabsTrigger value="elo">Elo</TabsTrigger>
             <TabsTrigger value="time">Time</TabsTrigger>
           </TabsList>
