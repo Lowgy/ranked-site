@@ -19,12 +19,11 @@ export default async function getUserMatches(uuid: string, nickname: string) {
       for (let j = 0; j < matches[i].score_changes.length; j++) {
         if (matches[i].score_changes[j].uuid === uuid) {
           elo.push({
-            game: i + 1,
             elo: matches[i].score_changes[j].score,
           })
         }
       }
     }
-    return elo
+    return elo.reverse()
   }
 }
