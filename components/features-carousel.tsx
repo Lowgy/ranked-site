@@ -52,7 +52,6 @@ const features = [
 
 export default function FeaturesCarousel() {
   return (
-    // TODO: Create a data object so they you just update the object and can loop through!
     <>
       <Carousel
         responsive={responsive}
