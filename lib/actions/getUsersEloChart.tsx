@@ -1,4 +1,4 @@
-export default async function getUserMatches(uuid: string, nickname: string) {
+export default async function getUsersEloChart(uuid: string, nickname: string) {
   const response = await fetch(
     `https://mcsrranked.com/api/users/${nickname}/matches?filter=2`,
     { cache: "no-cache" }
@@ -6,6 +6,7 @@ export default async function getUserMatches(uuid: string, nickname: string) {
 
   let data = await response.json()
   data = data.data
+  console.log(data[0])
   let matches = []
   for (let i = 0; i < data.length; i++) {
     if (!data[i].is_decay) {
