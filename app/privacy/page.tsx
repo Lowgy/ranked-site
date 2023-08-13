@@ -12,9 +12,10 @@ export default function PrivacyPage() {
             <h1>1. Introduction</h1>
             <Separator className="my-2" />
             <p className="text-sm">
-              MCSR Ranked ("us", "we", or "our") operates
-              https://mcsrranked.com, as well the MCSR Ranked applications
-              (hereinafter referred to as "Service"). <br />
+              MCSR Ranked (&quot;us&quot;, &quot;we&quot;, or &quot;our&quot;)
+              operates https://mcsrranked.com, as well the MCSR Ranked
+              applications (hereinafter referred to as &quot;Service&quot;).{" "}
+              <br />
               <br />
               Our Privacy Policy governs your visit to https://mcsrranked.com,
               as well as your usage of the MCSR Ranked applications, and
@@ -41,12 +42,15 @@ export default function PrivacyPage() {
             <p className="text-sm">
               While using our Service, we may ask you to provide us with certain
               personally identifiable information that can be used to contact or
-              identify you ("Personal Data"). Personally identifiable
+              identify you (&quot;Personal Data&quot;). Personally identifiable
               information may include, but is not limited to:
             </p>
             <ul className="list-inside list-disc text-sm">
               <li>Usage Data</li>
-              <li>Minecraft Account and Third Parties Data ("Other Data")</li>
+              <li>
+                Minecraft Account and Third Parties Data (&quot;Other
+                Data&quot;)
+              </li>
             </ul>
           </div>
           <div className="border-b-2 p-3 text-xl">
@@ -55,17 +59,17 @@ export default function PrivacyPage() {
             <p className="text-sm">
               We may also collect information that your browser sends whenever
               you visit our Service or when you access Service by or through a
-              mobile device ("Usage Data"). This Usage Data may include
-              information such as your computer's Internet Protocol address
-              (e.g. IP address), browser type, browser version, the pages of our
-              Service that you visit, the time and date of your visit, the time
-              spent on those pages, unique device identifiers and other
-              diagnostic data. When you access Service with a mobile device,
-              this Usage Data may include information such as the type of mobile
-              device you use, your mobile device unique ID, the IP address of
-              your mobile device, your mobile operating system, the type of
-              mobile Internet browser you use, unique device identifiers and
-              other diagnostic data.
+              mobile device (&quot;Usage Data&quot;). This Usage Data may
+              include information such as your computer&apos;s Internet Protocol
+              address (e.g. IP address), browser type, browser version, the
+              pages of our Service that you visit, the time and date of your
+              visit, the time spent on those pages, unique device identifiers
+              and other diagnostic data. When you access Service with a mobile
+              device, this Usage Data may include information such as the type
+              of mobile device you use, your mobile device unique ID, the IP
+              address of your mobile device, your mobile operating system, the
+              type of mobile Internet browser you use, unique device identifiers
+              and other diagnostic data.
             </p>
           </div>
           <div className="border-b-2 p-3 text-xl">
@@ -207,11 +211,11 @@ export default function PrivacyPage() {
             <Separator className="my-2" />
             <p className="text-sm">
               We may employ third party companies and individuals to facilitate
-              our Service ("Service Providers"), provide Service on our behalf,
-              perform Service-related services or assist us in analysing how our
-              Service is used. These third parties have access to your Personal
-              Data only to perform these tasks on our behalf and are obligated
-              not to disclose or use it for any other purpose.
+              our Service (&quot;Service Providers&quot;), provide Service on
+              our behalf, perform Service-related services or assist us in
+              analysing how our Service is used. These third parties have access
+              to your Personal Data only to perform these tasks on our behalf
+              and are obligated not to disclose or use it for any other purpose.
             </p>
           </div>
           <div className="border-b-2 p-3 text-xl">
@@ -234,10 +238,22 @@ export default function PrivacyPage() {
                   collected data to contextualise and personalise the ads of its
                   own advertising network. For more information on the privacy
                   practices of Google, please visit the Google Privacy Terms web
-                  page: https://policies.google.com/privacy?hl=en We also
-                  encourage you to review the Google's policy for safeguarding
-                  your data:
-                  https://support.google.com/analytics/answer/6004245.
+                  page:{" "}
+                  <a
+                    href="https://policies.google.com/privacy?hl=en"
+                    className="hover:text-green-400"
+                  >
+                    https://policies.google.com/privacy?hl=en
+                  </a>{" "}
+                  We also encourage you to review the Google&apos;s policy for
+                  safeguarding your data:{" "}
+                  <a
+                    href="https://support.google.com/analytics/answer/6004245"
+                    className="hover:text-green-400"
+                  >
+                    https://support.google.com/analytics/answer/6004245
+                  </a>
+                  .
                 </p>
               </li>
             </ul>
@@ -248,7 +264,7 @@ export default function PrivacyPage() {
             <p className="text-sm">
               Our Service may contain links to other sites that are not operated
               by us. If you click a third party link, you will be directed to
-              that third party's site. We strongly advise you to review the
+              that third party&apos;s site. We strongly advise you to review the
               Privacy Policy of every site you visit. We have no control over
               and assume no responsibility for the content, privacy policies or
               practices of any third party sites or services.
@@ -259,7 +275,7 @@ export default function PrivacyPage() {
             <Separator className="my-2" />
             <p className="text-sm">
               Our Services are not intended for use by children under the age of
-              13 ("Children"). We do not knowingly collect personally
+              13 (&quot;Children&quot;). We do not knowingly collect personally
               identifiable information from Children under 13. If you become
               aware that a Child has provided us with Personal Data, please
               contact us. If we become aware that we have collected Personal
@@ -275,8 +291,8 @@ export default function PrivacyPage() {
               you of any changes by posting the new Privacy Policy on this page.
               We will let you know via email and/or a prominent notice on our
               Service, prior to the change becoming effective and update the
-              "effective date" at the top of this Privacy Policy. You are
-              advised to review this Privacy Policy periodically for any
+              &quot;effective date&quot; at the top of this Privacy Policy. You
+              are advised to review this Privacy Policy periodically for any
               changes. Changes to this Privacy Policy are effective when they
               are posted on this page.
             </p>
@@ -296,7 +312,13 @@ export default function PrivacyPage() {
                 </a>
               </li>
               <li>
-                By joining our Discord server: https://mcsrranked.com/discord
+                By joining our Discord server:{" "}
+                <a
+                  href="https://discord.gg/nnjUSyDErj"
+                  className="hover:text-green-400"
+                >
+                  https://mcsrranked.com/discord
+                </a>
               </li>
             </ol>
           </div>

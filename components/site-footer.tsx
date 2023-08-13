@@ -1,8 +1,6 @@
 import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
 
 export function SiteFooter() {
   return (
@@ -14,6 +12,7 @@ export function SiteFooter() {
             href={siteConfig.links.discord}
             target="_blank"
             rel="noreferrer"
+            className="hover:text-green-400"
           >
             Join our Discord Server
           </Link>
@@ -27,6 +26,7 @@ export function SiteFooter() {
             href={siteConfig.links.privacyPolicy}
             target="_blank"
             rel="noreferrer"
+            className="hover:text-green-400"
           >
             Privacy Policy
           </Link>
@@ -34,6 +34,7 @@ export function SiteFooter() {
             href={siteConfig.links.apiDocs}
             target="_blank"
             rel="noreferrer"
+            className="hover:text-green-400"
           >
             API Docs
           </Link>
