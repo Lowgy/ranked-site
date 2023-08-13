@@ -6,7 +6,6 @@ export default async function getUsersEloChart(uuid: string, nickname: string) {
 
   let data = await response.json()
   data = data.data
-  console.log(data[0])
   let matches = []
   for (let i = 0; i < data.length; i++) {
     if (!data[i].is_decay) {

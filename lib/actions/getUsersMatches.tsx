@@ -16,11 +16,25 @@ export default async function getUsersMatches(uuid: string, nickname: string) {
         winner: data[i].winner,
         opponent: getOpponent(data[i].members, uuid),
         final_time: data[i].final_time,
+        // match_details: await getMatchDetails(data[i].match_id),
         forfeit: data[i].forfeit,
       })
     }
   }
   return matches
+}
+
+export async function getMatchDetails(match_id: string) {
+  const response = await fetch(
+    `https://mcsrranked.com/api/matches/${match_id}`,
+    {
+      cache: "no-cache",
+    }
+  )
+
+  let data = await response.json()
+  data = data.data
+  return data
 }
 
 function getOpponent(members: any, uuid: string) {
