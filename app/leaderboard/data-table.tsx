@@ -104,7 +104,7 @@ export function DataTable<TData, TValue>({
                   Player is currently not in the Top 150! 😢 BUT you can still
                   view their profile{" "}
                   <Link
-                    href={`http://localhost:3000/profile/${
+                    href={`/profile/${
                       table.getColumn("nickname")?.getFilterValue() as string
                     }`}
                     className="text-blue-500 hover:text-purple-300"
