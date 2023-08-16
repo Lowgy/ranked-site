@@ -26,6 +26,7 @@ export const siteConfig = {
     github: "https://github.com/lowgy",
     discord: "https://discord.com/invite/nnjUSyDErj",
     apiDocs: "https://docs.mcsrranked.com/",
+    licenses: "/licenses",
     privacyPolicy: "/privacy",
   },
 }

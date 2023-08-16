@@ -8,40 +8,52 @@ export function cn(...inputs: ClassValue[]) {
 export function eloColor(elo: number) {
   return elo >= 0 && elo <= 599
     ? "text-gray-950"
-    : elo >= 600 && elo <= 1199
+    : elo >= 600 && elo <= 899
     ? "text-gray-500"
-    : elo >= 1200 && elo <= 1799
+    : elo >= 900 && elo <= 1199
     ? "text-yellow-500"
-    : elo >= 1800
+    : elo >= 1200 && elo <= 1499
+    ? "text-green-500"
+    : elo >= 1500 && elo <= 1999
     ? "text-blue-400"
+    : elo >= 2000
+    ? "text-purple-500"
     : ""
 }
 
 export function addRank(elo: number) {
-  return elo >= 0 && elo <= 199
+  return elo >= 0 && elo <= 399
     ? "Coal I"
-    : elo >= 200 && elo <= 399
+    : elo >= 400 && elo <= 499
     ? "Coal II"
-    : elo >= 400 && elo <= 599
+    : elo >= 500 && elo <= 599
     ? "Coal III"
-    : elo >= 600 && elo <= 799
+    : elo >= 600 && elo <= 699
     ? "Iron I"
-    : elo >= 800 && elo <= 999
+    : elo >= 700 && elo <= 799
     ? "Iron II"
-    : elo >= 1000 && elo <= 1199
+    : elo >= 800 && elo <= 899
     ? "Iron III"
-    : elo >= 1200 && elo <= 1399
+    : elo >= 900 && elo <= 999
     ? "Gold I"
-    : elo >= 1400 && elo <= 1599
+    : elo >= 1000 && elo <= 1099
     ? "Gold II"
-    : elo >= 1600 && elo <= 1799
+    : elo >= 1100 && elo <= 1199
     ? "Gold III"
-    : elo >= 1800 && elo <= 1999
+    : elo >= 1200 && elo <= 1299
+    ? "Emerald I"
+    : elo >= 1300 && elo <= 1399
+    ? "Emerald II"
+    : elo >= 1400 && elo <= 1499
+    ? "Emerald III"
+    : elo >= 1500 && elo <= 1649
     ? "Diamond I"
-    : elo >= 2000 && elo <= 2199
+    : elo >= 1650 && elo <= 1799
     ? "Diamond II"
-    : elo >= 2200 && elo <= 2399
+    : elo >= 1800 && elo <= 1999
     ? "Diamond III"
+    : elo >= 2000
+    ? "Netherite"
     : ""
 }
 

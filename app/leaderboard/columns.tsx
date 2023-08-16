@@ -4,7 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ColumnDef } from "@tanstack/react-table"
 
-import { eloColor, timeFormat } from "@/lib/utils"
+import { timeFormat } from "@/lib/utils"
 
 export type Runner = {
   // Look at api docs for object structure
@@ -14,6 +14,22 @@ export type Runner = {
   elo_rate?: number
   final_time_rank?: number
   final_time?: number
+}
+
+function eloColor(elo: number) {
+  return elo >= 0 && elo <= 599
+    ? "text-gray-950"
+    : elo >= 600 && elo <= 899
+    ? "text-gray-500"
+    : elo >= 900 && elo <= 1199
+    ? "text-yellow-500"
+    : elo >= 1200 && elo <= 1499
+    ? "text-green-500"
+    : elo >= 1500 && elo <= 1999
+    ? "text-blue-400"
+    : elo >= 2000
+    ? "text-purple-500"
+    : ""
 }
 
 export const eloColumns: ColumnDef<Runner>[] = [

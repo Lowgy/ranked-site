@@ -19,7 +19,7 @@ export default function IndexPage() {
             </p>
             <Link
               href="/download"
-              className="mt-6 inline-block rounded bg-white px-4 py-2 font-bold text-blue-500 transition-colors duration-200 hover:bg-gray-200"
+              className="mt-6 inline-block rounded bg-green-500 px-4 py-2 font-bold text-white transition-colors duration-200 hover:bg-green-700"
             >
               Get started
             </Link>
