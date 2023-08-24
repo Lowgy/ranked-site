@@ -38,6 +38,7 @@ export const siteConfig = {
   ],
   links: {
     github: "https://github.com/lowgy",
+    patreon: "https://www.patreon.com/mcsrranked",
     discord: "https://discord.com/invite/nnjUSyDErj",
     apiDocs: "https://docs.mcsrranked.com/",
     licenses: "/licenses",

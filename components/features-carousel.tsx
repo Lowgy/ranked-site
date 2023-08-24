@@ -26,19 +26,19 @@ const responsive = {
 const features = [
   {
     title: "Ranked Mode",
-    image: "/headtohead.png",
+    image: "/eye.png",
     description:
       "Race in a speedrun against an opponent of similar skill, in the same seed and at the same time. Putting your elo on the line to climb the ranks!",
   },
   {
     title: "Casual Mode",
-    image: "/eye.png",
+    image: "/goldingot.png",
     description:
       "Don't feel like risking elo or just want to play with friends? Then casual mode is for you! No risk of dropping on the leaderboard, and great for practice!",
   },
   {
     title: "Private Rooms",
-    image: "/sword.png",
+    image: "/craftingtable.png",
     description:
       "Want to play with friends? Create a private room and invite them, up to 33 players! Custom settings and more!",
   },

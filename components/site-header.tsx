@@ -1,8 +1,10 @@
+import { Oi } from "next/font/google"
 import Link from "next/link"
+import { faPatreon } from "@fortawesome/free-brands-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
@@ -16,7 +18,7 @@ export function SiteHeader() {
         <div className="flex flex-1 items-center justify-end space-x-4">
           <nav className="flex items-center space-x-1">
             <Link
-              href={siteConfig.links.github}
+              href={siteConfig.links.patreon}
               target="_blank"
               rel="noreferrer"
             >
@@ -26,7 +28,7 @@ export function SiteHeader() {
                   variant: "ghost",
                 })}
               >
-                <Icons.gitHub className="h-5 w-5" />
+                <FontAwesomeIcon icon={faPatreon} className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </div>
             </Link>
