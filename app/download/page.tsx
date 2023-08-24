@@ -114,7 +114,7 @@ export default function DownloadPage() {
         <div className="relative mt-2 text-center ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 [&_h3.font-heading]:text-base [&_h3.font-heading]:font-semibold">
           <pre className="mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-lg border bg-zinc-950 py-2 dark:bg-zinc-900">
             <div className="py-2">
-              <code className="relative rounded  px-[0.3rem] py-[0.2rem] font-mono text-sm">
+              <code className="relative rounded  px-[0.3rem] py-[0.2rem] font-mono text-sm text-white">
                 {downloadLink}
               </code>
             </div>

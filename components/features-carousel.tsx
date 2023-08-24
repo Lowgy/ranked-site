@@ -59,7 +59,7 @@ export default function FeaturesCarousel() {
         autoPlay={true}
         autoPlaySpeed={4000}
         infinite={true}
-        arrows={false}
+        arrows={true}
       >
         {/* <div className="rounded-lg bg-white p-6 shadow-lg">
           <h3 className="mb-4 text-xl font-bold text-gray-700">Ranked Mode</h3>
