@@ -10,7 +10,6 @@ import {
 } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Copy } from "lucide-react"
-import { BrowserView, MobileView } from "react-device-detect"
 
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
