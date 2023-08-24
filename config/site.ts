@@ -22,6 +22,20 @@ export const siteConfig = {
       href: "/guidelines",
     },
   ],
+  mobileNav: [
+    {
+      title: "Home",
+      href: "/",
+    },
+    {
+      title: "Leaderboard",
+      href: "/leaderboard",
+    },
+    {
+      title: "Guidelines",
+      href: "/guidelines",
+    },
+  ],
   links: {
     github: "https://github.com/lowgy",
     discord: "https://discord.com/invite/nnjUSyDErj",

@@ -40,7 +40,7 @@ export default function GuidelinesPage() {
         <h1 className="text-3xl font-bold">MCSR Ranked - Allowed Mods</h1>
         <Card className="w-full md:w-3/4">
           <div className="px-6 py-4">
-            <Button className="w-full">
+            <Button className="w-full" asChild>
               <Link
                 href="https://gist.github.com/RedLime/bb1d3f49a01ff43f21bc218da964cdd8"
                 target="_blank"

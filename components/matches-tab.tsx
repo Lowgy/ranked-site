@@ -49,7 +49,9 @@ export default function MatchesTab(data: any) {
       <TableCaption>A list of recent matches</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[200px]">Match Type</TableHead>
+          <TableHead className="hidden w-[200px] md:table-cell">
+            Match Type
+          </TableHead>
           <TableHead>Opponent</TableHead>
           <TableHead>Result</TableHead>
           <TableHead>Final Time</TableHead>
@@ -59,7 +61,7 @@ export default function MatchesTab(data: any) {
       <TableBody>
         {data.matches.map((match: any) => (
           <TableRow>
-            <TableCell className="font-medium">
+            <TableCell className="hidden font-medium md:table-cell">
               {match.match_type === 1
                 ? "Casual"
                 : match.match_type === 2
@@ -97,9 +99,9 @@ export default function MatchesTab(data: any) {
               {match.forfeit ? "Forfeit" : timeFormat(match.final_time)}
             </TableCell>
             <TableCell>{timeSince(match.match_date)}</TableCell>
-            <TableCell>
+            <TableCell className="hidden md:table-cell">
               <Dialog>
-                <DialogTrigger className="hover:text-purple-400">
+                <DialogTrigger className="hover:text-green-400">
                   <button onClick={() => handleClick(match.match_id)}>
                     <ArrowRightCircle />
                   </button>

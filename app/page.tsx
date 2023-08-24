@@ -46,7 +46,7 @@ export default function IndexPage() {
             href="https://discord.gg/nnjUSyDErj"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-block rounded bg-blue-500 px-4 py-2 font-bold text-white transition-colors duration-200 hover:bg-blue-600"
+            className="mt-6 inline-block rounded bg-green-500 px-4 py-2 font-bold text-white transition-colors duration-200 hover:bg-green-700"
           >
             Join!
           </Link>

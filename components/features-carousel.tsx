@@ -56,61 +56,26 @@ export default function FeaturesCarousel() {
       <Carousel
         responsive={responsive}
         keyBoardControl={true}
-        autoPlay={true}
+        autoPlay={false}
         autoPlaySpeed={4000}
         infinite={true}
         arrows={true}
       >
-        {/* <div className="rounded-lg bg-white p-6 shadow-lg">
-          <h3 className="mb-4 text-xl font-bold text-gray-700">Ranked Mode</h3>
-          <p className="text-gray-700">
-            Race in a speedrun against an opponent of simiiar skill, in the same
-            seed and at the same time. Putting your elo on the line to climb the
-            ranks!
-          </p>
-        </div>
-        <div className="rounded-lg bg-white p-6 shadow-lg">
-          <h3 className="mb-4 text-xl font-bold text-gray-700">Casual Mode</h3>
-          <p className="text-gray-700">
-            Don&apos;t feel like risking elo or just want to play with friends?
-            Then casual mode is for you! No risk of dropping on the leaderboard,
-            and great for practice!
-          </p>
-        </div>
-        <div className="rounded-lg bg-white p-6 shadow-lg">
-          <h3 className="mb-4 text-xl font-bold text-gray-700">
-            Private Rooms
-          </h3>
-          <p className="text-gray-700">
-            Want to play with friends? Create a private room and invite them, up
-            to 33 players! Custom settings and more!
-          </p>
-        </div>
-        <div className="rounded-lg bg-white p-6 shadow-lg">
-          <h3 className="mb-4 text-xl font-bold text-gray-700">
-            Leaderboard and Stats
-          </h3>
-          <p className="text-gray-700">
-            See how you stack up against the competition with a built in
-            leaderboard and profile stats, including your elo, wins, losses, and
-            more!
-          </p>
-        </div> */}
         {features.map((feature, index) => (
           <div
             className="flex flex-col items-center overflow-hidden rounded-lg bg-test p-24 shadow-lg dark:bg-white md:flex-row"
             key={index}
           >
-            <div className="ml-24 md:w-1/2">
+            <div className="md:ml-24 md:w-1/2">
               <Image
                 src={feature.image}
                 alt="Image"
                 width={200}
                 height={200}
-                className="w-1/2"
+                className="md:w-1/2"
               />
             </div>
-            <div className="mr-24 p-4 md:w-1/2">
+            <div className="p-4 md:mr-24 md:w-1/2">
               <h2 className="mb-4 text-2xl font-bold text-white dark:text-gray-700">
                 {feature.title}
               </h2>
@@ -120,25 +85,6 @@ export default function FeaturesCarousel() {
             </div>
           </div>
         ))}
-        {/* <div className="flex flex-col items-center overflow-hidden rounded-lg bg-white p-24 shadow-lg md:flex-row">
-          <div className="ml-24 md:w-1/2">
-            <Image
-              src="/trophy.png"
-              alt="Image"
-              width={50}
-              height={50}
-              className="w-1/2"
-            />
-          </div>
-          <div className="mr-24 p-4 md:w-1/2">
-            <h2 className="mb-4 text-2xl font-bold">Card Title</h2>
-            <p className="text-gray-700">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut cursus
-              justo id ligula aliquam auctor. In consequat lectus ut fermentum
-              vulputate.
-            </p>
-          </div>
-        </div> */}
       </Carousel>
     </>
   )

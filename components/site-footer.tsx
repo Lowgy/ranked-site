@@ -33,7 +33,7 @@ export function SiteFooter() {
           >
             Privacy Policy
           </Link>
-          |
+          <span className="hidden md:block">|</span>
           <Link
             href={siteConfig.links.licenses}
             target="_blank"
@@ -42,7 +42,7 @@ export function SiteFooter() {
           >
             Open Source Licenses
           </Link>
-          |
+          <span className="hidden md:block">|</span>
           <Link
             href={siteConfig.links.apiDocs}
             target="_blank"

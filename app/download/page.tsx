@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Copy } from "lucide-react"
+import { BrowserView, MobileView } from "react-device-detect"
 
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -39,7 +40,12 @@ export default function DownloadPage() {
       <div className="container mx-auto text-center">
         <h2 className="mb-8 text-3xl font-bold">Downloads</h2>
       </div>
-      <div className="container mx-auto">
+      <div className="container mx-auto text-center md:hidden">
+        <p>
+          Sorry! You must be on a non mobile device to download the modpack!
+        </p>
+      </div>
+      <div className="container mx-auto hidden md:block">
         <div className="-mx-4 flex flex-wrap">
           <DownloadOption
             title="Windows"
@@ -136,7 +142,7 @@ export default function DownloadPage() {
         <Separator className="my-8" />
         <div className="container mx-auto text-center">
           <div className="-mx-4 flex flex-wrap">
-            <div className="w-full px-4 md:w-1/2">
+            <div className="mb-8 w-full px-4 lg:mb-0 lg:w-1/2">
               <h2 className="text-2xl font-semibold">
                 Download only Mod File (.jar)
               </h2>
@@ -153,7 +159,7 @@ export default function DownloadPage() {
                 </Link>
               </Button>
             </div>
-            <div className="w-full px-4 md:w-1/2">
+            <div className="w-full px-4 lg:w-1/2">
               <h2 className="text-2xl font-semibold">
                 How to import modpack with MultiMC/PrismLauncher
               </h2>
@@ -222,7 +228,10 @@ const DownloadOption = ({
             </SelectTrigger>
             <SelectContent>
               {downloadLinks.map((downloadLink) => (
-                <SelectItem value={downloadLink.downloadLink}>
+                <SelectItem
+                  value={downloadLink.downloadLink}
+                  key={downloadLink.title}
+                >
                   {downloadLink.title}
                 </SelectItem>
               ))}

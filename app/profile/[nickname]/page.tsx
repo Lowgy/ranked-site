@@ -52,7 +52,7 @@ function ProfileHeader({
           </Link>
         )}
       </div>
-      <div className="mb-6 flex items-center pl-10">
+      <div className="mb-2 flex items-center pl-10 md:mb-6">
         <h2 className="text-gray-500">
           Rank: {!userData.data.elo_rank ? "N/A" : `#${userData.data.elo_rank}`}
         </h2>
@@ -76,7 +76,7 @@ export default async function ProfilePage({ params: { nickname } }: Params) {
     <section className="container grid items-center pb-8 pl-10 pt-6 md:py-10">
       <Tabs defaultValue="general">
         <div className="relative">
-          <TabsList className="absolute right-0 top-4 grid w-[200px] grid-cols-3 md:w-[300px]">
+          <TabsList className="absolute right-0 top-4 hidden w-[200px] grid-cols-3 md:grid md:w-[300px]">
             <TabsTrigger value="general">
               <Book className="mr-1 h-4 w-4" />
               General
@@ -94,15 +94,57 @@ export default async function ProfilePage({ params: { nickname } }: Params) {
         <TabsContent value="general">
           <section className="container grid items-center p-0">
             <ProfileHeader nickname={nickname} userData={userData} />
+            <TabsList className="mb-2 grid w-full grid-cols-3 md:hidden md:w-[300px]">
+              <TabsTrigger value="general">
+                <Book className="mr-1 h-4 w-4" />
+                General
+              </TabsTrigger>
+              <TabsTrigger value="stats">
+                <LineChart className="mr-1 h-4 w-4" />
+                Stats
+              </TabsTrigger>
+              <TabsTrigger value="matches">
+                <Swords className="mr-1 h-4 w-4" />
+                Matches
+              </TabsTrigger>
+            </TabsList>
             <GeneralTab userData={userData} matches={matches} />
           </section>
         </TabsContent>
         <TabsContent value="stats">
           <ProfileHeader nickname={nickname} userData={userData} />
+          <TabsList className="mb-2 grid w-full grid-cols-3 md:hidden md:w-[300px]">
+            <TabsTrigger value="general">
+              <Book className="mr-1 h-4 w-4" />
+              General
+            </TabsTrigger>
+            <TabsTrigger value="stats">
+              <LineChart className="mr-1 h-4 w-4" />
+              Stats
+            </TabsTrigger>
+            <TabsTrigger value="matches">
+              <Swords className="mr-1 h-4 w-4" />
+              Matches
+            </TabsTrigger>
+          </TabsList>
           <StatsTab userData={userData} />
         </TabsContent>
         <TabsContent value="matches">
           <ProfileHeader nickname={nickname} userData={userData} />
+          <TabsList className="mb-2 grid w-full grid-cols-3 md:hidden md:w-[300px]">
+            <TabsTrigger value="general">
+              <Book className="mr-1 h-4 w-4" />
+              General
+            </TabsTrigger>
+            <TabsTrigger value="stats">
+              <LineChart className="mr-1 h-4 w-4" />
+              Stats
+            </TabsTrigger>
+            <TabsTrigger value="matches">
+              <Swords className="mr-1 h-4 w-4" />
+              Matches
+            </TabsTrigger>
+          </TabsList>
           <MatchesTab matches={test} userData={userData} />
         </TabsContent>
       </Tabs>

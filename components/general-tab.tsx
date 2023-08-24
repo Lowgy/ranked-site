@@ -12,10 +12,16 @@ type Badge = {
 export default function GeneralTab(data: any) {
   return (
     <>
-      <h1>Account created: {timeSince(data.userData.data.created_time)}</h1>
-      <h1>Last played: {timeSince(data.userData.data.latest_time)}</h1>
+      <div className="hidden md:block">
+        <h1>Account created: {timeSince(data.userData.data.created_time)}</h1>
+        <h1>Last played: {timeSince(data.userData.data.latest_time)}</h1>
+      </div>
       <EloChart data={data.matches} />
-      <br />
+      <br className="hidden md:block" />
+      <div className="my-4 block md:hidden">
+        <h1>Account created: {timeSince(data.userData.data.created_time)}</h1>
+        <h1>Last played: {timeSince(data.userData.data.latest_time)}</h1>
+      </div>
       <Separator />
       <div className="mx-auto mt-4">
         <h1 className="text-2xl">Achievements</h1>

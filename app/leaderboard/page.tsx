@@ -38,19 +38,27 @@ export default async function LeaderboardPage() {
       <h1 className="text-2xl">Leaderboard</h1>
       <Tabs defaultValue="elo">
         <div className="relative">
-          <TabsList className="absolute right-0 top-12 grid w-[200px] grid-cols-2 md:w-[300px]">
+          <TabsList className="absolute right-0 top-12 hidden w-[200px] grid-cols-2 md:grid md:w-[300px]">
             <TabsTrigger value="elo">Elo</TabsTrigger>
             <TabsTrigger value="time">Time</TabsTrigger>
           </TabsList>
         </div>
         <TabsContent value="elo">
-          <span className="text-gray-500">
+          <span className="text-gray-500 ">
             Current top 150 ranked player this season.
           </span>
+          <TabsList className="mt-2 grid w-full grid-cols-2 md:hidden md:w-[300px]">
+            <TabsTrigger value="elo">Elo</TabsTrigger>
+            <TabsTrigger value="time">Time</TabsTrigger>
+          </TabsList>
           <DataTable columns={eloColumns} data={eloData} />
         </TabsContent>
         <TabsContent value="time">
           <span className="text-gray-500">Top run times for this season</span>
+          <TabsList className="mt-2 grid w-full grid-cols-2 md:hidden md:w-[300px]">
+            <TabsTrigger value="elo">Elo</TabsTrigger>
+            <TabsTrigger value="time">Time</TabsTrigger>
+          </TabsList>
           <DataTable columns={timeColumns} data={timeData} />
         </TabsContent>
       </Tabs>
