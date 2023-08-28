@@ -11,7 +11,7 @@ export function SiteFooter() {
         <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
           Feedback?{" "}
           <Link
-            href={siteConfig.links.discord}
+            href={siteConfig.links.github}
             target="_blank"
             rel="noreferrer"
             className="hover:text-green-400"
@@ -21,7 +21,7 @@ export function SiteFooter() {
         </div>
         <Separator className="block md:hidden" />
         <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:px-0">
-          © 2022-23 MCSR Ranked
+        Contact us: mcsreloproject@gmail.com
         </div>
         <Separator className="block md:hidden" />
         <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-5 md:px-0">
@@ -51,7 +51,24 @@ export function SiteFooter() {
           >
             API Docs
           </Link>
+          <span className="hidden md:block">|</span>
+          <Link
+            href={siteConfig.links.github}
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-green-400"
+          >
+            GitHub
+          </Link>
         </div>
+      <Separator className="block md:hidden" />
+      </div>
+      <div className="container flex flex-col items-center justify-between gap-4 md:h-20 md:flex-row">
+        <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0"></div>
+        <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:px-0">
+          © 2022-23 MCSR Ranked. THIS IS NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.
+        </div>
+        <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0"></div>
       </div>
     </footer>
   )
