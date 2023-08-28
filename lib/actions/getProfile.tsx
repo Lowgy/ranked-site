@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 export default async function getProfile(nickname: string) {
   try {
     const response = await fetch(
-      `https://mcsrranked.com/api/users/${nickname}`,
+      `http://localhost:4651/api/users/${nickname}`,
       {
         cache: "no-cache",
       }
