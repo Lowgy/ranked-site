@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import { useEffect, useState } from "react"
@@ -71,16 +72,18 @@ export default function MatchesTab(data: any) {
             </TableCell>
             <TableCell>
               {" "}
-              <Image
+              <img
                 src={`https://crafatar.com/avatars/${match.opponent.uuid}?overlay`}
                 alt={match.opponent.nickname}
                 height={32}
                 width={32}
                 className="mr-2 h-8 w-8 rounded-full"
+                loading="lazy"
               />
               <Link
                 href={`/profile/${match.opponent.nickname}`}
                 className="hover:underline"
+                prefetch={false}
               >
                 {" "}
                 {match.opponent.nickname}

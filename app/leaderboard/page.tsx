@@ -4,7 +4,7 @@ import { Runner, eloColumns, timeColumns } from "./columns"
 import { DataTable } from "./data-table"
 
 async function getEloLeaderboard() {
-  const response = await fetch("https://mcsrranked.com/api/leaderboard", {
+  const response = await fetch("http://localhost:4561/api/leaderboard", {
     cache: "no-cache",
   })
   const data = await response.json()
@@ -13,7 +13,7 @@ async function getEloLeaderboard() {
 
 async function getTimeLeaderboard() {
   const response = await fetch(
-    "https://mcsrranked.com/api/record-leaderboard",
+    "http://localhost:4561/api/record-leaderboard",
     { cache: "no-cache" }
   )
   const data = await response.json()

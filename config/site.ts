@@ -38,8 +38,8 @@ export const siteConfig = {
   ],
   links: {
     github: "https://github.com/MCSR-Ranked/webpage",
-    patreon: "https://mcsrranked.com/patreon",
-    discord: "https://mcsrranked.com/discord",
+    patreon: "/patreon",
+    discord: "/discord",
     apiDocs: "https://docs.mcsrranked.com/",
     licenses: "/licenses",
     privacyPolicy: "/privacy",
