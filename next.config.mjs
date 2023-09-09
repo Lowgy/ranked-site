@@ -8,6 +8,11 @@ const nextConfig = {
         hostname: "crafatar.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "mc-heads.net",
+        port: "",
+      }
     ],
   },
   experimental: {
