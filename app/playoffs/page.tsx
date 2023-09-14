@@ -1,13 +1,14 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
 import {
   Match,
   SingleEliminationBracket,
   createTheme,
-} from "@g-loot/react-tournament-brackets"
+} from "@lowgy/react-tournament-brackets"
 import { motion } from "framer-motion"
 import { CalendarCheck, Trophy } from "lucide-react"
 import Carousel from "react-multi-carousel"
@@ -371,6 +372,9 @@ export default function PlayoffsPage() {
                         </motion.div>
                       </div>
                     ))}
+                  {playoff.results.map(() => (
+                    <></>
+                  ))}
                 </div>
               ))}
             {playoffs
