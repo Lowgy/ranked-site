@@ -17,6 +17,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        scoreWinner: "#22c55e",
         bracketText: "#545967",
         round: "#22293b",
         score: "#10131c",

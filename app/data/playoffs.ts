@@ -4,34 +4,6 @@ export const playoffs = [
     currentSeason: false,
     matches: [
       {
-        id: 0,
-        name: "Third Place",
-        nextMatchId: 0, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "", // Text for Round Header
-        startTime: "",
-        state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
-        participants: [
-          {
-            id: "Dandannyboy", // Unique identifier of any kind
-            resultText: "3", // Any string works
-            isWinner: true,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
-            name: "Dandannyboy",
-          },
-          {
-            id: "Oxidiot",
-            resultText: "0",
-            isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
-            name: "Oxidiot",
-          },
-        ],
-      },
-      {
         id: 1,
         name: "",
         nextMatchId: null, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
@@ -61,6 +33,34 @@ export const playoffs = [
       },
       {
         id: 2,
+        name: "Third Place",
+        nextMatchId: 0, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        tournamentRoundText: "", // Text for Round Header
+        startTime: "",
+        state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        participants: [
+          {
+            id: "Dandannyboy", // Unique identifier of any kind
+            resultText: "3", // Any string works
+            isWinner: true,
+            season_elo: 2000,
+            personal_best: 126020,
+            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+            name: "Dandannyboy",
+          },
+          {
+            id: "Oxidiot",
+            resultText: "0",
+            isWinner: false,
+            season_elo: 2000,
+            personal_best: 126020,
+            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+            name: "Oxidiot",
+          },
+        ],
+      },
+      {
+        id: 3,
         name: "",
         nextMatchId: 1, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "", // Text for Round Header
@@ -88,7 +88,7 @@ export const playoffs = [
         ],
       },
       {
-        id: 3,
+        id: 4,
         name: "",
         nextMatchId: 1, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "", // Text for Round Header
@@ -116,9 +116,9 @@ export const playoffs = [
         ],
       },
       {
-        id: 4,
+        id: 5,
         name: "",
-        nextMatchId: 2, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 3, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "2", // Text for Round Header
         startTime: "",
         state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -144,9 +144,9 @@ export const playoffs = [
         ],
       },
       {
-        id: 5,
+        id: 6,
         name: "",
-        nextMatchId: 2, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 3, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "2", // Text for Round Header
         startTime: "",
         state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -172,9 +172,9 @@ export const playoffs = [
         ],
       },
       {
-        id: 6,
+        id: 7,
         name: "",
-        nextMatchId: 3, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 4, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "2", // Text for Round Header
         startTime: "",
         state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -200,9 +200,9 @@ export const playoffs = [
         ],
       },
       {
-        id: 7,
+        id: 8,
         name: "",
-        nextMatchId: 3, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 4, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "2", // Text for Round Header
         startTime: "",
         state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -228,9 +228,9 @@ export const playoffs = [
         ],
       },
       {
-        id: 8,
+        id: 9,
         name: "",
-        nextMatchId: 4, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 5, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "1", // Text for Round Header
         startTime: "",
         state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -256,9 +256,9 @@ export const playoffs = [
         ],
       },
       {
-        id: 9,
+        id: 10,
         name: "",
-        nextMatchId: 4, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 5, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "1", // Text for Round Header
         startTime: "",
         state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -284,9 +284,9 @@ export const playoffs = [
         ],
       },
       {
-        id: 10,
+        id: 11,
         name: "",
-        nextMatchId: 5, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 6, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "1", // Text for Round Header
         startTime: "",
         state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -312,9 +312,9 @@ export const playoffs = [
         ],
       },
       {
-        id: 11,
+        id: 12,
         name: "",
-        nextMatchId: 5, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 6, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "1", // Text for Round Header
         startTime: "",
         state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -340,9 +340,9 @@ export const playoffs = [
         ],
       },
       {
-        id: 12,
+        id: 13,
         name: "",
-        nextMatchId: 6, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 7, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "1", // Text for Round Header
         startTime: "",
         state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -368,9 +368,9 @@ export const playoffs = [
         ],
       },
       {
-        id: 13,
+        id: 14,
         name: "",
-        nextMatchId: 6, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 7, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "1", // Text for Round Header
         startTime: "",
         state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -396,9 +396,9 @@ export const playoffs = [
         ],
       },
       {
-        id: 14,
+        id: 15,
         name: "",
-        nextMatchId: 7, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 8, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "1", // Text for Round Header
         startTime: "",
         state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -424,9 +424,9 @@ export const playoffs = [
         ],
       },
       {
-        id: 15,
+        id: 16,
         name: "",
-        nextMatchId: 7, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 8, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "1", // Text for Round Header
         startTime: "",
         state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -537,8 +537,8 @@ export const playoffs = [
       },
       {
         id: 2,
-        name: "",
-        nextMatchId: 1, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        name: "Third Place",
+        nextMatchId: 0, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "", // Text for Round Header
         startTime: "",
         state: "", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -556,8 +556,8 @@ export const playoffs = [
       {
         id: 4,
         name: "",
-        nextMatchId: 2, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "2", // Text for Round Header
+        nextMatchId: 1, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        tournamentRoundText: "", // Text for Round Header
         startTime: "",
         state: "", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
         participants: [],
@@ -565,7 +565,7 @@ export const playoffs = [
       {
         id: 5,
         name: "",
-        nextMatchId: 2, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 3, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "2", // Text for Round Header
         startTime: "",
         state: "", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -583,7 +583,7 @@ export const playoffs = [
       {
         id: 7,
         name: "",
-        nextMatchId: 3, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 4, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "2", // Text for Round Header
         startTime: "",
         state: "", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -593,6 +593,15 @@ export const playoffs = [
         id: 8,
         name: "",
         nextMatchId: 4, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        tournamentRoundText: "2", // Text for Round Header
+        startTime: "",
+        state: "", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        participants: [],
+      },
+      {
+        id: 9,
+        name: "",
+        nextMatchId: 5, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "1", // Text for Round Header
         startTime: "1695120900",
         state: "", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -618,9 +627,9 @@ export const playoffs = [
         ],
       },
       {
-        id: 9,
+        id: 10,
         name: "",
-        nextMatchId: 4, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 5, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "1", // Text for Round Header
         startTime: "1695603977",
         state: "SCHEDULED", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -645,9 +654,9 @@ export const playoffs = [
         ],
       },
       {
-        id: 10,
+        id: 11,
         name: "",
-        nextMatchId: 5, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 6, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "1", // Text for Round Header
         startTime: "1695603977",
         state: "SCHEDULED", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -673,9 +682,9 @@ export const playoffs = [
         ],
       },
       {
-        id: 11,
+        id: 12,
         name: "",
-        nextMatchId: 5, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 6, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "1", // Text for Round Header
         startTime: "1695603977",
         state: "SCHEDULED", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -701,9 +710,9 @@ export const playoffs = [
         ],
       },
       {
-        id: 12,
+        id: 13,
         name: "",
-        nextMatchId: 6, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 7, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "1", // Text for Round Header
         startTime: "1695603977",
         state: "SCHEDULED", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -727,9 +736,9 @@ export const playoffs = [
         ],
       },
       {
-        id: 13,
+        id: 14,
         name: "",
-        nextMatchId: 6, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 7, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "1", // Text for Round Header
         startTime: "1695603977",
         state: "SCHEDULED", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -755,9 +764,9 @@ export const playoffs = [
         ],
       },
       {
-        id: 14,
+        id: 15,
         name: "",
-        nextMatchId: 7, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 8, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "1", // Text for Round Header
         startTime: "1695603977",
         state: "SCHEDULED", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
@@ -783,9 +792,9 @@ export const playoffs = [
         ],
       },
       {
-        id: 15,
+        id: 16,
         name: "",
-        nextMatchId: 7, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        nextMatchId: 8, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
         tournamentRoundText: "1", // Text for Round Header
         startTime: "1695603977",
         state: "SCHEDULED", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)

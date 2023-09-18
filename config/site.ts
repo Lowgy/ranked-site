@@ -18,6 +18,10 @@ export const siteConfig = {
       href: "/download",
     },
     {
+      title: "Playoffs",
+      href: "/playoffs",
+    },
+    {
       title: "Guidelines",
       href: "/guidelines",
     },
