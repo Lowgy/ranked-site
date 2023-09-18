@@ -4,6 +4,34 @@ export const playoffs = [
     currentSeason: false,
     matches: [
       {
+        id: 0,
+        name: "Third Place",
+        nextMatchId: 0, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+        tournamentRoundText: "", // Text for Round Header
+        startTime: "",
+        state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        participants: [
+          {
+            id: "Dandannyboy", // Unique identifier of any kind
+            resultText: "3", // Any string works
+            isWinner: true,
+            season_elo: 2000,
+            personal_best: 126020,
+            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+            name: "Dandannyboy",
+          },
+          {
+            id: "Oxidiot",
+            resultText: "0",
+            isWinner: false,
+            season_elo: 2000,
+            personal_best: 126020,
+            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+            name: "Oxidiot",
+          },
+        ],
+      },
+      {
         id: 1,
         name: "",
         nextMatchId: null, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined

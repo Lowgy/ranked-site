@@ -1,4 +1,4 @@
-import Image from "next/image"
+/* eslint-disable @next/next/no-img-element */
 import { TwitchEmbed } from "react-twitch-embed"
 import { Matches } from "types/playoffs"
 
@@ -23,11 +23,12 @@ export default function BracketMatches(props: BracketMatchesProps) {
               <CardContent>
                 <div className="flex justify-between space-x-4 p-4 text-center">
                   <div>
-                    <Image
+                    <img
                       src={`https://mc-heads.net/body/${match.participants[0].name}`}
                       alt="Players skin"
                       width={120}
                       height={720}
+                      loading="lazy"
                     />
                     <div className="mt-3">
                       <h1>{match.participants[0].name}</h1>
@@ -45,11 +46,12 @@ export default function BracketMatches(props: BracketMatchesProps) {
                     VS
                   </h1>
                   <div>
-                    <Image
+                    <img
                       src={`https://mc-heads.net/body/${match.participants[1].name}/left`}
                       alt="Players skin"
                       width={120}
                       height={720}
+                      loading="lazy"
                     />
                     <div className="mt-3">
                       <h1>{match.participants[1].name}</h1>
@@ -95,11 +97,12 @@ export default function BracketMatches(props: BracketMatchesProps) {
               <CardContent>
                 <div className="flex justify-between space-x-4 p-4 text-center">
                   <div>
-                    <Image
+                    <img
                       src={`https://mc-heads.net/body/${match.participants[0].name}`}
                       alt="Players skin"
                       width={120}
                       height={720}
+                      loading="lazy"
                     />
                     <div className="mt-3">
                       <h1>{match.participants[0].name}</h1>
@@ -113,11 +116,12 @@ export default function BracketMatches(props: BracketMatchesProps) {
                     VS
                   </h1>
                   <div>
-                    <Image
+                    <img
                       src={`https://mc-heads.net/body/${match.participants[1].name}/left`}
                       alt="Players skin"
                       width={120}
                       height={720}
+                      loading="lazy"
                     />
                     <div className="mt-3">
                       <h1>{match.participants[1].name}</h1>

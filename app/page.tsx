@@ -43,10 +43,11 @@ export default function IndexPage() {
             Questions, comments, or just want to hang out? Join the discord
           </p>
           <Link
-            href="https://discord.gg/nnjUSyDErj"
+            href="/discord"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 inline-block rounded bg-green-500 px-4 py-2 font-bold text-white transition-colors duration-200 hover:bg-green-700"
+            prefetch={false}
           >
             Join!
           </Link>

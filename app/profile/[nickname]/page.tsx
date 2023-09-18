@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from "next/image"
 import Link from "next/link"
 import { Book, LineChart, Swords, Twitch, Youtube } from "lucide-react"
@@ -27,12 +28,13 @@ function ProfileHeader({
   return (
     <>
       <div className="flex items-center">
-        <Image
+        <img
           src={`https://crafatar.com/avatars/${userData.data.uuid}?overlay`}
           alt={nickname}
           height={32}
           width={32}
           className="mr-2 h-8 w-8 rounded-full"
+          loading="lazy"
         />
         <h1 className="text-2xl">{nickname}</h1>
         {userData.data.connections.youtube != null && (

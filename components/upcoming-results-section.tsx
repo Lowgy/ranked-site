@@ -1,4 +1,4 @@
-import Image from "next/image"
+/* eslint-disable @next/next/no-img-element */
 import Carousel from "react-multi-carousel"
 
 import { Season } from "@/types/playoffs"
@@ -71,7 +71,7 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                         marginBottom: ".25rem",
                       }}
                     >
-                      <Image
+                      <img
                         src={`https://mc-heads.net/head/${result.name}`}
                         height={64}
                         width={64}
@@ -80,6 +80,7 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                           overflow: "hidden",
                           borderRadius: 9999,
                         }}
+                        loading="lazy"
                       />
                     </div>
 
@@ -114,12 +115,13 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                   <div className="my-3 flex cursor-pointer items-center rounded-lg border border-gray-300 bg-green-600 p-3 shadow hover:border-green-500 hover:bg-green-400">
                     <div className="w-10 text-lg">#{result.place}</div>
 
-                    <Image
+                    <img
                       src={`https://mc-heads.net/head/${result.name}`}
                       height={64}
                       width={64}
                       alt="Player"
                       className="mr-3 h-11 w-11 overflow-hidden rounded-full shadow-sm"
+                      loading="lazy"
                     />
                     <div className="grow">
                       <p className="font-semibold leading-none text-gray-900">
@@ -175,20 +177,22 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                     <Separator className="my-2" />
                     <div className="flex flex-row items-center justify-center gap-4">
                       <h1>{match.participants[0].name}</h1>
-                      <Image
+                      <img
                         src={`https://mc-heads.net/head/${match.participants[0].name}`}
                         height={64}
                         width={64}
                         alt="Player"
+                        loading="lazy"
                       />
                       <h1 className="my-auto flex justify-center text-4xl font-semibold">
                         VS
                       </h1>
-                      <Image
+                      <img
                         src={`https://mc-heads.net/head/${match.participants[1].name}/left`}
                         height={64}
                         width={64}
                         alt="Player"
+                        loading="lazy"
                       />
                       <h1>{match.participants[1].name}</h1>
                     </div>

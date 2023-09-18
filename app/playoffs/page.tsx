@@ -46,7 +46,10 @@ export default function PlayoffsPage() {
   useEffect(() => {
     for (let i = 0; i < playoffs.length; i++) {
       if (playoffs[i].currentSeason) {
-        setMatches(playoffs[i].matches)
+        const removeThirdPlace = playoffs[i].matches.filter(
+          (match) => match.name !== "Third Place"
+        )
+        setMatches(removeThirdPlace)
         setNextNonActiveMatch(nextMatchCheck(playoffs[i].matches))
       }
     }
@@ -57,7 +60,10 @@ export default function PlayoffsPage() {
   useEffect(() => {
     for (let i = 0; i < playoffs.length; i++) {
       if (playoffs[i].seasonId === selectedSeason) {
-        setMatches(playoffs[i].matches)
+        const removeThirdPlace = playoffs[i].matches.filter(
+          (match) => match.name !== "Third Place"
+        )
+        setMatches(removeThirdPlace)
         setNextNonActiveMatch(nextMatchCheck(playoffs[i].matches))
       }
     }
@@ -109,13 +115,61 @@ export default function PlayoffsPage() {
           <TabsTrigger value="match">Matches</TabsTrigger>
         </TabsList>
         <TabsContent value="bracket">
-          {matches.length !== 0 && (
-            <SingleEliminationBracket
-              matches={matches}
-              matchComponent={Match}
-              theme={RankedTheme}
-            />
-          )}
+          <div className="relative">
+            {matches.length !== 0 && (
+              <SingleEliminationBracket
+                matches={matches}
+                matchComponent={Match}
+                theme={RankedTheme}
+              />
+            )}
+            <div className="absolute right-0 top-[60%] mr-[4.65rem]">
+              {playoffs
+                .filter((playoff) => playoff.seasonId === selectedSeason)
+                .map((playoff) =>
+                  playoff.matches
+                    .filter((match) => match.name === "Third Place")
+                    .map((match) => (
+                      <div className="flex h-[70px] w-[300px] flex-col items-stretch justify-between font-medium text-bracketText">
+                        <div className="flex justify-between">
+                          <p className="min-h-5 mb-1">
+                            {match.startTime !== ""
+                              ? `${new Date(
+                                  parseInt(match.startTime) * 1000
+                                ).toLocaleDateString("en-US", {
+                                  year: "numeric",
+                                  month: "long",
+                                  day: "numeric",
+                                })}  @ ${new Date(
+                                  parseInt(match.startTime) * 1000
+                                ).toLocaleTimeString([], {
+                                  timeZoneName: "short",
+                                  hour: "2-digit",
+                                  minute: "2-digit",
+                                })}`
+                              : ""}
+                          </p>
+                        </div>
+                        <div className="flex flex-1 flex-col justify-between bg-round">
+                          <div className="border-t-1 border-b-1 flex h-full items-center justify-between border-x-4 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2">
+                            <div>{match.participants[0].name}</div>
+                            <div className="flex h-full w-1/5 items-center justify-center bg-score px-4">
+                              {match.participants[0].resultText}
+                            </div>
+                          </div>
+                          <div className="h-px border border-solid border-gray-300 opacity-0 transition duration-500 ease-in-out hover:opacity-100"></div>
+                          <div className="border-t-1 border-b-1 flex h-full items-center justify-between border-x-4 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2">
+                            <div>{match.participants[1].name}</div>
+                            <div className="flex h-full w-1/5 items-center justify-center bg-score px-4">
+                              {match.participants[1].resultText}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))
+                )}
+            </div>
+          </div>
         </TabsContent>
         <TabsContent value="match">
           <div className="flex flex-row space-x-4">

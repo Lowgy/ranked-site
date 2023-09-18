@@ -108,6 +108,7 @@ export function DataTable<TData, TValue>({
                       table.getColumn("nickname")?.getFilterValue() as string
                     }`}
                     className="text-blue-500 hover:text-purple-300"
+                    prefetch={false}
                   >
                     {" "}
                     here!

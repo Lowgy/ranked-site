@@ -21,6 +21,7 @@ export function SiteHeader() {
               href={siteConfig.links.patreon}
               target="_blank"
               rel="noreferrer"
+              prefetch={false}
             >
               <div
                 className={buttonVariants({
