@@ -37,6 +37,7 @@ export default function PlayoffsPage() {
   const [seasons, setSeasons] = useState<number[]>([])
   const [selectedSeason, setSelectedSeason] = useState<number>(2)
   const [matches, setMatches] = useState<Matches[]>([])
+  const [thirdPlace, setThirdPlace] = useState<Matches>()
   const [nextNonActiveMatch, setNextNonActiveMatch] = useState("")
 
   const handleSeasonSelection = (selected: string) => {
@@ -46,10 +47,12 @@ export default function PlayoffsPage() {
   useEffect(() => {
     for (let i = 0; i < playoffs.length; i++) {
       if (playoffs[i].currentSeason) {
-        let removeThirdPlace = []
+        let removeThirdPlace: Matches[] = []
         for (let j = 0; j < playoffs[i].matches.length; j++) {
           if (playoffs[i].matches[j].name !== "Third Place") {
             removeThirdPlace.push(playoffs[i].matches[j])
+          } else {
+            setThirdPlace(playoffs[i].matches[j])
           }
         }
         setMatches(removeThirdPlace)
@@ -63,9 +66,14 @@ export default function PlayoffsPage() {
   useEffect(() => {
     for (let i = 0; i < playoffs.length; i++) {
       if (playoffs[i].seasonId === selectedSeason) {
-        const removeThirdPlace = playoffs[i].matches.filter(
-          (match) => match.name !== "Third Place"
-        )
+        let removeThirdPlace: Matches[] = []
+        for (let j = 0; j < playoffs[i].matches.length; j++) {
+          if (playoffs[i].matches[j].name !== "Third Place") {
+            removeThirdPlace.push(playoffs[i].matches[j])
+          } else {
+            setThirdPlace(playoffs[i].matches[j])
+          }
+        }
         setMatches(removeThirdPlace)
         setNextNonActiveMatch(nextMatchCheck(playoffs[i].matches))
       }
@@ -148,7 +156,70 @@ export default function PlayoffsPage() {
                 />
               )}
               <div className="absolute right-0 top-[60%] mr-[4.65rem]">
-                {playoffs
+                {thirdPlace && (
+                  <div className="flex h-[70px] w-[300px] flex-col items-stretch justify-between font-medium text-bracketText">
+                    <div className="flex justify-between">
+                      <p className="min-h-5 mb-1">
+                        {thirdPlace.startTime !== ""
+                          ? `${new Date(
+                              parseInt(thirdPlace.startTime) * 1000
+                            ).toLocaleDateString("en-US", {
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            })}  @ ${new Date(
+                              parseInt(thirdPlace.startTime) * 1000
+                            ).toLocaleTimeString([], {
+                              timeZoneName: "short",
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })}`
+                          : ""}
+                      </p>
+                    </div>
+                    <div className="flex flex-1 flex-col justify-between bg-round">
+                      <div
+                        className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-4 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
+                          thirdPlace.participants[0]?.isWinner
+                            ? "text-white"
+                            : ""
+                        }`}
+                      >
+                        <div>{thirdPlace.participants[0]?.name || "TBD"}</div>
+                        <div
+                          className={`flex h-full w-1/5 items-center justify-center px-4 py-0.5 ${
+                            thirdPlace.participants[0]?.isWinner
+                              ? "bg-scoreWinner text-white"
+                              : "bg-score"
+                          }`}
+                        >
+                          {thirdPlace.participants[0]?.resultText || ""}
+                        </div>
+                      </div>
+                      <div className="h-px border border-solid border-gray-300 opacity-0 transition duration-500 ease-in-out hover:opacity-100"></div>
+                      <div
+                        className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-4 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
+                          thirdPlace.participants[1]?.isWinner
+                            ? "text-white"
+                            : ""
+                        }`}
+                      >
+                        <div>{thirdPlace.participants[1]?.name || "TBD"}</div>
+                        <div
+                          className={`flex h-full w-1/5 items-center justify-center px-4 py-0.5 ${
+                            thirdPlace.participants[1]?.isWinner
+                              ? "bg-scoreWinner text-white"
+                              : "bg-score"
+                          }`}
+                        >
+                          {thirdPlace.participants[1]?.resultText || ""}
+                        </div>
+                      </div>
+                    </div>
+                    <p>3rd Place</p>
+                  </div>
+                )}
+                {/* {playoffs
                   .filter((playoff) => playoff.seasonId === selectedSeason)
                   .map((playoff) =>
                     playoff.matches
@@ -216,7 +287,7 @@ export default function PlayoffsPage() {
                           <p>3rd Place</p>
                         </div>
                       ))
-                  )}
+                  )} */}
               </div>
             </div>
           </TabsContent>
