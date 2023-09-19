@@ -14,12 +14,12 @@ export const siteConfig = {
       href: "/leaderboard",
     },
     {
-      title: "Download",
-      href: "/download",
-    },
-    {
       title: "Playoffs",
       href: "/playoffs",
+    },
+    {
+      title: "Download",
+      href: "/download",
     },
     {
       title: "Guidelines",
