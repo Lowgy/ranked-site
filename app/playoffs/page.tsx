@@ -25,8 +25,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import BracketMatches from "@/components/bracket-matches"
 import UpcomingResultsSection from "@/components/upcoming-results-section"
 
-// import { playoffs } from "../data/playoffs"
-
 const RankedTheme = createTheme({
   matchBackground: { wonColor: "#1d2232", lostColor: "#1d2232" },
   score: {
@@ -35,6 +33,7 @@ const RankedTheme = createTheme({
 })
 
 export default function PlayoffsPage() {
+  const [loading, setLoading] = useState<boolean>(true)
   const [playoffData, setPlayoffdata] = useState<Season[]>([])
   const [seasons, setSeasons] = useState<number[]>([])
   const [selectedSeason, setSelectedSeason] = useState<number>(2)
@@ -61,6 +60,9 @@ export default function PlayoffsPage() {
     }
     const seasonDropdown = data.map((playoff: Season) => playoff.seasonId)
     setSeasons(seasonDropdown)
+    setTimeout(() => {
+      setLoading(false)
+    }, 1000)
   }
 
   const fetchNewData = async () => {
@@ -80,6 +82,9 @@ export default function PlayoffsPage() {
         setNextNonActiveMatch(nextMatchCheck(data[i].matches))
       }
     }
+    setTimeout(() => {
+      setLoading(false)
+    }, 1000)
   }
 
   useEffect(() => {
@@ -161,80 +166,86 @@ export default function PlayoffsPage() {
             <TabsTrigger value="match">Matches</TabsTrigger>
           </TabsList>
           <TabsContent value="bracket">
-            <div className="relative">
-              {matches.length !== 0 && (
-                <SingleEliminationBracket
-                  matches={matches}
-                  matchComponent={Match}
-                  theme={RankedTheme}
-                />
-              )}
-              <div className="absolute right-0 top-[60%] mr-[4.65rem]">
-                {thirdPlace && (
-                  <div className="flex h-[70px] w-[300px] flex-col items-stretch justify-between font-medium text-bracketText">
-                    <div className="flex justify-between">
-                      <p className="min-h-5 mb-1">
-                        {thirdPlace.startTime !== ""
-                          ? `${new Date(
-                              parseInt(thirdPlace.startTime) * 1000
-                            ).toLocaleDateString("en-US", {
-                              year: "numeric",
-                              month: "long",
-                              day: "numeric",
-                            })}  @ ${new Date(
-                              parseInt(thirdPlace.startTime) * 1000
-                            ).toLocaleTimeString([], {
-                              timeZoneName: "short",
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            })}`
-                          : ""}
-                      </p>
-                    </div>
-                    <div className="flex flex-1 flex-col justify-between bg-round">
-                      <div
-                        className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-4 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
-                          thirdPlace.participants[0]?.isWinner
-                            ? "text-white"
-                            : ""
-                        }`}
-                      >
-                        <div>{thirdPlace.participants[0]?.name || "TBD"}</div>
-                        <div
-                          className={`flex h-full w-1/5 items-center justify-center px-4 py-0.5 ${
-                            thirdPlace.participants[0]?.isWinner
-                              ? "bg-scoreWinner text-white"
-                              : "bg-score"
-                          }`}
-                        >
-                          {thirdPlace.participants[0]?.resultText || ""}
-                        </div>
-                      </div>
-                      <div className="h-px border border-solid border-gray-300 opacity-0 transition duration-500 ease-in-out hover:opacity-100"></div>
-                      <div
-                        className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-4 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
-                          thirdPlace.participants[1]?.isWinner
-                            ? "text-white"
-                            : ""
-                        }`}
-                      >
-                        <div>{thirdPlace.participants[1]?.name || "TBD"}</div>
-                        <div
-                          className={`flex h-full w-1/5 items-center justify-center px-4 py-0.5 ${
-                            thirdPlace.participants[1]?.isWinner
-                              ? "bg-scoreWinner text-white"
-                              : "bg-score"
-                          }`}
-                        >
-                          {thirdPlace.participants[1]?.resultText || ""}
-                        </div>
-                      </div>
-                    </div>
-                    <p>3rd Place</p>
-                  </div>
-                )}
+            {loading ? (
+              <div className="my-64 flex justify-center">
+                <div className="h-32 w-32 animate-spin rounded-full border-b-2 border-green-400"></div>
               </div>
-            </div>
+            ) : (
+              <div className="relative">
+                {matches.length !== 0 && (
+                  <SingleEliminationBracket
+                    matches={matches}
+                    matchComponent={Match}
+                    theme={RankedTheme}
+                  />
+                )}
+                <div className="absolute right-0 top-[60%] mr-[4.65rem]">
+                  {thirdPlace && (
+                    <div className="flex h-[70px] w-[300px] flex-col items-stretch justify-between font-medium text-bracketText">
+                      <div className="flex justify-between">
+                        <p className="min-h-5 mb-1">
+                          {thirdPlace.startTime !== ""
+                            ? `${new Date(
+                                parseInt(thirdPlace.startTime) * 1000
+                              ).toLocaleDateString("en-US", {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                              })}  @ ${new Date(
+                                parseInt(thirdPlace.startTime) * 1000
+                              ).toLocaleTimeString([], {
+                                timeZoneName: "short",
+                                hour: "2-digit",
+                                minute: "2-digit",
+                              })}`
+                            : ""}
+                        </p>
+                      </div>
+                      <div className="flex flex-1 flex-col justify-between bg-round">
+                        <div
+                          className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-4 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
+                            thirdPlace.participants[0]?.isWinner
+                              ? "text-white"
+                              : ""
+                          }`}
+                        >
+                          <div>{thirdPlace.participants[0]?.name || "TBD"}</div>
+                          <div
+                            className={`flex h-full w-1/5 items-center justify-center px-4 py-0.5 ${
+                              thirdPlace.participants[0]?.isWinner
+                                ? "bg-scoreWinner text-white"
+                                : "bg-score"
+                            }`}
+                          >
+                            {thirdPlace.participants[0]?.resultText || ""}
+                          </div>
+                        </div>
+                        <div className="h-px border border-solid border-gray-300 opacity-0 transition duration-500 ease-in-out hover:opacity-100"></div>
+                        <div
+                          className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-4 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
+                            thirdPlace.participants[1]?.isWinner
+                              ? "text-white"
+                              : ""
+                          }`}
+                        >
+                          <div>{thirdPlace.participants[1]?.name || "TBD"}</div>
+                          <div
+                            className={`flex h-full w-1/5 items-center justify-center px-4 py-0.5 ${
+                              thirdPlace.participants[1]?.isWinner
+                                ? "bg-scoreWinner text-white"
+                                : "bg-score"
+                            }`}
+                          >
+                            {thirdPlace.participants[1]?.resultText || ""}
+                          </div>
+                        </div>
+                      </div>
+                      <p>3rd Place</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
           </TabsContent>
           <TabsContent value="match">
             <div className="flex flex-row space-x-4">
