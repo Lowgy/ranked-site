@@ -46,9 +46,12 @@ export default function PlayoffsPage() {
   useEffect(() => {
     for (let i = 0; i < playoffs.length; i++) {
       if (playoffs[i].currentSeason) {
-        let removeThirdPlace = playoffs[i].matches.filter(
-          (match) => match.name !== "Third Place"
-        )
+        let removeThirdPlace = []
+        for (let j = 0; j < playoffs[i].matches.length; j++) {
+          if (playoffs[i].matches[j].name !== "Third Place") {
+            removeThirdPlace.push(playoffs[i].matches[j])
+          }
+        }
         setMatches(removeThirdPlace)
         setNextNonActiveMatch(nextMatchCheck(playoffs[i].matches))
       }
