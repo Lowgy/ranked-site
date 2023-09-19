@@ -79,7 +79,8 @@ export default function BracketMatches(props: BracketMatchesProps) {
           </>
         ) : match.state !== "ACTIVE" &&
           match.state !== "DONE" &&
-          match.startTime === props.nextNonActiveMatch ? (
+          match.startTime === props.nextNonActiveMatch &&
+          match.participants.length !== 0 ? (
           <>
             {" "}
             <Card className="w-full rounded-lg border-2 border-green-400">
@@ -98,18 +99,20 @@ export default function BracketMatches(props: BracketMatchesProps) {
                 <div className="flex justify-between space-x-4 p-4 text-center">
                   <div>
                     <img
-                      src={`https://mc-heads.net/body/${match.participants[0].name}`}
+                      src={`https://mc-heads.net/body/${match.participants[0]?.name}`}
                       alt="Players skin"
                       width={120}
                       height={720}
                       loading="lazy"
                     />
                     <div className="mt-3">
-                      <h1>{match.participants[0].name}</h1>
+                      <h1>{match.participants[0]?.name}</h1>
                       <h1 className={`${eloColor(2000)}`}>
                         {`2000 - ${addRank(2000)}`}
                       </h1>
-                      <h1>{timeFormat(match.participants[0].personal_best)}</h1>
+                      <h1>
+                        {timeFormat(match.participants[0]?.personal_best)}
+                      </h1>
                     </div>
                   </div>
                   <h1 className="my-auto flex justify-center text-4xl font-semibold">
@@ -117,18 +120,20 @@ export default function BracketMatches(props: BracketMatchesProps) {
                   </h1>
                   <div>
                     <img
-                      src={`https://mc-heads.net/body/${match.participants[1].name}/left`}
+                      src={`https://mc-heads.net/body/${match.participants[1]?.name}/left`}
                       alt="Players skin"
                       width={120}
                       height={720}
                       loading="lazy"
                     />
                     <div className="mt-3">
-                      <h1>{match.participants[1].name}</h1>
+                      <h1>{match.participants[1]?.name}</h1>
                       <h1 className={`${eloColor(2000)}`}>
                         {`2000 - ${addRank(2000)}`}
                       </h1>
-                      <h1>{timeFormat(match.participants[1].personal_best)}</h1>
+                      <h1>
+                        {timeFormat(match.participants[1]?.personal_best)}
+                      </h1>
                     </div>
                   </div>
                 </div>
@@ -136,7 +141,7 @@ export default function BracketMatches(props: BracketMatchesProps) {
             </Card>
           </>
         ) : (
-          " "
+          ""
         )
       )}
     </>

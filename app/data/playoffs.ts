@@ -6,27 +6,27 @@ export const playoffs = [
       {
         id: 1,
         name: "",
-        nextMatchId: null, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "4", // Text for Round Header
+        nextMatchId: null,
+        tournamentRoundText: "4",
         startTime: "",
-        state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "DONE",
         participants: [
           {
-            id: "Silverr", // Unique identifier of any kind
-            resultText: "4", // Any string works
+            id: "17e787d1d6374f818b294f2319db370d",
+            resultText: "4",
             isWinner: true,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+            season_elo: 2309,
+            personal_best: 457763,
+            status: null,
             name: "Silverr",
           },
           {
-            id: "Doogile",
+            id: "3c8757790ab0400b8b9e3936e0dd535b",
             resultText: "3",
             isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+            season_elo: 1987,
+            personal_best: 538764,
+            status: null,
             name: "Doogile",
           },
         ],
@@ -34,27 +34,27 @@ export const playoffs = [
       {
         id: 2,
         name: "Third Place",
-        nextMatchId: 0, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "", // Text for Round Header
+        nextMatchId: 0,
+        tournamentRoundText: "",
         startTime: "",
-        state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "DONE",
         participants: [
           {
-            id: "Dandannyboy", // Unique identifier of any kind
-            resultText: "3", // Any string works
+            id: "e4808bc3e1e347988cbb59b55d723e0f",
+            resultText: "3",
             isWinner: true,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+            season_elo: 2039,
+            personal_best: 545731,
+            status: null,
             name: "Dandannyboy",
           },
           {
-            id: "Oxidiot",
+            id: "562a308be86c4ec09438387860e792cc",
             resultText: "0",
             isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+            season_elo: 2067,
+            personal_best: 470517,
+            status: null,
             name: "Oxidiot",
           },
         ],
@@ -62,27 +62,27 @@ export const playoffs = [
       {
         id: 3,
         name: "",
-        nextMatchId: 1, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "", // Text for Round Header
+        nextMatchId: 1,
+        tournamentRoundText: "",
         startTime: "",
-        state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "DONE",
         participants: [
           {
-            id: "Silverr", // Unique identifier of any kind
-            resultText: "3", // Any string works
+            id: "17e787d1d6374f818b294f2319db370d",
+            resultText: "3",
             isWinner: true,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+            season_elo: 2309,
+            personal_best: 457763,
+            status: null,
             name: "Silverr",
           },
           {
-            id: "Oxidiot",
+            id: "562a308be86c4ec09438387860e792cc",
             resultText: "0",
             isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+            season_elo: 2067,
+            personal_best: 470517,
+            status: null,
             name: "Oxidiot",
           },
         ],
@@ -90,27 +90,27 @@ export const playoffs = [
       {
         id: 4,
         name: "",
-        nextMatchId: 1, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "", // Text for Round Header
+        nextMatchId: 1,
+        tournamentRoundText: "",
         startTime: "",
-        state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "DONE",
         participants: [
           {
-            id: "Doogile", // Unique identifier of any kind
-            resultText: "3", // Any string works
+            id: "3c8757790ab0400b8b9e3936e0dd535b",
+            resultText: "3",
             isWinner: true,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+            season_elo: 1987,
+            personal_best: 538764,
+            status: null,
             name: "Doogile",
           },
           {
-            id: "Dandannyboy",
+            id: "e4808bc3e1e347988cbb59b55d723e0f",
             resultText: "2",
             isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+            season_elo: 2039,
+            personal_best: 545731,
+            status: null,
             name: "Dandannyboy",
           },
         ],
@@ -118,27 +118,27 @@ export const playoffs = [
       {
         id: 5,
         name: "",
-        nextMatchId: 3, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "2", // Text for Round Header
+        nextMatchId: 3,
+        tournamentRoundText: "2",
         startTime: "",
-        state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "DONE",
         participants: [
           {
-            id: "Silverr", // Unique identifier of any kind
-            resultText: "3", // Any string works
+            id: "17e787d1d6374f818b294f2319db370d",
+            resultText: "3",
             isWinner: true,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+            season_elo: 2309,
+            personal_best: 457763,
+            status: null,
             name: "Silverr",
           },
           {
-            id: "Reignex",
+            id: "a536eec9a68e4d309cd09f5af4c006a7",
             resultText: "1",
             isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+            season_elo: 2010,
+            personal_best: 530104,
+            status: null,
             name: "Reignex",
           },
         ],
@@ -146,27 +146,27 @@ export const playoffs = [
       {
         id: 6,
         name: "",
-        nextMatchId: 3, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "2", // Text for Round Header
+        nextMatchId: 3,
+        tournamentRoundText: "2",
         startTime: "",
-        state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "DONE",
         participants: [
           {
-            id: "Oxidiot", // Unique identifier of any kind
-            resultText: "3", // Any string works
+            id: "562a308be86c4ec09438387860e792cc",
+            resultText: "3",
             isWinner: true,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+            season_elo: 2067,
+            personal_best: 470517,
+            status: null,
             name: "Oxidiot",
           },
           {
-            id: "MoleyG",
+            id: "fa1bec35058546c98f9279f8be7cf9bc",
             resultText: "0",
             isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+            season_elo: 1747,
+            personal_best: 532762,
+            status: null,
             name: "MoleyG",
           },
         ],
@@ -174,27 +174,27 @@ export const playoffs = [
       {
         id: 7,
         name: "",
-        nextMatchId: 4, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "2", // Text for Round Header
+        nextMatchId: 4,
+        tournamentRoundText: "2",
         startTime: "",
-        state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "DONE",
         participants: [
           {
-            id: "Doogile", // Unique identifier of any kind
-            resultText: "3", // Any string works
+            id: "3c8757790ab0400b8b9e3936e0dd535b",
+            resultText: "3",
             isWinner: true,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+            season_elo: 1987,
+            personal_best: 538764,
+            status: null,
             name: "Doogile",
           },
           {
-            id: "Ancoboy",
+            id: "bc80af38933f4ae19b0494681a54422b",
             resultText: "2",
             isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+            season_elo: 1903,
+            personal_best: 491923,
+            status: null,
             name: "Ancoboy",
           },
         ],
@@ -202,27 +202,27 @@ export const playoffs = [
       {
         id: 8,
         name: "",
-        nextMatchId: 4, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "2", // Text for Round Header
+        nextMatchId: 4,
+        tournamentRoundText: "2",
         startTime: "",
-        state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "DONE",
         participants: [
           {
-            id: "Cro", // Unique identifier of any kind
-            resultText: "2", // Any string works
+            id: "4129d8d1aafb4e73b97b9999db248060",
+            resultText: "2",
             isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+            season_elo: 1667,
+            personal_best: 650328,
+            status: null,
             name: "Cro",
           },
           {
-            id: "Dandannyboy",
+            id: "e4808bc3e1e347988cbb59b55d723e0f",
             resultText: "3",
             isWinner: true,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+            season_elo: 2039,
+            personal_best: 545731,
+            status: null,
             name: "Dandannyboy",
           },
         ],
@@ -230,27 +230,27 @@ export const playoffs = [
       {
         id: 9,
         name: "",
-        nextMatchId: 5, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "1", // Text for Round Header
+        nextMatchId: 5,
+        tournamentRoundText: "1",
         startTime: "",
-        state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "DONE",
         participants: [
           {
-            id: "Silverr", // Unique identifier of any kind
-            resultText: "2", // Any string works
+            id: "17e787d1d6374f818b294f2319db370d",
+            resultText: "2",
             isWinner: true,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+            season_elo: 2309,
+            personal_best: 457763,
+            status: null,
             name: "Silverr",
           },
           {
-            id: "AutomattPL",
+            id: "fa61606e8131484c8dee506d1ff9a8dc",
             resultText: "1",
             isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+            season_elo: 1644,
+            personal_best: 547295,
+            status: null,
             name: "AutomattPL",
           },
         ],
@@ -258,18 +258,18 @@ export const playoffs = [
       {
         id: 10,
         name: "",
-        nextMatchId: 5, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "1", // Text for Round Header
+        nextMatchId: 5,
+        tournamentRoundText: "1",
         startTime: "",
-        state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "DONE",
         participants: [
           {
-            id: "Reignex", // Unique identifier of any kind
-            resultText: "2", // Any string works
+            id: "a536eec9a68e4d309cd09f5af4c006a7",
+            resultText: "2",
             isWinner: true,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+            season_elo: 2010,
+            personal_best: 530104,
+            status: null,
             name: "Reignex",
           },
           {
@@ -278,7 +278,7 @@ export const playoffs = [
             isWinner: false,
             season_elo: 2000,
             personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+            status: null,
             name: "Pulsar",
           },
         ],
@@ -286,27 +286,27 @@ export const playoffs = [
       {
         id: 11,
         name: "",
-        nextMatchId: 6, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "1", // Text for Round Header
+        nextMatchId: 6,
+        tournamentRoundText: "1",
         startTime: "",
-        state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "DONE",
         participants: [
           {
-            id: "Oxidiot", // Unique identifier of any kind
-            resultText: "2", // Any string works
+            id: "562a308be86c4ec09438387860e792cc",
+            resultText: "2",
             isWinner: true,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+            season_elo: 2067,
+            personal_best: 470517,
+            status: null,
             name: "Oxidiot",
           },
           {
-            id: "Ranik",
+            id: "5ee577fdc1af45d3a6fb3e086cc293fb",
             resultText: "1",
             isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+            season_elo: 1760,
+            personal_best: 527373,
+            status: null,
             name: "Ranik",
           },
         ],
@@ -314,27 +314,27 @@ export const playoffs = [
       {
         id: 12,
         name: "",
-        nextMatchId: 6, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "1", // Text for Round Header
+        nextMatchId: 6,
+        tournamentRoundText: "1",
         startTime: "",
-        state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "DONE",
         participants: [
           {
-            id: "Priffin", // Unique identifier of any kind
-            resultText: "0", // Any string works
+            id: "af22aaab9ee74596a3578bd6345d25b5",
+            resultText: "0",
             isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+            season_elo: 2042,
+            personal_best: 513481,
+            status: null,
             name: "Priffin",
           },
           {
-            id: "MoleyG",
+            id: "fa1bec35058546c98f9279f8be7cf9bc",
             resultText: "2",
             isWinner: true,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+            season_elo: 1747,
+            personal_best: 532762,
+            status: null,
             name: "MoleyG",
           },
         ],
@@ -342,27 +342,27 @@ export const playoffs = [
       {
         id: 13,
         name: "",
-        nextMatchId: 7, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "1", // Text for Round Header
+        nextMatchId: 7,
+        tournamentRoundText: "1",
         startTime: "",
-        state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "DONE",
         participants: [
           {
-            id: "7rowl", // Unique identifier of any kind
-            resultText: "1", // Any string works
+            id: "70eb9286e3e24153a8b37c8f884f1292",
+            resultText: "1",
             isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+            season_elo: 2150,
+            personal_best: 504857,
+            status: null,
             name: "7rowl",
           },
           {
-            id: "Doogile",
+            id: "3c8757790ab0400b8b9e3936e0dd535b",
             resultText: "2",
             isWinner: true,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+            season_elo: 1987,
+            personal_best: 538764,
+            status: null,
             name: "Doogile",
           },
         ],
@@ -370,27 +370,27 @@ export const playoffs = [
       {
         id: 14,
         name: "",
-        nextMatchId: 7, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "1", // Text for Round Header
+        nextMatchId: 7,
+        tournamentRoundText: "1",
         startTime: "",
-        state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "DONE",
         participants: [
           {
-            id: "Lowkey", // Unique identifier of any kind
-            resultText: "1", // Any string works
+            id: "7665f76f431b41c6b321bea16aff913b",
+            resultText: "1",
             isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+            season_elo: 2023,
+            personal_best: 491958,
+            status: null,
             name: "Lowkey",
           },
           {
-            id: "Ancoboy",
+            id: "bc80af38933f4ae19b0494681a54422b",
             resultText: "2",
             isWinner: true,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+            season_elo: 1903,
+            personal_best: 491923,
+            status: null,
             name: "Ancoboy",
           },
         ],
@@ -398,27 +398,27 @@ export const playoffs = [
       {
         id: 15,
         name: "",
-        nextMatchId: 8, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "1", // Text for Round Header
+        nextMatchId: 8,
+        tournamentRoundText: "1",
         startTime: "",
-        state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "DONE",
         participants: [
           {
-            id: "Orachi", // Unique identifier of any kind
-            resultText: "0", // Any string works
+            id: "56714245be364bd1a469d0853552c109",
+            resultText: "0",
             isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+            season_elo: 2118,
+            personal_best: 508568,
+            status: null,
             name: "Orachi",
           },
           {
-            id: "Cro",
+            id: "4129d8d1aafb4e73b97b9999db248060",
             resultText: "2",
             isWinner: true,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+            season_elo: 1667,
+            personal_best: 650328,
+            status: null,
             name: "Cro",
           },
         ],
@@ -426,27 +426,27 @@ export const playoffs = [
       {
         id: 16,
         name: "",
-        nextMatchId: 8, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "1", // Text for Round Header
+        nextMatchId: 8,
+        tournamentRoundText: "1",
         startTime: "",
-        state: "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "DONE",
         participants: [
           {
-            id: "Dandannyboy", // Unique identifier of any kind
-            resultText: "2", // Any string works
+            id: "e4808bc3e1e347988cbb59b55d723e0f",
+            resultText: "2",
             isWinner: true,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+            season_elo: 2039,
+            personal_best: 545731,
+            status: null,
             name: "Dandannyboy",
           },
           {
-            id: "Dylqn",
+            id: "2f59967f6a7841ab840e2cb032589a04",
             resultText: "0",
             isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+            season_elo: 1835,
+            personal_best: 603437,
+            status: null,
             name: "Dylqn",
           },
         ],
@@ -529,295 +529,146 @@ export const playoffs = [
       {
         id: 1,
         name: "",
-        nextMatchId: null, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "4", // Text for Round Header
+        nextMatchId: null,
+        tournamentRoundText: "4",
         startTime: "",
-        state: "", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "",
         participants: [],
       },
       {
         id: 2,
         name: "Third Place",
-        nextMatchId: 0, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "", // Text for Round Header
+        nextMatchId: 0,
+        tournamentRoundText: "",
         startTime: "",
-        state: "", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "",
         participants: [],
       },
       {
         id: 3,
         name: "",
-        nextMatchId: 1, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "", // Text for Round Header
+        nextMatchId: 1,
+        tournamentRoundText: "",
         startTime: "",
-        state: "", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "",
         participants: [],
       },
       {
         id: 4,
         name: "",
-        nextMatchId: 1, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "", // Text for Round Header
+        nextMatchId: 1,
+        tournamentRoundText: "",
         startTime: "",
-        state: "", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "",
         participants: [],
       },
       {
         id: 5,
         name: "",
-        nextMatchId: 3, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "2", // Text for Round Header
+        nextMatchId: 3,
+        tournamentRoundText: "2",
         startTime: "",
-        state: "", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "",
         participants: [],
       },
       {
         id: 6,
         name: "",
-        nextMatchId: 3, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "2", // Text for Round Header
+        nextMatchId: 3,
+        tournamentRoundText: "2",
         startTime: "",
-        state: "", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "",
         participants: [],
       },
       {
         id: 7,
         name: "",
-        nextMatchId: 4, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "2", // Text for Round Header
+        nextMatchId: 4,
+        tournamentRoundText: "2",
         startTime: "",
-        state: "", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "",
         participants: [],
       },
       {
         id: 8,
         name: "",
-        nextMatchId: 4, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "2", // Text for Round Header
+        nextMatchId: 4,
+        tournamentRoundText: "2",
         startTime: "",
-        state: "", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+        state: "",
         participants: [],
       },
       {
         id: 9,
         name: "",
-        nextMatchId: 5, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "1", // Text for Round Header
-        startTime: "1695120900",
-        state: "", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
-        participants: [
-          {
-            id: "Silverr", // Unique identifier of any kind
-            resultText: "0", // Any string works
-            isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
-            name: "Silverr",
-          },
-          {
-            id: "AutomattPL",
-            resultText: "0",
-            isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
-            name: "AutomattPL",
-          },
-        ],
+        nextMatchId: 5,
+        tournamentRoundText: "1",
+        startTime: "",
+        state: "",
+        participants: [],
       },
       {
         id: 10,
         name: "",
-        nextMatchId: 5, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "1", // Text for Round Header
-        startTime: "1695603977",
-        state: "SCHEDULED", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
-        participants: [
-          {
-            id: "Reignex", // Unique identifier of any kind
-            resultText: "0", // Any string works
-            isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
-            name: "Reignex",
-          },
-          {
-            id: "Pulsar",
-            resultText: "0",
-            isWinner: false,
-            season_elo: 2000,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
-            name: "Pulsar",
-          },
-        ],
+        nextMatchId: 5,
+        tournamentRoundText: "1",
+        startTime: "",
+        state: "",
+        participants: [],
       },
       {
         id: 11,
         name: "",
-        nextMatchId: 6, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "1", // Text for Round Header
-        startTime: "1695603977",
-        state: "SCHEDULED", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
-        participants: [
-          {
-            id: "Oxidiot", // Unique identifier of any kind
-            resultText: "0", // Any string works
-            isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
-            name: "Oxidiot",
-          },
-          {
-            id: "Ranik",
-            resultText: "0",
-            isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
-            name: "Ranik",
-          },
-        ],
+        nextMatchId: 6,
+        tournamentRoundText: "1",
+        startTime: "",
+        state: "",
+        participants: [],
       },
       {
         id: 12,
         name: "",
-        nextMatchId: 6, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "1", // Text for Round Header
-        startTime: "1695603977",
-        state: "SCHEDULED", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
-        participants: [
-          {
-            id: "Priffin", // Unique identifier of any kind
-            resultText: "0", // Any string works
-            isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
-            name: "Priffin",
-          },
-          {
-            id: "MoleyG",
-            resultText: "0",
-            isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
-            name: "MoleyG",
-          },
-        ],
+        nextMatchId: 6,
+        tournamentRoundText: "1",
+        startTime: "",
+        state: "",
+        participants: [],
       },
       {
         id: 13,
         name: "",
-        nextMatchId: 7, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "1", // Text for Round Header
-        startTime: "1695603977",
-        state: "SCHEDULED", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
-        participants: [
-          {
-            id: "7rowl", // Unique identifier of any kind
-            resultText: "0", // Any string works
-            isWinner: false,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
-            name: "7rowl",
-          },
-          {
-            id: "Doogile",
-            resultText: "0",
-            isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
-            name: "Doogile",
-          },
-        ],
+        nextMatchId: 7,
+        tournamentRoundText: "1",
+        startTime: "",
+        state: "",
+        participants: [],
       },
       {
         id: 14,
         name: "",
-        nextMatchId: 7, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "1", // Text for Round Header
-        startTime: "1695603977",
-        state: "SCHEDULED", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
-        participants: [
-          {
-            id: "Lowkey", // Unique identifier of any kind
-            resultText: "0", // Any string works
-            isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
-            name: "Lowkey",
-          },
-          {
-            id: "Ancoboy",
-            resultText: "0",
-            isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
-            name: "Ancoboy",
-          },
-        ],
+        nextMatchId: 7,
+        tournamentRoundText: "1",
+        startTime: "",
+        state: "",
+        participants: [],
       },
       {
         id: 15,
         name: "",
-        nextMatchId: 8, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "1", // Text for Round Header
-        startTime: "1695603977",
-        state: "SCHEDULED", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
-        participants: [
-          {
-            id: "Orachi", // Unique identifier of any kind
-            resultText: "0", // Any string works
-            isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
-            name: "Orachi",
-          },
-          {
-            id: "Cro",
-            resultText: "0",
-            isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
-            name: "Cro",
-          },
-        ],
+        nextMatchId: 8,
+        tournamentRoundText: "1",
+        startTime: "",
+        state: "",
+        participants: [],
       },
       {
         id: 16,
         name: "",
-        nextMatchId: 8, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
-        tournamentRoundText: "1", // Text for Round Header
-        startTime: "1695603977",
-        state: "SCHEDULED", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
-        participants: [
-          {
-            id: "Dandannyboy", // Unique identifier of any kind
-            resultText: "0", // Any string works
-            isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
-            name: "Dandannyboy",
-          },
-          {
-            id: "Dylqn",
-            resultText: "0",
-            isWinner: false,
-            season_elo: 2000,
-            personal_best: 126020,
-            status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
-            name: "Dylqn",
-          },
-        ],
+        nextMatchId: 8,
+        tournamentRoundText: "1",
+        startTime: "",
+        state: "",
+        participants: [],
       },
     ],
     results: [],

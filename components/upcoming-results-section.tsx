@@ -140,67 +140,76 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
           (playoff) =>
             playoff.seasonId === props.selectedSeason && playoff.currentSeason
         )
-        .map((playoff) => (
-          <>
-            <h1 className="mb-2 text-left">Upcoming Matches</h1>
-            <Carousel
-              responsive={responsive}
-              keyBoardControl={true}
-              infinite={false}
-              arrows={true}
-            >
-              {playoff.matches
-                .filter(
-                  (match) =>
-                    match.startTime !== props.nextNonActiveMatch &&
-                    match.nextMatchId !== null &&
-                    match.state === "SCHEDULED"
-                )
-                .map((match) => (
-                  <div className="rounded-lg border border-white pb-4 shadow-lg">
-                    <h1 className="pt-4">Round {match.tournamentRoundText}</h1>
-                    <p>
-                      {`${new Date(
-                        parseInt(match.startTime) * 1000
-                      ).toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })} @ ${new Date(
-                        parseInt(match.startTime) * 1000
-                      ).toLocaleTimeString([], {
-                        timeZoneName: "short",
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })} `}
-                    </p>
-                    <Separator className="my-2" />
-                    <div className="flex flex-row items-center justify-center gap-4">
-                      <h1>{match.participants[0].name}</h1>
-                      <img
-                        src={`https://mc-heads.net/head/${match.participants[0].name}`}
-                        height={64}
-                        width={64}
-                        alt="Player"
-                        loading="lazy"
-                      />
-                      <h1 className="my-auto flex justify-center text-4xl font-semibold">
-                        VS
+        .map((playoff) =>
+          playoff.matches[15].participants.length !== 0 ? (
+            <>
+              <h1 className="mb-2 text-left">Upcoming Matches</h1>
+              <Carousel
+                responsive={responsive}
+                keyBoardControl={true}
+                infinite={false}
+                arrows={true}
+              >
+                {playoff.matches
+                  .filter(
+                    (match) =>
+                      match.startTime !== props.nextNonActiveMatch &&
+                      match.nextMatchId !== null &&
+                      match.state === "SCHEDULED"
+                  )
+                  .map((match) => (
+                    <div className="rounded-lg border border-white pb-4 shadow-lg">
+                      <h1 className="pt-4">
+                        Round {match.tournamentRoundText}
                       </h1>
-                      <img
-                        src={`https://mc-heads.net/head/${match.participants[1].name}/left`}
-                        height={64}
-                        width={64}
-                        alt="Player"
-                        loading="lazy"
-                      />
-                      <h1>{match.participants[1].name}</h1>
+                      <p>
+                        {`${new Date(
+                          parseInt(match.startTime) * 1000
+                        ).toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })} @ ${new Date(
+                          parseInt(match.startTime) * 1000
+                        ).toLocaleTimeString([], {
+                          timeZoneName: "short",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })} `}
+                      </p>
+                      <Separator className="my-2" />
+                      <div className="flex flex-row items-center justify-center gap-4">
+                        <h1>{match.participants[0].name}</h1>
+                        <img
+                          src={`https://mc-heads.net/head/${match.participants[0].name}`}
+                          height={64}
+                          width={64}
+                          alt="Player"
+                          loading="lazy"
+                        />
+                        <h1 className="my-auto flex justify-center text-4xl font-semibold">
+                          VS
+                        </h1>
+                        <img
+                          src={`https://mc-heads.net/head/${match.participants[1].name}/left`}
+                          height={64}
+                          width={64}
+                          alt="Player"
+                          loading="lazy"
+                        />
+                        <h1>{match.participants[1].name}</h1>
+                      </div>
                     </div>
-                  </div>
-                ))}
-            </Carousel>
-          </>
-        ))}
+                  ))}
+              </Carousel>
+            </>
+          ) : (
+            <h1>
+              Qualifiers still in progress! Stay tuned for schedule once
+              Qualifiers have been completed!
+            </h1>
+          )
+        )}
     </>
   )
 }

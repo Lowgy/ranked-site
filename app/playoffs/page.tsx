@@ -8,8 +8,9 @@ import {
   createTheme,
 } from "@lowgy/react-tournament-brackets"
 import { CalendarCheck, Trophy } from "lucide-react"
-import { Matches } from "types/playoffs"
+import { Matches, Season } from "types/playoffs"
 
+import getPlayoffData from "@/lib/actions/getPlayoffData"
 import { nextMatchCheck } from "@/lib/utils"
 import {
   Select,
@@ -24,7 +25,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import BracketMatches from "@/components/bracket-matches"
 import UpcomingResultsSection from "@/components/upcoming-results-section"
 
-import { playoffs } from "../data/playoffs"
+// import { playoffs } from "../data/playoffs"
 
 const RankedTheme = createTheme({
   matchBackground: { wonColor: "#1d2232", lostColor: "#1d2232" },
@@ -34,51 +35,64 @@ const RankedTheme = createTheme({
 })
 
 export default function PlayoffsPage() {
+  const [playoffData, setPlayoffdata] = useState<Season[]>([])
   const [seasons, setSeasons] = useState<number[]>([])
   const [selectedSeason, setSelectedSeason] = useState<number>(2)
   const [matches, setMatches] = useState<Matches[]>([])
   const [thirdPlace, setThirdPlace] = useState<Matches>()
   const [nextNonActiveMatch, setNextNonActiveMatch] = useState("")
 
-  const handleSeasonSelection = (selected: string) => {
-    setSelectedSeason(parseInt(selected))
+  const fetchInitalData = async () => {
+    const data = await getPlayoffData()
+    setPlayoffdata(data)
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].currentSeason) {
+        let removeThirdPlace: Matches[] = []
+        for (let j = 0; j < data[i].matches.length; j++) {
+          if (data[i].matches[j].name !== "Third Place") {
+            removeThirdPlace.push(data[i].matches[j])
+          } else {
+            setThirdPlace(data[i].matches[j])
+          }
+        }
+        setMatches(removeThirdPlace)
+        setNextNonActiveMatch(nextMatchCheck(data[i].matches))
+      }
+    }
+    const seasonDropdown = data.map((playoff: Season) => playoff.seasonId)
+    setSeasons(seasonDropdown)
+  }
+
+  const fetchNewData = async () => {
+    const data = await getPlayoffData()
+    setPlayoffdata(data)
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].seasonId === selectedSeason) {
+        let removeThirdPlace: Matches[] = []
+        for (let j = 0; j < data[i].matches.length; j++) {
+          if (data[i].matches[j].name !== "Third Place") {
+            removeThirdPlace.push(data[i].matches[j])
+          } else {
+            setThirdPlace(data[i].matches[j])
+          }
+        }
+        setMatches(removeThirdPlace)
+        setNextNonActiveMatch(nextMatchCheck(data[i].matches))
+      }
+    }
   }
 
   useEffect(() => {
-    for (let i = 0; i < playoffs.length; i++) {
-      if (playoffs[i].currentSeason) {
-        let removeThirdPlace: Matches[] = []
-        for (let j = 0; j < playoffs[i].matches.length; j++) {
-          if (playoffs[i].matches[j].name !== "Third Place") {
-            removeThirdPlace.push(playoffs[i].matches[j])
-          } else {
-            setThirdPlace(playoffs[i].matches[j])
-          }
-        }
-        setMatches(removeThirdPlace)
-        setNextNonActiveMatch(nextMatchCheck(playoffs[i].matches))
-      }
-    }
-    const seasonDropdown = playoffs.map((match) => match.seasonId)
-    setSeasons(seasonDropdown)
+    fetchInitalData()
   }, [])
 
   useEffect(() => {
-    for (let i = 0; i < playoffs.length; i++) {
-      if (playoffs[i].seasonId === selectedSeason) {
-        let removeThirdPlace: Matches[] = []
-        for (let j = 0; j < playoffs[i].matches.length; j++) {
-          if (playoffs[i].matches[j].name !== "Third Place") {
-            removeThirdPlace.push(playoffs[i].matches[j])
-          } else {
-            setThirdPlace(playoffs[i].matches[j])
-          }
-        }
-        setMatches(removeThirdPlace)
-        setNextNonActiveMatch(nextMatchCheck(playoffs[i].matches))
-      }
-    }
+    fetchNewData()
   }, [selectedSeason])
+
+  const handleSeasonSelection = (selected: string) => {
+    setSelectedSeason(parseInt(selected))
+  }
 
   return (
     <section className="pb-8 pt-6 md:py-10">
@@ -219,75 +233,6 @@ export default function PlayoffsPage() {
                     <p>3rd Place</p>
                   </div>
                 )}
-                {/* {playoffs
-                  .filter((playoff) => playoff.seasonId === selectedSeason)
-                  .map((playoff) =>
-                    playoff.matches
-                      .filter((match) => match.name === "Third Place")
-                      .map((match) => (
-                        <div className="flex h-[70px] w-[300px] flex-col items-stretch justify-between font-medium text-bracketText">
-                          <div className="flex justify-between">
-                            <p className="min-h-5 mb-1">
-                              {match.startTime !== ""
-                                ? `${new Date(
-                                    parseInt(match.startTime) * 1000
-                                  ).toLocaleDateString("en-US", {
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric",
-                                  })}  @ ${new Date(
-                                    parseInt(match.startTime) * 1000
-                                  ).toLocaleTimeString([], {
-                                    timeZoneName: "short",
-                                    hour: "2-digit",
-                                    minute: "2-digit",
-                                  })}`
-                                : ""}
-                            </p>
-                          </div>
-                          <div className="flex flex-1 flex-col justify-between bg-round">
-                            <div
-                              className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-4 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
-                                match.participants[0]?.isWinner
-                                  ? "text-white"
-                                  : ""
-                              }`}
-                            >
-                              <div>{match.participants[0]?.name || "TBD"}</div>
-                              <div
-                                className={`flex h-full w-1/5 items-center justify-center px-4 py-0.5 ${
-                                  match.participants[0]?.isWinner
-                                    ? "bg-scoreWinner text-white"
-                                    : "bg-score"
-                                }`}
-                              >
-                                {match.participants[0]?.resultText || ""}
-                              </div>
-                            </div>
-                            <div className="h-px border border-solid border-gray-300 opacity-0 transition duration-500 ease-in-out hover:opacity-100"></div>
-                            <div
-                              className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-4 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
-                                match.participants[1]?.isWinner
-                                  ? "text-white"
-                                  : ""
-                              }`}
-                            >
-                              <div>{match.participants[1]?.name || "TBD"}</div>
-                              <div
-                                className={`flex h-full w-1/5 items-center justify-center px-4 py-0.5 ${
-                                  match.participants[1]?.isWinner
-                                    ? "bg-scoreWinner text-white"
-                                    : "bg-score"
-                                }`}
-                              >
-                                {match.participants[1]?.resultText || ""}
-                              </div>
-                            </div>
-                          </div>
-                          <p>3rd Place</p>
-                        </div>
-                      ))
-                  )} */}
               </div>
             </div>
           </TabsContent>
@@ -301,7 +246,7 @@ export default function PlayoffsPage() {
             <Separator className="my-4" />
             <div className="container mx-auto text-center">
               <UpcomingResultsSection
-                playoffs={playoffs}
+                playoffs={playoffData}
                 selectedSeason={selectedSeason}
                 nextNonActiveMatch={nextNonActiveMatch}
               />
