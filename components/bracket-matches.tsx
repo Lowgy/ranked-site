@@ -24,7 +24,7 @@ export default function BracketMatches(props: BracketMatchesProps) {
                 <div className="flex justify-between space-x-4 p-4 text-center">
                   <div>
                     <img
-                      src={`https://mc-heads.net/body/${match.participants[0].name}`}
+                      src={`https://mc-heads.net/body/${match.participants[0].id}`}
                       alt="Players skin"
                       width={120}
                       height={720}
@@ -47,7 +47,7 @@ export default function BracketMatches(props: BracketMatchesProps) {
                   </h1>
                   <div>
                     <img
-                      src={`https://mc-heads.net/body/${match.participants[1].name}/left`}
+                      src={`https://mc-heads.net/body/${match.participants[1].id}/left`}
                       alt="Players skin"
                       width={120}
                       height={720}
@@ -99,7 +99,7 @@ export default function BracketMatches(props: BracketMatchesProps) {
                 <div className="flex justify-between space-x-4 p-4 text-center">
                   <div>
                     <img
-                      src={`https://mc-heads.net/body/${match.participants[0]?.name}`}
+                      src={`https://mc-heads.net/body/${match.participants[0]?.id}`}
                       alt="Players skin"
                       width={120}
                       height={720}
@@ -120,7 +120,7 @@ export default function BracketMatches(props: BracketMatchesProps) {
                   </h1>
                   <div>
                     <img
-                      src={`https://mc-heads.net/body/${match.participants[1]?.name}/left`}
+                      src={`https://mc-heads.net/body/${match.participants[1]?.id}/left`}
                       alt="Players skin"
                       width={120}
                       height={720}

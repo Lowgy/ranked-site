@@ -111,7 +111,7 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
             </div>
             <div className="flex flex-col items-center">
               {playoff.results.map((result) => (
-                <div key={result.name} className="w-1/2">
+                <div key={result.name} className="w-full md:w-1/2">
                   <div className="my-3 flex cursor-pointer items-center rounded-lg border border-gray-300 bg-green-600 p-3 shadow hover:border-green-500 hover:bg-green-400">
                     <div className="w-10 text-lg">#{result.place}</div>
 
@@ -181,7 +181,7 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                       <div className="flex flex-row items-center justify-center gap-4">
                         <h1>{match.participants[0].name}</h1>
                         <img
-                          src={`https://mc-heads.net/head/${match.participants[0].name}`}
+                          src={`https://mc-heads.net/head/${match.participants[0].id}`}
                           height={64}
                           width={64}
                           alt="Player"
@@ -191,7 +191,7 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                           VS
                         </h1>
                         <img
-                          src={`https://mc-heads.net/head/${match.participants[1].name}/left`}
+                          src={`https://mc-heads.net/head/${match.participants[1].id}/left`}
                           height={64}
                           width={64}
                           alt="Player"

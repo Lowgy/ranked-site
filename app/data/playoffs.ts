@@ -18,7 +18,7 @@ export const playoffs = [
             season_elo: 2309,
             personal_best: 457763,
             status: null,
-            name: "Silverr",
+            name: "Silverrruns",
           },
           {
             id: "3c8757790ab0400b8b9e3936e0dd535b",
@@ -63,7 +63,7 @@ export const playoffs = [
         id: 3,
         name: "",
         nextMatchId: 1,
-        tournamentRoundText: "",
+        tournamentRoundText: "3",
         startTime: "",
         state: "DONE",
         participants: [
@@ -74,7 +74,7 @@ export const playoffs = [
             season_elo: 2309,
             personal_best: 457763,
             status: null,
-            name: "Silverr",
+            name: "Silverrruns",
           },
           {
             id: "562a308be86c4ec09438387860e792cc",
@@ -91,7 +91,7 @@ export const playoffs = [
         id: 4,
         name: "",
         nextMatchId: 1,
-        tournamentRoundText: "",
+        tournamentRoundText: "3",
         startTime: "",
         state: "DONE",
         participants: [
@@ -130,7 +130,7 @@ export const playoffs = [
             season_elo: 2309,
             personal_best: 457763,
             status: null,
-            name: "Silverr",
+            name: "Silverrruns",
           },
           {
             id: "a536eec9a68e4d309cd09f5af4c006a7",
@@ -195,7 +195,7 @@ export const playoffs = [
             season_elo: 1903,
             personal_best: 491923,
             status: null,
-            name: "Ancoboy",
+            name: "Ancoboyy",
           },
         ],
       },
@@ -214,7 +214,7 @@ export const playoffs = [
             season_elo: 1667,
             personal_best: 650328,
             status: null,
-            name: "Cro",
+            name: "CroProYT",
           },
           {
             id: "e4808bc3e1e347988cbb59b55d723e0f",
@@ -242,7 +242,7 @@ export const playoffs = [
             season_elo: 2309,
             personal_best: 457763,
             status: null,
-            name: "Silverr",
+            name: "Silverrruns",
           },
           {
             id: "fa61606e8131484c8dee506d1ff9a8dc",
@@ -273,13 +273,13 @@ export const playoffs = [
             name: "Reignex",
           },
           {
-            id: "Pulsar",
+            id: "4863326cccf043ecbb8ff88628bed781",
             resultText: "1",
             isWinner: false,
             season_elo: 2000,
             personal_best: 126020,
             status: null,
-            name: "Pulsar",
+            name: "dangermini",
           },
         ],
       },
@@ -307,7 +307,7 @@ export const playoffs = [
             season_elo: 1760,
             personal_best: 527373,
             status: null,
-            name: "Ranik",
+            name: "Ranik_",
           },
         ],
       },
@@ -382,7 +382,7 @@ export const playoffs = [
             season_elo: 2023,
             personal_best: 491958,
             status: null,
-            name: "Lowkey",
+            name: "Lowk3y_",
           },
           {
             id: "bc80af38933f4ae19b0494681a54422b",
@@ -391,7 +391,7 @@ export const playoffs = [
             season_elo: 1903,
             personal_best: 491923,
             status: null,
-            name: "Ancoboy",
+            name: "Ancoboyy",
           },
         ],
       },
@@ -410,7 +410,7 @@ export const playoffs = [
             season_elo: 2118,
             personal_best: 508568,
             status: null,
-            name: "Orachi",
+            name: "Orachi_",
           },
           {
             id: "4129d8d1aafb4e73b97b9999db248060",
@@ -419,7 +419,7 @@ export const playoffs = [
             season_elo: 1667,
             personal_best: 650328,
             status: null,
-            name: "Cro",
+            name: "CroProYT",
           },
         ],
       },
@@ -455,7 +455,7 @@ export const playoffs = [
     results: [
       {
         place: 1,
-        name: "Silverr",
+        name: "Silverrruns",
         prize: 1500,
       },
       {
@@ -478,7 +478,7 @@ export const playoffs = [
       },
       {
         place: 5,
-        name: "Cro",
+        name: "CroProYT",
       },
       {
         place: 5,
@@ -486,7 +486,7 @@ export const playoffs = [
       },
       {
         place: 5,
-        name: "Ancoboy",
+        name: "Ancoboyy",
       },
       {
         place: 9,
@@ -494,11 +494,11 @@ export const playoffs = [
       },
       {
         place: 9,
-        name: "Lowkey",
+        name: "Lowk3y_",
       },
       {
         place: 9,
-        name: "Pulsar",
+        name: "dangermini",
       },
       {
         place: 9,
@@ -510,7 +510,7 @@ export const playoffs = [
       },
       {
         place: 9,
-        name: "Orachi",
+        name: "Orachi_",
       },
       {
         place: 9,
@@ -518,7 +518,7 @@ export const playoffs = [
       },
       {
         place: 9,
-        name: "Ranik",
+        name: "Ranik_",
       },
     ],
   },
