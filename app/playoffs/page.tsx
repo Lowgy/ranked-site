@@ -155,7 +155,7 @@ export default function PlayoffsPage() {
             </Select>
           </div>
           <TabsContent value="bracket">
-            {roundHeaders.toReversed().map((header) => (
+            {roundHeaders.reverse().map((header) => (
               <div className="mt-4 flex flex-col items-center">
                 <h1>
                   {header < 3
