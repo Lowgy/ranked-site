@@ -107,8 +107,8 @@ export default function BracketMatches(props: BracketMatchesProps) {
                     />
                     <div className="mt-3">
                       <h1>{match.participants[0]?.name}</h1>
-                      <h1 className={`${eloColor(2000)}`}>
-                        {`2000 - ${addRank(2000)}`}
+                      <h1 className={`${eloColor(match.participants[0]?.season_elo)}`}>
+                        {`${match.participants[0]?.season_elo} - ${addRank(match.participants[0]?.season_elo || 0)}`}
                       </h1>
                       <h1>
                         {timeFormat(match.participants[0]?.personal_best)}
@@ -128,8 +128,8 @@ export default function BracketMatches(props: BracketMatchesProps) {
                     />
                     <div className="mt-3">
                       <h1>{match.participants[1]?.name}</h1>
-                      <h1 className={`${eloColor(2000)}`}>
-                        {`2000 - ${addRank(2000)}`}
+                      <h1 className={`${eloColor(match.participants[1]?.season_elo)}`}>
+                        {`${match.participants[1]?.season_elo} - ${addRank(match.participants[1]?.season_elo || 0)}`}
                       </h1>
                       <h1>
                         {timeFormat(match.participants[1]?.personal_best)}
