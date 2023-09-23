@@ -14,6 +14,10 @@ export const siteConfig = {
       href: "/leaderboard",
     },
     {
+      title: "Playoffs",
+      href: "/playoffs",
+    },
+    {
       title: "Download",
       href: "/download",
     },
@@ -30,6 +34,10 @@ export const siteConfig = {
     {
       title: "Leaderboard",
       href: "/leaderboard",
+    },
+    {
+      title: "Playoffs",
+      href: "/playoffs",
     },
     {
       title: "Guidelines",

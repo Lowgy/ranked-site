@@ -5,20 +5,22 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function eloColor(elo: number) {
-  return elo >= 0 && elo <= 599
-    ? "text-gray-950"
-    : elo >= 600 && elo <= 899
-    ? "text-gray-500"
-    : elo >= 900 && elo <= 1199
-    ? "text-yellow-500"
-    : elo >= 1200 && elo <= 1499
-    ? "text-green-500"
-    : elo >= 1500 && elo <= 1999
-    ? "text-blue-400"
-    : elo >= 2000
-    ? "text-purple-500"
-    : ""
+export function eloColor(elo?: number) {
+  if (elo !== undefined) {
+    return elo >= 0 && elo <= 599
+      ? "text-gray-950"
+      : elo >= 600 && elo <= 899
+      ? "text-gray-500"
+      : elo >= 900 && elo <= 1199
+      ? "text-yellow-500"
+      : elo >= 1200 && elo <= 1499
+      ? "text-green-500"
+      : elo >= 1500 && elo <= 1999
+      ? "text-blue-400"
+      : elo >= 2000
+      ? "text-purple-500"
+      : ""
+  }
 }
 
 export function addRank(elo: number) {
@@ -57,7 +59,10 @@ export function addRank(elo: number) {
     : ""
 }
 
-export function timeFormat(time: number) {
+export function timeFormat(time: number | undefined) {
+  if (time === undefined) {
+    return
+  }
   const runTime = new Date(time)
   return runTime.toISOString().substr(14, 8)
 }
@@ -144,4 +149,33 @@ export function advancementLabel(advancement: string) {
     : advancement === "projectelo.timeline.death"
     ? "Death Reset"
     : ""
+}
+
+export function nextMatchCheck(matches: any) {
+  const currentUnixTimestamp = Math.floor(Date.now() / 1000) // Current time in Unix timestamp format
+
+  if (!matches || matches.length === 0) {
+    return null // Return null if the array is empty or undefined
+  }
+
+  for (let i = 0; i < matches.length; i++) {
+    if (matches[i].state === "ACTIVE") {
+      return
+    }
+  }
+
+  let closestTimestamp = matches[matches.length - 1].startTime
+  let closestDifference = Math.abs(currentUnixTimestamp - matches[0].startTime)
+
+  for (const timestamp of matches) {
+    const timestampDifference = Math.abs(
+      currentUnixTimestamp - timestamp.startTime
+    )
+    if (timestampDifference < closestDifference) {
+      closestTimestamp = timestamp.startTime
+      closestDifference = timestampDifference
+    }
+  }
+
+  return closestTimestamp
 }

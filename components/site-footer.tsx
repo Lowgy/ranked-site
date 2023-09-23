@@ -21,7 +21,7 @@ export function SiteFooter() {
         </div>
         <Separator className="block md:hidden" />
         <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:px-0">
-        Contact us: mcsreloproject@gmail.com
+          Contact us: mcsreloproject@gmail.com
         </div>
         <Separator className="block md:hidden" />
         <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-5 md:px-0">
