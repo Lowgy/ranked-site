@@ -60,8 +60,7 @@ export default function PlayoffsPage() {
         let sortedHeaders = headers.filter((item, index) => {
           return headers.indexOf(item) === index
         })
-        console.log(sortedHeaders)
-        setRoundHeaders(sortedHeaders)
+        setRoundHeaders(sortedHeaders.reverse())
         setMatches(removeThirdPlace)
         setNextNonActiveMatch(nextMatchCheck(data[i].matches))
       }
@@ -81,7 +80,6 @@ export default function PlayoffsPage() {
         let removeThirdPlace: Matches[] = []
         let headers: number[] = []
         for (let j = 0; j < data[i].matches.length; j++) {
-          console.log(data[i].matches[j].tournamentRoundText)
           headers.push(parseInt(data[i].matches[j].tournamentRoundText))
           if (data[i].matches[j].name !== "Third Place") {
             removeThirdPlace.push(data[i].matches[j])
@@ -92,8 +90,7 @@ export default function PlayoffsPage() {
         let sortedHeaders = headers.filter((item, index) => {
           return headers.indexOf(item) === index
         })
-        console.log(sortedHeaders)
-        setRoundHeaders(sortedHeaders)
+        setRoundHeaders(sortedHeaders.reverse())
         setMatches(removeThirdPlace)
         setNextNonActiveMatch(nextMatchCheck(data[i].matches))
       }
@@ -155,7 +152,7 @@ export default function PlayoffsPage() {
             </Select>
           </div>
           <TabsContent value="bracket">
-            {roundHeaders.reverse().map((header) => (
+            {roundHeaders.map((header) => (
               <div className="mt-4 flex flex-col items-center">
                 <h1>
                   {header < 3

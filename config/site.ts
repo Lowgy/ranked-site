@@ -36,6 +36,10 @@ export const siteConfig = {
       href: "/leaderboard",
     },
     {
+      title: "Playoffs",
+      href: "/playoffs",
+    },
+    {
       title: "Guidelines",
       href: "/guidelines",
     },
