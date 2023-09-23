@@ -25,6 +25,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import BracketMatches from "@/components/bracket-matches"
 import UpcomingResultsSection from "@/components/upcoming-results-section"
 
+import { playoffs } from "../data/playoffs"
+
 const RankedTheme = createTheme({
   matchBackground: { wonColor: "#1d2232", lostColor: "#1d2232" },
   score: {
@@ -167,28 +169,28 @@ export default function PlayoffsPage() {
                       <>
                         {match.tournamentRoundText === "4" && thirdPlace && (
                           <div className="flex h-[70px] w-[300px] flex-col items-stretch justify-between font-medium text-bracketText">
-                            <div className="flex justify-between">
-                              <p className="min-h-5 mb-1">
-                                {thirdPlace.startTime !== ""
-                                  ? `${new Date(
-                                      parseInt(thirdPlace.startTime) * 1000
-                                    ).toLocaleDateString("en-US", {
-                                      year: "numeric",
-                                      month: "long",
-                                      day: "numeric",
-                                    })}  @ ${new Date(
-                                      parseInt(thirdPlace.startTime) * 1000
-                                    ).toLocaleTimeString([], {
-                                      timeZoneName: "short",
-                                      hour: "2-digit",
-                                      minute: "2-digit",
-                                    })}`
-                                  : ""}
-                              </p>
-                            </div>
                             <div className="flex flex-1 flex-col justify-between bg-round">
+                              <div className="flex justify-center">
+                                <p className="min-h-5">
+                                  {thirdPlace.startTime !== ""
+                                    ? `${new Date(
+                                        parseInt(thirdPlace.startTime) * 1000
+                                      ).toLocaleDateString("en-US", {
+                                        year: "numeric",
+                                        month: "short",
+                                        day: "numeric",
+                                      })}  @ ${new Date(
+                                        parseInt(thirdPlace.startTime) * 1000
+                                      ).toLocaleTimeString([], {
+                                        timeZoneName: "short",
+                                        hour: "2-digit",
+                                        minute: "2-digit",
+                                      })}`
+                                    : "TBD"}
+                                </p>
+                              </div>
                               <div
-                                className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-4 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
+                                className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-2 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
                                   thirdPlace.participants[0]?.isWinner
                                     ? "text-white"
                                     : ""
@@ -209,7 +211,7 @@ export default function PlayoffsPage() {
                               </div>
                               <div className="h-px border border-solid border-gray-300 opacity-0 transition duration-500 ease-in-out hover:opacity-100"></div>
                               <div
-                                className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-4 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
+                                className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-2 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
                                   thirdPlace.participants[1]?.isWinner
                                     ? "text-white"
                                     : ""
@@ -231,29 +233,29 @@ export default function PlayoffsPage() {
                             </div>
                           </div>
                         )}
-                        <div className="flex h-[70px] w-[300px] flex-col items-stretch justify-between font-medium text-bracketText">
-                          <div className="flex justify-between">
-                            <p className="min-h-5 mb-1">
-                              {match.startTime !== ""
-                                ? `${new Date(
-                                    parseInt(match.startTime) * 1000
-                                  ).toLocaleDateString("en-US", {
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric",
-                                  })}  @ ${new Date(
-                                    parseInt(match.startTime) * 1000
-                                  ).toLocaleTimeString([], {
-                                    timeZoneName: "short",
-                                    hour: "2-digit",
-                                    minute: "2-digit",
-                                  })}`
-                                : ""}
-                            </p>
-                          </div>
-                          <div className="flex flex-1 flex-col justify-between bg-round">
+                        <div className="my-4 flex h-[70px] w-[300px] flex-col items-stretch justify-between font-medium text-bracketText">
+                          <div className="flex flex-col justify-between bg-round">
+                            <div className="flex justify-center">
+                              <p className="min-h-5">
+                                {match.startTime !== ""
+                                  ? `${new Date(
+                                      parseInt(match.startTime) * 1000
+                                    ).toLocaleDateString("en-US", {
+                                      year: "numeric",
+                                      month: "short",
+                                      day: "numeric",
+                                    })}  @ ${new Date(
+                                      parseInt(match.startTime) * 1000
+                                    ).toLocaleTimeString([], {
+                                      timeZoneName: "short",
+                                      hour: "2-digit",
+                                      minute: "2-digit",
+                                    })}`
+                                  : "TBD"}
+                              </p>
+                            </div>
                             <div
-                              className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-4 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
+                              className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-2 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
                                 match.participants[0]?.isWinner
                                   ? "text-white"
                                   : ""
@@ -272,7 +274,7 @@ export default function PlayoffsPage() {
                             </div>
                             <div className="h-px border border-solid border-gray-300 opacity-0 transition duration-500 ease-in-out hover:opacity-100"></div>
                             <div
-                              className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-4 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
+                              className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-2 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
                                 match.participants[1]?.isWinner
                                   ? "text-white"
                                   : ""

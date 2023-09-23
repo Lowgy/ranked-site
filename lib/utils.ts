@@ -23,40 +23,42 @@ export function eloColor(elo?: number) {
   }
 }
 
-export function addRank(elo: number) {
-  return elo >= 0 && elo <= 399
-    ? "Coal I"
-    : elo >= 400 && elo <= 499
-    ? "Coal II"
-    : elo >= 500 && elo <= 599
-    ? "Coal III"
-    : elo >= 600 && elo <= 699
-    ? "Iron I"
-    : elo >= 700 && elo <= 799
-    ? "Iron II"
-    : elo >= 800 && elo <= 899
-    ? "Iron III"
-    : elo >= 900 && elo <= 999
-    ? "Gold I"
-    : elo >= 1000 && elo <= 1099
-    ? "Gold II"
-    : elo >= 1100 && elo <= 1199
-    ? "Gold III"
-    : elo >= 1200 && elo <= 1299
-    ? "Emerald I"
-    : elo >= 1300 && elo <= 1399
-    ? "Emerald II"
-    : elo >= 1400 && elo <= 1499
-    ? "Emerald III"
-    : elo >= 1500 && elo <= 1649
-    ? "Diamond I"
-    : elo >= 1650 && elo <= 1799
-    ? "Diamond II"
-    : elo >= 1800 && elo <= 1999
-    ? "Diamond III"
-    : elo >= 2000
-    ? "Netherite"
-    : ""
+export function addRank(elo?: number) {
+  if (elo !== undefined) {
+    return elo >= 0 && elo <= 399
+      ? "Coal I"
+      : elo >= 400 && elo <= 499
+      ? "Coal II"
+      : elo >= 500 && elo <= 599
+      ? "Coal III"
+      : elo >= 600 && elo <= 699
+      ? "Iron I"
+      : elo >= 700 && elo <= 799
+      ? "Iron II"
+      : elo >= 800 && elo <= 899
+      ? "Iron III"
+      : elo >= 900 && elo <= 999
+      ? "Gold I"
+      : elo >= 1000 && elo <= 1099
+      ? "Gold II"
+      : elo >= 1100 && elo <= 1199
+      ? "Gold III"
+      : elo >= 1200 && elo <= 1299
+      ? "Emerald I"
+      : elo >= 1300 && elo <= 1399
+      ? "Emerald II"
+      : elo >= 1400 && elo <= 1499
+      ? "Emerald III"
+      : elo >= 1500 && elo <= 1649
+      ? "Diamond I"
+      : elo >= 1650 && elo <= 1799
+      ? "Diamond II"
+      : elo >= 1800 && elo <= 1999
+      ? "Diamond III"
+      : elo >= 2000
+      ? "Netherite"
+      : ""
+  }
 }
 
 export function timeFormat(time: number | undefined) {
