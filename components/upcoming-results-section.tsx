@@ -114,7 +114,6 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                 <div key={result.name} className="w-full md:w-1/2">
                   <div className="my-3 flex cursor-pointer items-center rounded-lg border border-gray-300 bg-green-600 p-3 shadow hover:border-green-500 hover:bg-green-400">
                     <div className="w-10 text-lg">#{result.place}</div>
-
                     <img
                       src={`https://mc-heads.net/head/${result.name}`}
                       height={64}
@@ -143,7 +142,9 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
         .map((playoff) =>
           playoff.matches[15].participants.length !== 0 ? (
             <>
-              <h1 className="mb-2 text-left">Upcoming Matches</h1>
+              <h1 className="mb-2 text-center md:text-left">
+                Upcoming Matches
+              </h1>
               <Carousel
                 responsive={responsive}
                 keyBoardControl={true}
@@ -167,7 +168,7 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                           parseInt(match.startTime) * 1000
                         ).toLocaleDateString("en-US", {
                           year: "numeric",
-                          month: "long",
+                          month: "short",
                           day: "numeric",
                         })} @ ${new Date(
                           parseInt(match.startTime) * 1000
@@ -182,20 +183,20 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                         <h1>{match.participants[0].name}</h1>
                         <img
                           src={`https://mc-heads.net/head/${match.participants[0].id}`}
-                          height={64}
                           width={64}
                           alt="Player"
                           loading="lazy"
+                          className="hidden md:block"
                         />
-                        <h1 className="my-auto flex justify-center text-4xl font-semibold">
+                        <h1 className="my-auto flex justify-center text-2xl font-semibold md:text-4xl">
                           VS
                         </h1>
                         <img
                           src={`https://mc-heads.net/head/${match.participants[1].id}/left`}
-                          height={64}
                           width={64}
                           alt="Player"
                           loading="lazy"
+                          className="hidden md:block"
                         />
                         <h1>{match.participants[1].name}</h1>
                       </div>
