@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 export default async function getProfile(nickname: string) {
   try {
     const response = await fetch(
-      `http://localhost:4651/api/users/${nickname}`,
+      `http://127.0.0.1:4561/api/users/${nickname}`,
       {
         cache: "no-cache",
       }
