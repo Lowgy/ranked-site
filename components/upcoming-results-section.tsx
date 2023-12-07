@@ -24,20 +24,19 @@ const responsive = {
 const order = [3, 1, 2]
 
 interface UpcomingResultsProps {
-  playoffs: Season[]
+  playoffs: Season | undefined
+  nextSeasonFlag: number | null
   selectedSeason: number
-  nextNonActiveMatch: string
+  nextNonActiveMatch: number
 }
 
 export default function UpcomingResultsSection(props: UpcomingResultsProps) {
+  console.log(props.nextNonActiveMatch)
   return (
     <>
-      {props.playoffs
-        .filter(
-          (playoff) =>
-            playoff.seasonId === props.selectedSeason && !playoff.currentSeason
-        )
-        .map((playoff) => (
+      {props.playoffs !== undefined &&
+        (props.playoffs.season === props.selectedSeason &&
+        props.nextSeasonFlag !== null ? (
           <>
             <h1 className="text-xl font-semibold">Results</h1>
             <div
@@ -54,7 +53,7 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                 height: 250,
               }}
             >
-              {playoff.results
+              {props.playoffs.results
                 .filter((item) => order.includes(item.place))
                 .sort((a, b) => order.indexOf(a.place) - order.indexOf(b.place))
                 .map((result) => (
@@ -72,7 +71,7 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                       }}
                     >
                       <img
-                        src={`https://mc-heads.net/head/${result.name}`}
+                        src={`https://mc-heads.net/head/${result.player}`}
                         height={64}
                         width={64}
                         alt="Player"
@@ -110,12 +109,12 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                 ))}
             </div>
             <div className="flex flex-col items-center">
-              {playoff.results.map((result) => (
-                <div key={result.name} className="w-full md:w-1/2">
+              {props.playoffs.results.map((result) => (
+                <div key={result.player} className="w-full md:w-1/2">
                   <div className="my-3 flex cursor-pointer items-center rounded-lg border border-gray-300 bg-green-600 p-3 shadow hover:border-green-500 hover:bg-green-400">
                     <div className="w-10 text-lg">#{result.place}</div>
                     <img
-                      src={`https://mc-heads.net/head/${result.name}`}
+                      src={`https://mc-heads.net/head/${result.player}`}
                       height={64}
                       width={64}
                       alt="Player"
@@ -124,7 +123,7 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                     />
                     <div className="grow">
                       <p className="font-semibold leading-none text-gray-900">
-                        {result.name || "No name"}
+                        {result.player || "No name"}
                       </p>
                       <p>{result.prize ? `$${result.prize}` : ""}</p>
                     </div>
@@ -133,14 +132,9 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
               ))}
             </div>
           </>
-        ))}
-      {props.playoffs
-        .filter(
-          (playoff) =>
-            playoff.seasonId === props.selectedSeason && playoff.currentSeason
-        )
-        .map((playoff) =>
-          playoff.matches[15].participants.length !== 0 ? (
+        ) : props.playoffs.season === props.selectedSeason &&
+          props.nextSeasonFlag === null ? (
+          props.playoffs.matches[15].participants.length !== 0 ? (
             <>
               <h1 className="mb-2 text-center md:text-left">
                 Upcoming Matches
@@ -151,7 +145,7 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                 infinite={false}
                 arrows={true}
               >
-                {playoff.matches
+                {props.playoffs.matches
                   .filter(
                     (match) =>
                       match.startTime !== props.nextNonActiveMatch &&
@@ -160,29 +154,28 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                   )
                   .map((match) => (
                     <div className="rounded-lg border border-white pb-4 shadow-lg">
-                      <h1 className="pt-4">
-                        Round {match.tournamentRoundText}
-                      </h1>
+                      <h1 className="pt-4">Round {match.name}</h1>
                       <p>
-                        {`${new Date(
-                          parseInt(match.startTime) * 1000
-                        ).toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "short",
-                          day: "numeric",
-                        })} @ ${new Date(
-                          parseInt(match.startTime) * 1000
-                        ).toLocaleTimeString([], {
-                          timeZoneName: "short",
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })} `}
+                        {match.startTime !== null &&
+                          `${new Date(
+                            match.startTime * 1000
+                          ).toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "short",
+                            day: "numeric",
+                          })} @ ${new Date(
+                            match.startTime * 1000
+                          ).toLocaleTimeString([], {
+                            timeZoneName: "short",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })} `}
                       </p>
                       <Separator className="my-2" />
                       <div className="flex flex-row items-center justify-center gap-4">
-                        <h1>{match.participants[0].name}</h1>
+                        <h1>{match.participants[0].player}</h1>
                         <img
-                          src={`https://mc-heads.net/head/${match.participants[0].id}`}
+                          src={`https://mc-heads.net/head/${match.participants[0].player}`}
                           width={64}
                           alt="Player"
                           loading="lazy"
@@ -192,13 +185,13 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                           VS
                         </h1>
                         <img
-                          src={`https://mc-heads.net/head/${match.participants[1].id}/left`}
+                          src={`https://mc-heads.net/head/${match.participants[1].player}/left`}
                           width={64}
                           alt="Player"
                           loading="lazy"
                           className="hidden md:block"
                         />
-                        <h1>{match.participants[1].name}</h1>
+                        <h1>{match.participants[1].player}</h1>
                       </div>
                     </div>
                   ))}
@@ -210,7 +203,9 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
               Qualifiers have been completed!
             </h1>
           )
-        )}
+        ) : (
+          <></>
+        ))}
     </>
   )
 }

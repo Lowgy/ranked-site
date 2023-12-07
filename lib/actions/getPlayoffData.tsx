@@ -1,5 +1,5 @@
 export default async function getPlayoffData() {
-  const response = await fetch(`https://mcsrranked.com/api/playoffs`, {
+  const response = await fetch(`${process.env.API_URL}/2` || "", {
     cache: "no-cache",
   })
 
