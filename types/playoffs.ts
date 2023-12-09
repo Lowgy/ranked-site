@@ -1,6 +1,7 @@
 export type Participant = {
   player: number | null
   roundScore: number
+  playerData?: Player
 }
 
 export type Player = {
@@ -21,7 +22,7 @@ export type Results = {
 export type Matches = {
   id: number
   name: string
-  nextMatchId: number | null
+  nextMatchId: number | string | null
   maxRoundScore: number
   startTime: number | null
   state: string | null

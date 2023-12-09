@@ -8,7 +8,7 @@ import {
   createTheme,
 } from "@lowgy/react-tournament-brackets"
 import { CalendarCheck, Trophy } from "lucide-react"
-import { Matches, Player, Season } from "types/playoffs"
+import { Matches, Participant, Player, Season } from "types/playoffs"
 
 import getPlayoffData from "@/lib/actions/getPlayoffData"
 import { nextMatchCheck } from "@/lib/utils"
@@ -59,6 +59,25 @@ export default function PlayoffsPage() {
       players.push(data.players[i])
     }
     for (let i = 0; i < data.matches.length; i++) {
+      if (
+        data.matches[i].participants[0]?.player !== null &&
+        data.matches[i].participants[1]?.player !== null
+      ) {
+        for (let j = 0; j < players.length; j++) {
+          if (
+            players[j].seedNumber === data.matches[i].participants[0]?.player
+          ) {
+            ;(data.matches[i].participants[0] as Participant).playerData =
+              players[j]
+          }
+          if (
+            players[j].seedNumber === data.matches[i].participants[1]?.player
+          ) {
+            ;(data.matches[i].participants[1] as Participant).playerData =
+              players[j]
+          }
+        }
+      }
       if (data.matches[i].name !== "3rd Place") {
         removeThirdPlace.push(data.matches[i])
         headers.push(data.matches[i].name)
