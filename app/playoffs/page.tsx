@@ -170,9 +170,7 @@ export default function PlayoffsPage() {
           <div className="mb-4 flex flex-col items-center">
             <Select onValueChange={handleSeasonSelection}>
               <SelectTrigger className="mt-1 w-[300px]">
-                <SelectValue
-                  placeholder={`Season ${seasons[seasons.length]}`}
-                />
+                <SelectValue placeholder="Current Season" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
