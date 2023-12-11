@@ -222,7 +222,7 @@ export default function PlayoffsPage() {
                                   : " "
                               }`}
                             >
-                              <div className="flex h-full w-[10%] items-center justify-center bg-score px-4 py-0.5 ">
+                              <div className="flex h-full w-[10%] items-center justify-center bg-score px-4 py-0.5 text-bracketText">
                                 {match.participants[0]?.player ||
                                 match.participants[0]?.player === 0
                                   ? match.participants[0]?.player + 1
@@ -261,7 +261,7 @@ export default function PlayoffsPage() {
                                   : " "
                               }`}
                             >
-                              <div className="flex h-full w-[10%] items-center justify-center bg-score px-4 py-0.5">
+                              <div className="flex h-full w-[10%] items-center justify-center bg-score px-4 py-0.5 text-bracketText">
                                 {match.participants[1]?.player
                                   ? match.participants[1]?.player + 1
                                   : " "}
