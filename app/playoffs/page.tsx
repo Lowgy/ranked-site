@@ -78,16 +78,23 @@ export default function PlayoffsPage() {
           }
         }
       }
-      if (data.matches[i].name !== "3rd Place") {
-        removeThirdPlace.push(data.matches[i])
-        headers.push(data.matches[i].name)
-      } else {
+      headers.push(data.matches[i].name)
+      if (data.matches[i].name === "3rd Place") {
         setThirdPlace(data.matches[i])
+        removeThirdPlace.push(data.matches[i])
+      } else {
+        removeThirdPlace.push(data.matches[i])
       }
     }
+
+    let sortedHeaders = headers.filter((item, index) => {
+      return headers.indexOf(item) === index
+    })
+
+    console.log(removeThirdPlace)
     setMatches(removeThirdPlace)
     setPlayers(players)
-    setRoundHeaders(headers)
+    setRoundHeaders(sortedHeaders)
     setNextNonActiveMatch(nextMatchCheck(data.matches))
 
     setTimeout(() => {
@@ -181,87 +188,11 @@ export default function PlayoffsPage() {
           <TabsContent value="bracket">
             {roundHeaders.map((header) => (
               <div className="mt-4 flex flex-col items-center">
-                <h1>{header !== "3rd Place" ? header : "3rd Place"}</h1>
+                <h1>{header}</h1>
                 {matches.map(
                   (match) =>
                     match.name === header && (
                       <>
-                        {match.name === "3rd Place" && thirdPlace && (
-                          <div className="flex h-[70px] w-[300px] flex-col items-stretch justify-between font-medium text-bracketText">
-                            <div className="flex flex-1 flex-col justify-between bg-round">
-                              <div className="flex justify-center">
-                                <p className="min-h-5">
-                                  {thirdPlace.startTime !== null
-                                    ? `${new Date(
-                                        thirdPlace.startTime * 1000
-                                      ).toLocaleDateString("en-US", {
-                                        year: "numeric",
-                                        month: "short",
-                                        day: "numeric",
-                                      })}  @ ${new Date(
-                                        thirdPlace.startTime * 1000
-                                      ).toLocaleTimeString([], {
-                                        timeZoneName: "short",
-                                        hour: "2-digit",
-                                        minute: "2-digit",
-                                      })}`
-                                    : "TBD"}
-                                </p>
-                              </div>
-                              <div
-                                className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-2 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
-                                  thirdPlace.participants[0]?.roundScore ===
-                                  thirdPlace.maxRoundScore
-                                    ? "text-white"
-                                    : ""
-                                }`}
-                              >
-                                <div>
-                                  {thirdPlace.participants[0]?.player
-                                    ? players[thirdPlace.participants[0].player]
-                                        .nickname
-                                    : "TBD"}
-                                </div>
-                                <div
-                                  className={`flex h-full w-1/5 items-center justify-center px-4 py-0.5 ${
-                                    thirdPlace.participants[0]?.roundScore ===
-                                    thirdPlace.maxRoundScore
-                                      ? "bg-scoreWinner text-white"
-                                      : "bg-score"
-                                  }`}
-                                >
-                                  {thirdPlace.participants[0]?.roundScore || ""}
-                                </div>
-                              </div>
-                              <div className="h-px border border-solid border-gray-300 opacity-0 transition duration-500 ease-in-out hover:opacity-100"></div>
-                              <div
-                                className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-2 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
-                                  thirdPlace.participants[1]?.roundScore ===
-                                  thirdPlace.maxRoundScore
-                                    ? "text-white"
-                                    : ""
-                                }`}
-                              >
-                                <div>
-                                  {thirdPlace.participants[1]?.player
-                                    ? players[thirdPlace.participants[1].player]
-                                        .nickname
-                                    : "TBD"}
-                                </div>
-                                <div
-                                  className={`flex h-full w-1/5 items-center justify-center px-4 py-0.5 ${
-                                    thirdPlace.participants[1]?.roundScore ===
-                                    thirdPlace.maxRoundScore
-                                      ? "bg-scoreWinner text-white"
-                                      : "bg-score"
-                                  }`}
-                                >
-                                  {thirdPlace.participants[1]?.roundScore || ""}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        )}
                         <div className="my-4 flex h-[70px] w-[300px] flex-col items-stretch justify-between font-medium text-bracketText">
                           <div className="flex flex-col justify-between bg-round">
                             <div className="flex justify-center">
@@ -284,18 +215,31 @@ export default function PlayoffsPage() {
                               </p>
                             </div>
                             <div
-                              className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-2 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
+                              className={`border-t-1 border-b-1 flex h-full items-center border-x-2 border-round bg-bracket first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
                                 match.participants[0]?.roundScore ===
                                 match.maxRoundScore
                                   ? "text-white"
-                                  : ""
+                                  : " "
                               }`}
                             >
-                              <div>
-                                {match.participants[0]?.player
+                              <div className="flex h-full w-[10%] items-center justify-center bg-score px-4 py-0.5 ">
+                                {match.participants[0]?.player ||
+                                match.participants[0]?.player === 0
+                                  ? match.participants[0]?.player + 1
+                                  : " "}
+                              </div>
+                              <div
+                                className={`ml-[10px] mr-auto ${
+                                  !match.participants[0]?.player &&
+                                  match.participants[0]?.player !== 0 &&
+                                  "p-[13px]"
+                                }`}
+                              >
+                                {match.participants[0]?.player ||
+                                match.participants[0]?.player === 0
                                   ? players[match.participants[0].player]
                                       .nickname
-                                  : "TBD"}
+                                  : " "}
                               </div>
                               <div
                                 className={`flex h-full w-1/5 items-center justify-center px-4 py-0.5 ${
@@ -305,23 +249,32 @@ export default function PlayoffsPage() {
                                     : "bg-score"
                                 }`}
                               >
-                                {match.participants[0]?.roundScore || ""}
+                                {match.participants[0]?.roundScore}
                               </div>
                             </div>
                             <div className="h-px border border-solid border-gray-300 opacity-0 transition duration-500 ease-in-out hover:opacity-100"></div>
                             <div
-                              className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-2 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
+                              className={`border-t-1 border-b-1 flex h-full items-center border-x-2 border-round bg-bracket first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
                                 match.participants[1]?.roundScore ===
                                 match.maxRoundScore
                                   ? "text-white"
-                                  : ""
+                                  : " "
                               }`}
                             >
-                              <div>
+                              <div className="flex h-full w-[10%] items-center justify-center bg-score px-4 py-0.5">
+                                {match.participants[1]?.player
+                                  ? match.participants[1]?.player + 1
+                                  : " "}
+                              </div>
+                              <div
+                                className={`ml-[10px] mr-auto ${
+                                  !match.participants[1]?.player && "p-[13px]"
+                                }`}
+                              >
                                 {match.participants[1]?.player
                                   ? players[match.participants[1].player]
                                       .nickname
-                                  : "TBD"}
+                                  : " "}
                               </div>
                               <div
                                 className={`flex h-full w-1/5 items-center justify-center px-4 py-0.5 ${
@@ -331,7 +284,7 @@ export default function PlayoffsPage() {
                                     : "bg-score"
                                 }`}
                               >
-                                {match.participants[1]?.roundScore || ""}
+                                {match.participants[1]?.roundScore}
                               </div>
                             </div>
                           </div>
