@@ -26,24 +26,36 @@ export default function BracketMatches(props: BracketMatchesProps) {
                 <div className="flex justify-between space-x-4 p-4 text-center">
                   <div className="flex flex-col items-center">
                     <img
-                      src={`https://mc-heads.net/body/${match.participants[0].player}`}
+                      src={`https://mc-heads.net/body/${match.participants[0].playerData?.uuid}`}
                       alt="Players skin"
                       width={100}
                       loading="lazy"
                       className="hidden md:block"
                     />
                     <img
-                      src={`https://mc-heads.net/avatar/${match.participants[0].player}/75`}
+                      src={`https://mc-heads.net/avatar/${match.participants[0].playerData?.uuid}/75`}
                       alt="Players skin"
                       loading="lazy"
                       className="block md:hidden"
                     />
                     <div className="mt-3">
-                      <h1>{match.participants[0].player}</h1>
-                      <h1 className={`${eloColor(0)}`}>
-                        {`${match.participants[0].player} - ${addRank(0)}`}
+                      <h1>{match.participants[0].playerData?.nickname}</h1>
+                      <h1
+                        className={`${eloColor(
+                          match.participants[0].playerData?.seasonEloRate
+                        )}`}
+                      >
+                        {`${
+                          match.participants[0].playerData?.seasonEloRate
+                        } - ${addRank(
+                          match.participants[0].playerData?.seasonEloRate
+                        )}`}
                       </h1>
-                      <h1>{timeFormat(0)}</h1>
+                      <h1>
+                        {timeFormat(
+                          match.participants[0].playerData?.personalBest
+                        )}
+                      </h1>
                     </div>
                   </div>
                   <h1 className="my-auto flex justify-center text-2xl font-semibold md:text-4xl">
@@ -51,24 +63,36 @@ export default function BracketMatches(props: BracketMatchesProps) {
                   </h1>
                   <div>
                     <img
-                      src={`https://mc-heads.net/body/${match.participants[1].player}/left`}
+                      src={`https://mc-heads.net/body/${match.participants[1].playerData?.uuid}/left`}
                       alt="Players skin"
                       width={100}
                       loading="lazy"
                       className="hidden md:block"
                     />
                     <img
-                      src={`https://mc-heads.net/avatar/${match.participants[1].player}/75`}
+                      src={`https://mc-heads.net/avatar/${match.participants[1].playerData?.uuid}/75`}
                       alt="Players skin"
                       loading="lazy"
                       className="block md:hidden"
                     />
                     <div className="mt-3">
-                      <h1>{match.participants[1].player}</h1>
-                      <h1 className={`${eloColor(0)}`}>
-                        {`${match.participants[1].player} - ${addRank(0)}`}
+                      <h1>{match.participants[1].playerData?.nickname}</h1>
+                      <h1
+                        className={`${eloColor(
+                          match.participants[1].playerData?.seasonEloRate
+                        )}`}
+                      >
+                        {`${
+                          match.participants[1].playerData?.seasonEloRate
+                        } - ${addRank(
+                          match.participants[1].playerData?.seasonEloRate
+                        )}`}
                       </h1>
-                      <h1>{timeFormat(0)}</h1>
+                      <h1>
+                        {timeFormat(
+                          match.participants[1].playerData?.personalBest
+                        )}
+                      </h1>
                     </div>
                   </div>
                 </div>
@@ -112,24 +136,36 @@ export default function BracketMatches(props: BracketMatchesProps) {
                 <div className="flex justify-between space-x-4 p-4 text-center">
                   <div className="flex flex-col items-center">
                     <img
-                      src={`https://mc-heads.net/body/${match.participants[0].player}`}
+                      src={`https://mc-heads.net/body/${match.participants[0].playerData?.uuid}`}
                       alt="Players skin"
                       width={100}
                       loading="lazy"
                       className="hidden md:block"
                     />
                     <img
-                      src={`https://mc-heads.net/avatar/${match.participants[0].player}/75`}
+                      src={`https://mc-heads.net/avatar/${match.participants[0].playerData?.uuid}/75`}
                       alt="Players skin"
                       loading="lazy"
                       className="block md:hidden"
                     />
                     <div className="mt-3">
-                      <h1>{match.participants[0].player}</h1>
-                      <h1 className={`${eloColor(0)}`}>
-                        {`${match.participants[0].player} - ${addRank(0)}`}
+                      <h1>{match.participants[0].playerData?.nickname}</h1>
+                      <h1
+                        className={`${eloColor(
+                          match.participants[0].playerData?.seasonEloRate
+                        )}`}
+                      >
+                        {`${
+                          match.participants[0].playerData?.seasonEloRate
+                        } - ${addRank(
+                          match.participants[0].playerData?.seasonEloRate
+                        )}`}
                       </h1>
-                      <h1>{timeFormat(0)}</h1>
+                      <h1>
+                        {timeFormat(
+                          match.participants[0].playerData?.personalBest
+                        )}
+                      </h1>
                     </div>
                   </div>
                   <h1 className="my-auto flex justify-center text-2xl font-semibold md:text-4xl">
@@ -137,24 +173,36 @@ export default function BracketMatches(props: BracketMatchesProps) {
                   </h1>
                   <div>
                     <img
-                      src={`https://mc-heads.net/body/${match.participants[1].player}/left`}
+                      src={`https://mc-heads.net/body/${match.participants[1].playerData?.uuid}/left`}
                       alt="Players skin"
                       width={100}
                       loading="lazy"
                       className="hidden md:block"
                     />
                     <img
-                      src={`https://mc-heads.net/avatar/${match.participants[1].player}/75`}
+                      src={`https://mc-heads.net/avatar/${match.participants[1].playerData?.uuid}/75`}
                       alt="Players skin"
                       loading="lazy"
                       className="block md:hidden"
                     />
                     <div className="mt-3">
-                      <h1>{match.participants[1].player}</h1>
-                      <h1 className={`${eloColor(0)}`}>
-                        {`${match.participants[1].player} - ${addRank(0)}`}
+                      <h1>{match.participants[1].playerData?.nickname}</h1>
+                      <h1
+                        className={`${eloColor(
+                          match.participants[1].playerData?.seasonEloRate
+                        )}`}
+                      >
+                        {`${
+                          match.participants[1].playerData?.seasonEloRate
+                        } - ${addRank(
+                          match.participants[1].playerData?.seasonEloRate
+                        )}`}
                       </h1>
-                      <h1>{timeFormat(0)}</h1>
+                      <h1>
+                        {timeFormat(
+                          match.participants[1].playerData?.personalBest
+                        )}
+                      </h1>
                     </div>
                   </div>
                 </div>

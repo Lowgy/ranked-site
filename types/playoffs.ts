@@ -17,6 +17,7 @@ export type Results = {
   player: number | null
   place: number
   prize: number
+  playerData?: Player
 }
 
 export type Matches = {

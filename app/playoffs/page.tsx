@@ -8,7 +8,7 @@ import {
   createTheme,
 } from "@lowgy/react-tournament-brackets"
 import { CalendarCheck, Trophy } from "lucide-react"
-import { Matches, Participant, Player, Season } from "types/playoffs"
+import { Matches, Participant, Player, Results, Season } from "types/playoffs"
 
 import getPlayoffData from "@/lib/actions/getPlayoffData"
 import { nextMatchCheck } from "@/lib/utils"
@@ -57,6 +57,14 @@ export default function PlayoffsPage() {
     let players: Player[] = []
     for (let i = 0; i < data.players.length; i++) {
       players.push(data.players[i])
+    }
+
+    for (let i = 0; i < data.results.length; i++) {
+      if (data.results[i].player !== null) {
+        for (let j = 0; j < players.length; j++) {
+          ;(data.results[i] as Results).playerData = players[j]
+        }
+      }
     }
     for (let i = 0; i < data.matches.length; i++) {
       if (

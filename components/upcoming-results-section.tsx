@@ -71,7 +71,7 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                       }}
                     >
                       <img
-                        src={`https://mc-heads.net/head/${result.player}`}
+                        src={`https://mc-heads.net/head/${result.playerData?.uuid}`}
                         height={64}
                         width={64}
                         alt="Player"
@@ -114,7 +114,7 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                   <div className="my-3 flex cursor-pointer items-center rounded-lg border border-gray-300 bg-green-600 p-3 shadow hover:border-green-500 hover:bg-green-400">
                     <div className="w-10 text-lg">#{result.place}</div>
                     <img
-                      src={`https://mc-heads.net/head/${result.player}`}
+                      src={`https://mc-heads.net/head/${result.playerData?.uuid}`}
                       height={64}
                       width={64}
                       alt="Player"
@@ -123,7 +123,7 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                     />
                     <div className="grow">
                       <p className="font-semibold leading-none text-gray-900">
-                        {result.player || "No name"}
+                        {result.playerData?.nickname || "No name"}
                       </p>
                       <p>{result.prize ? `$${result.prize}` : ""}</p>
                     </div>
@@ -173,9 +173,9 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                       </p>
                       <Separator className="my-2" />
                       <div className="flex flex-row items-center justify-center gap-4">
-                        <h1>{match.participants[0].player}</h1>
+                        <h1>{match.participants[0].playerData?.nickname}</h1>
                         <img
-                          src={`https://mc-heads.net/head/${match.participants[0].player}`}
+                          src={`https://mc-heads.net/head/${match.participants[0].playerData?.uuid}`}
                           width={64}
                           alt="Player"
                           loading="lazy"
@@ -185,13 +185,13 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                           VS
                         </h1>
                         <img
-                          src={`https://mc-heads.net/head/${match.participants[1].player}/left`}
+                          src={`https://mc-heads.net/head/${match.participants[1].playerData?.uuid}/left`}
                           width={64}
                           alt="Player"
                           loading="lazy"
                           className="hidden md:block"
                         />
-                        <h1>{match.participants[1].player}</h1>
+                        <h1>{match.participants[1].playerData?.nickname}</h1>
                       </div>
                     </div>
                   ))}
