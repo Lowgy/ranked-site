@@ -1,6 +1,6 @@
 export default async function getUsersMatches(uuid: string, nickname: string) {
   const response = await fetch(
-    `http://127.0.0.1:4561/api/users/${nickname}/matches?filter=2`,
+    `http://127.0.0.1:17432/api/users/${nickname}/matches?filter=2`,
     { cache: "no-cache" }
   )
 
@@ -26,7 +26,7 @@ export default async function getUsersMatches(uuid: string, nickname: string) {
 
 export async function getMatchDetails(match_id: string) {
   const response = await fetch(
-    `http://127.0.0.1:4561/api/matches/${match_id}`,
+    `http://127.0.0.1:17432/api/matches/${match_id}`,
     {
       cache: "no-cache",
     }

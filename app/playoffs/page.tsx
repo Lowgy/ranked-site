@@ -38,7 +38,7 @@ export default function PlayoffsPage() {
   const [loading, setLoading] = useState<boolean>(true)
   const [playoffData, setPlayoffdata] = useState<Season[]>([])
   const [seasons, setSeasons] = useState<number[]>([])
-  const [selectedSeason, setSelectedSeason] = useState<number>(2)
+  const [selectedSeason, setSelectedSeason] = useState<number>(3)
   const [matches, setMatches] = useState<Matches[]>([])
   const [roundHeaders, setRoundHeaders] = useState<number[]>([])
   const [thirdPlace, setThirdPlace] = useState<Matches>()
