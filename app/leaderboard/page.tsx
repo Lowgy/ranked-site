@@ -13,17 +13,21 @@ async function getEloLeaderboard() {
 
 async function getTimeLeaderboard() {
   const response = await fetch(
-    "https://mcsrranked.com/api/record-leaderboard",
+    "https://mcsrranked.com/api/record-leaderboard?distinct",
     { cache: "no-cache" }
   )
   const data = await response.json()
   let runners = []
+  data.data = data.data.filter(
+    (runner: any) => runner.user.nickname !== "Dexroit"
+  )
   for (let i = 0; i < data.data.length; i++) {
-    let runner = { uuid: "", nickname: "", final_time_rank: 0, final_time: 0 }
+    let runner = { uuid: "", nickname: "", rank: 0, time: 0, season: 0 }
     runner.uuid = data.data[i].user.uuid
     runner.nickname = data.data[i].user.nickname
-    runner.final_time_rank = data.data[i].final_time_rank
-    runner.final_time = data.data[i].final_time
+    runner.rank = data.data[i].rank - 1
+    runner.time = data.data[i].time
+    runner.season = data.data[i].season
     runners.push(runner)
   }
   return runners as Runner[]

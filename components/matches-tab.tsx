@@ -37,6 +37,13 @@ export default function MatchesTab(data: any) {
     setMatchDetails(details)
   }
 
+  function formatString(str: string): string {
+    return str
+      .split("_")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ")
+  }
+
   useEffect(() => {
     if (matchDetails !== null) {
       setTimeout(() => {
@@ -67,6 +74,8 @@ export default function MatchesTab(data: any) {
                 ? "Casual"
                 : match.match_type === 2
                 ? "Ranked"
+                : match.playoff
+                ? "Playoff"
                 : "Private"}{" "}
               Match
             </TableCell>
@@ -119,7 +128,7 @@ export default function MatchesTab(data: any) {
                   <DialogContent className="max-h-screen max-w-[800px] overflow-y-scroll">
                     <DialogHeader>
                       <DialogTitle>
-                        Match ID: {matchDetails?.match_id}
+                        Match ID: {matchDetails?.id}
                         <br />
                         {matchDetails !== null ? (
                           <span className="text-sm font-normal">
@@ -127,8 +136,9 @@ export default function MatchesTab(data: any) {
                             {match.winner === data.userData.data.uuid
                               ? data.userData.data.nickname
                               : match.opponent.nickname}{" "}
-                            | Seed Type: {matchDetails.seed_type} | Final Time:{" "}
-                            {timeFormat(matchDetails.final_time)}
+                            | Seed Type:{" "}
+                            {formatString(matchDetails.seedType.toLowerCase())}{" "}
+                            | Final Time: {timeFormat(matchDetails.result.time)}
                           </span>
                         ) : (
                           ""
@@ -145,8 +155,8 @@ export default function MatchesTab(data: any) {
                           .toReversed()
                           .filter(
                             (timeline: any) =>
-                              !timeline.timeline.includes(".root") &&
-                              !timeline.timeline.includes(".dragon_breath")
+                              !timeline.type.includes(".root") &&
+                              !timeline.type.includes(".dragon_breath")
                           )
                           .map(
                             (timeline: any) =>
@@ -154,7 +164,7 @@ export default function MatchesTab(data: any) {
                                 <div className="flex">
                                   <div className="w-1/2">
                                     <p className="text-sm">
-                                      {advancementLabel(timeline.timeline)}
+                                      {advancementLabel(timeline.type)}
                                     </p>
                                     <p className="text-xs">
                                       {timeFormat(timeline.time)}
@@ -170,8 +180,8 @@ export default function MatchesTab(data: any) {
                           .toReversed()
                           .filter(
                             (timeline: any) =>
-                              !timeline.timeline.includes(".root") &&
-                              !timeline.timeline.includes(".dragon_breath")
+                              !timeline.type.includes(".root") &&
+                              !timeline.type.includes(".dragon_breath")
                           )
                           .map(
                             (timeline: any) =>
@@ -179,7 +189,7 @@ export default function MatchesTab(data: any) {
                                 <div className="flex">
                                   <div className="w-1/2">
                                     <p className="text-sm">
-                                      {advancementLabel(timeline.timeline)}
+                                      {advancementLabel(timeline.type)}
                                     </p>
                                     <p className="text-xs">
                                       {timeFormat(timeline.time)}

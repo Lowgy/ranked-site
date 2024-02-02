@@ -56,12 +56,12 @@ function ProfileHeader({
       </div>
       <div className="mb-2 flex items-center pl-10 md:mb-6">
         <h2 className="text-gray-500">
-          Rank: {!userData.data.elo_rank ? "N/A" : `#${userData.data.elo_rank}`}
+          Rank: {!userData.data.eloRank ? "N/A" : `#${userData.data.eloRank}`}
         </h2>
         <h2 className="pl-4 text-gray-500">
           Elo: [
-          <span className={`${eloColor(userData.data.elo_rate)}`}>
-            {userData.data.elo_rate} - {addRank(userData.data.elo_rate)}
+          <span className={`${eloColor(userData.data.eloRate)}`}>
+            {userData.data.eloRate} - {addRank(userData.data.eloRate)}
           </span>
           ]
         </h2>

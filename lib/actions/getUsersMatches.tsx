@@ -1,6 +1,6 @@
 export default async function getUsersMatches(uuid: string, nickname: string) {
   const response = await fetch(
-    `https://mcsrranked.com/api/users/${nickname}/matches?filter=2`,
+    `https://mcsrranked.com/api/users/${nickname}/matches`,
     { cache: "no-cache" }
   )
 
@@ -8,16 +8,17 @@ export default async function getUsersMatches(uuid: string, nickname: string) {
   data = data.data
   let matches = []
   for (let i = 0; i < data.length; i++) {
-    if (!data[i].is_decay) {
+    if (!data[i].is_decayed) {
       matches.push({
-        match_id: data[i].match_id,
-        match_type: data[i].match_type,
-        match_date: data[i].match_date,
-        winner: data[i].winner,
-        opponent: getOpponent(data[i].members, uuid),
-        final_time: data[i].final_time,
+        match_id: data[i].id,
+        match_type: data[i].type,
+        match_date: data[i].date,
+        winner: data[i].result.uuid,
+        opponent: getOpponent(data[i].players, uuid),
+        playoff: data[i].players.length > 2 ? true : false,
+        final_time: data[i].result.time,
         // match_details: await getMatchDetails(data[i].match_id),
-        forfeit: data[i].forfeit,
+        forfeit: data[i].forfeited,
       })
     }
   }
