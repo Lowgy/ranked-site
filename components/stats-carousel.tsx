@@ -51,9 +51,7 @@ export default function StatsCarousel(data: any) {
           <p className="">
             {(
               (userData.records[2].win /
-                (userData.records[2].win +
-                  userData.records[2].lose +
-                  userData.records[2].draw)) *
+                (userData.records[2].win + userData.records[2].lose)) *
               100
             ).toFixed(2)}{" "}
             %

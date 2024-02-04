@@ -18,14 +18,11 @@ async function getTimeLeaderboard() {
   )
   const data = await response.json()
   let runners = []
-  data.data = data.data.filter(
-    (runner: any) => runner.user.nickname !== "Dexroit"
-  )
   for (let i = 0; i < data.data.length; i++) {
     let runner = { uuid: "", nickname: "", rank: 0, time: 0, season: 0 }
     runner.uuid = data.data[i].user.uuid
     runner.nickname = data.data[i].user.nickname
-    runner.rank = data.data[i].rank - 1
+    runner.rank = data.data[i].rank
     runner.time = data.data[i].time
     runner.season = data.data[i].season
     runners.push(runner)
