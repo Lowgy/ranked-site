@@ -31,7 +31,6 @@ interface UpcomingResultsProps {
 }
 
 export default function UpcomingResultsSection(props: UpcomingResultsProps) {
-  console.log(props.nextNonActiveMatch)
   return (
     <>
       {props.playoffs !== undefined &&

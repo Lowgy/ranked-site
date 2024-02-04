@@ -59,11 +59,14 @@ function ProfileHeader({
           Rank: {!userData.data.eloRank ? "N/A" : `#${userData.data.eloRank}`}
         </h2>
         <h2 className="pl-4 text-gray-500">
-          Elo: [
-          <span className={`${eloColor(userData.data.eloRate)}`}>
-            {userData.data.eloRate} - {addRank(userData.data.eloRate)}
-          </span>
-          ]
+          Elo:{" "}
+          {!userData.data.eloRate
+            ? "N/A"
+            : [
+                <span className={`${eloColor(userData.data.eloRate)}`}>
+                  {userData.data.eloRate} - {addRank(userData.data.eloRate)}
+                </span>,
+              ]}
         </h2>
       </div>
     </>

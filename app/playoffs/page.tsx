@@ -99,7 +99,6 @@ export default function PlayoffsPage() {
       return headers.indexOf(item) === index
     })
 
-    console.log(removeThirdPlace)
     setMatches(removeThirdPlace)
     setPlayers(players)
     setRoundHeaders(sortedHeaders)

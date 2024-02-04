@@ -39,9 +39,15 @@ export async function getMatchDetails(match_id: string) {
 }
 
 function getOpponent(members: any, uuid: string) {
-  for (let i = 0; i < members.length; i++) {
-    if (members[i].uuid !== uuid) {
-      return { nickname: members[i].nickname, uuid: members[i].uuid }
+  if (members.length !== 1) {
+    for (let i = 0; i < members.length; i++) {
+      if (members[i].eloRate !== null) {
+        if (members[i].uuid !== uuid) {
+          return { nickname: members[i].nickname, uuid: members[i].uuid }
+        }
+      }
     }
+  } else {
+    return { nickname: "N/A", uuid: "N/A" }
   }
 }

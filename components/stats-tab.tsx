@@ -45,9 +45,22 @@ export default function StatsTab(data: any) {
       </div>
       <div className="rounded-lg border-2 border-white p-6 shadow-lg">
         <h3 className="mb-4 text-xl font-bold">Best Elo</h3>
-        <p className={`${eloColor(data.userData.data.seasonResult.highest)}`}>
-          {data.userData.data.seasonResult.highest} -{" "}
-          {addRank(data.userData.data.seasonResult.highest)}
+        <p
+          className={
+            data.userData.data.seasonResult.highest
+              ? `${eloColor(data.userData.data.seasonResult.highest)}`
+              : ""
+          }
+        >
+          {data.userData.data.seasonResult.highest ? (
+            <>
+              {" "}
+              {data.userData.data.seasonResult.highest} -{" "}
+              {addRank(data.userData.data.seasonResult.highest)}
+            </>
+          ) : (
+            "N/A"
+          )}
         </p>
       </div>
       <div className="rounded-lg border-2 border-white p-6 shadow-lg">

@@ -20,10 +20,9 @@ type EloData = {
 }
 
 export default function EloChart(data: EloChartProps) {
-  console.log(data.data?.length)
   return (
     <>
-      {data.data?.length === 0 ? (
+      {data.data?.length === 0 || data.data === undefined ? (
         <div className="mt-4 flex h-[500] w-full items-center justify-center p-24">
           <h1 className="font-bold">No recent Elo data to display!</h1>
         </div>
