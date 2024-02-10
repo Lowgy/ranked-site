@@ -34,8 +34,7 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
   return (
     <>
       {props.playoffs !== undefined &&
-        (props.playoffs.season === props.selectedSeason &&
-        props.nextSeasonFlag !== null ? (
+        (props.playoffs.season === props.selectedSeason ? (
           <>
             <h1 className="text-xl font-semibold">Results</h1>
             <div
@@ -62,6 +61,7 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                       flexDirection: "column",
                       placeContent: "center",
                     }}
+                    key={result.player}
                   >
                     <div
                       style={{

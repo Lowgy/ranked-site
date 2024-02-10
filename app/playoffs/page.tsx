@@ -46,11 +46,11 @@ export default function PlayoffsPage() {
   const [thirdPlace, setThirdPlace] = useState<Matches>()
   const [nextNonActiveMatch, setNextNonActiveMatch] = useState<number>(0)
 
-  const fetchInitalData = async () => {
-    // const data = await getPlayoffData()
-    const nextSeasonCheck = playoffs[0].data.next
+  const fetchPlayoffData = async () => {
+    let data = await getPlayoffData(selectedSeason)
+    const nextSeasonCheck = data.next
     setNextFlag(nextSeasonCheck)
-    const data = playoffs[0].data.data
+    data = data.data
     setPlayoffdata(data)
     let removeThirdPlace: Matches[] = []
     let headers: string[] = []
@@ -62,7 +62,9 @@ export default function PlayoffsPage() {
     for (let i = 0; i < data.results.length; i++) {
       if (data.results[i].player !== null) {
         for (let j = 0; j < players.length; j++) {
-          ;(data.results[i] as Results).playerData = players[j]
+          if (data.results[i].player === players[j].seedNumber) {
+            ;(data.results[i] as Results).playerData = players[j]
+          }
         }
       }
     }
@@ -109,42 +111,12 @@ export default function PlayoffsPage() {
     }, 1000)
   }
 
-  const fetchNewData = async () => {
-    //FIX THIS LATER
-    // const data = await getPlayoffData()
-    // const nextSeasonCheck = playoffs[0].data.next
-    // setNextFlag(nextSeasonCheck)
-    // const data = playoffs[0].data.data
-    // setPlayoffdata(data)
-    // let removeThirdPlace: Matches[] = []
-    // let headers: string[] = []
-    // let players: Player[] = []
-    // for (let i = 0; i < data.players.length; i++) {
-    //   players.push(data.players[i])
-    // }
-    // for (let i = 0; i < data.matches.length; i++) {
-    //   if (data.matches[i].name !== "3rd Place") {
-    //     removeThirdPlace.push(data.matches[i])
-    //     headers.push(data.matches[i].name)
-    //   } else {
-    //     setThirdPlace(data.matches[i])
-    //   }
-    // }
-    // setMatches(removeThirdPlace)
-    // setPlayers(players)
-    // setRoundHeaders(headers)
-    // setNextNonActiveMatch(nextMatchCheck(data.matches))
-    // setTimeout(() => {
-    //   setLoading(false)
-    // }, 1000)
-  }
-
   useEffect(() => {
-    fetchInitalData()
+    fetchPlayoffData()
   }, [])
 
   useEffect(() => {
-    fetchNewData()
+    fetchPlayoffData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSeason])
 
@@ -177,12 +149,12 @@ export default function PlayoffsPage() {
           <div className="mb-4 flex flex-col items-center">
             <Select onValueChange={handleSeasonSelection}>
               <SelectTrigger className="mt-1 w-[300px]">
-                <SelectValue placeholder="Current Season" />
+                <SelectValue placeholder="Current / Recent Season" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
                   {seasons.map((value) => (
-                    <SelectItem value={value.toString()}>
+                    <SelectItem value={value.toString()} key={value}>
                       Season {value}
                     </SelectItem>
                   ))}
@@ -191,14 +163,17 @@ export default function PlayoffsPage() {
             </Select>
           </div>
           <TabsContent value="bracket">
-            {roundHeaders.map((header) => (
+            {roundHeaders.map((header, index) => (
               <div className="mt-4 flex flex-col items-center">
                 <h1>{header}</h1>
                 {matches.map(
                   (match) =>
                     match.name === header && (
                       <>
-                        <div className="my-4 flex h-[70px] w-[300px] flex-col items-stretch justify-between font-medium text-bracketText">
+                        <div
+                          className="my-4 flex h-[70px] w-[300px] flex-col items-stretch justify-between font-medium text-bracketText"
+                          key={match.id}
+                        >
                           <div className="flex flex-col justify-between bg-round">
                             <div className="flex justify-center">
                               <p className="min-h-5">
@@ -348,12 +323,12 @@ export default function PlayoffsPage() {
             <div className="flex justify-end">
               <Select onValueChange={handleSeasonSelection}>
                 <SelectTrigger className="mt-1 w-[300px]">
-                  <SelectValue placeholder="Current Season" />
+                  <SelectValue placeholder="Current / Recent Season" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     {seasons.map((value) => (
-                      <SelectItem value={value.toString()}>
+                      <SelectItem value={value.toString()} key={value}>
                         Season {value}
                       </SelectItem>
                     ))}
@@ -408,16 +383,18 @@ export default function PlayoffsPage() {
                           }`}
                         >
                           <div className="flex h-full w-[10%] items-center justify-center bg-score px-4 py-0.5">
-                            {thirdPlace.participants[0]?.player
+                            {thirdPlace.participants[0]?.player !== null
                               ? thirdPlace.participants[0].player + 1
                               : ""}
                           </div>
                           <div
                             className={`ml-[10px] mr-auto ${
-                              !thirdPlace.participants[0]?.player && "p-[13px]"
+                              !thirdPlace.participants[0]?.player &&
+                              thirdPlace.participants[0]?.player === null &&
+                              "p-[13px]"
                             }`}
                           >
-                            {thirdPlace.participants[0]?.player
+                            {thirdPlace.participants[0]?.player !== null
                               ? players[thirdPlace.participants[0].player]
                                   .nickname
                               : " "}
@@ -430,7 +407,9 @@ export default function PlayoffsPage() {
                                 : "bg-score"
                             }`}
                           >
-                            {thirdPlace.participants[0]?.roundScore || ""}
+                            {thirdPlace.participants[0]?.roundScore !== null
+                              ? thirdPlace.participants[0]?.roundScore
+                              : ""}
                           </div>
                         </div>
                         <div className="h-[8px] border border-solid border-gray-300 opacity-0 transition duration-500 ease-in-out hover:opacity-100"></div>
