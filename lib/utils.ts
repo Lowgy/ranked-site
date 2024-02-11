@@ -137,7 +137,7 @@ export function advancementLabel(advancement: string) {
     : advancement === "nether.obtain_blaze_rod"
     ? "Into Fire"
     : advancement === "end.root"
-    ? "Free the End"
+    ? "Enter the End"
     : advancement === "adventure.ol_betsy"
     ? "Ol' Betsy"
     : advancement === "adventure.sleep_in_bed"
