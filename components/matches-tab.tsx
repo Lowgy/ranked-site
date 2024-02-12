@@ -110,13 +110,13 @@ export default function MatchesTab(data: any) {
                 {match.winner === data.userData.data.uuid ? "Won" : "Lost"}
               </TableCell>
               <TableCell>
-                {match.forfeit ? "Forfeit" : timeFormat(match.final_time)}
+                {match.forfeit ? "Forfeit" : timeFormat(match.result.time)}
               </TableCell>
               <TableCell>{timeSince(match.match_date)}</TableCell>
               <TableCell className="hidden md:table-cell">
                 <Dialog>
                   <DialogTrigger className="hover:text-green-400">
-                    <button onClick={() => handleClick(match.match_id)}>
+                    <button onClick={() => handleClick(match.id)}>
                       <ArrowRightCircle />
                     </button>
                   </DialogTrigger>
