@@ -16,10 +16,10 @@ export default async function getUsersEloChart(uuid: string, nickname: string) {
   if (matches.length !== 0) {
     let elo = []
     for (let i = 0; i < matches.length; i++) {
-      for (let j = 0; j < matches[i].score_changes.length; j++) {
-        if (matches[i].score_changes[j].uuid === uuid) {
+      for (let j = 0; j < matches[i].changes.length; j++) {
+        if (matches[i].changes[j].uuid === uuid) {
           elo.push({
-            elo: matches[i].score_changes[j].score,
+            elo: matches[i].changes[j].eloRate,
           })
         }
       }

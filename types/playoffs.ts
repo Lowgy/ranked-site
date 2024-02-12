@@ -1,32 +1,38 @@
 export type Participant = {
-  id: string
-  resultText: string
-  isWinner: boolean
-  season_elo?: number
-  personal_best?: number
-  status: null | string
-  name: string
+  player: number | null
+  roundScore: number
+  playerData?: Player
+}
+
+export type Player = {
+  uuid: string
+  nickname: string
+  seasonEloRate: number
+  seasonEloRank: number | null
+  seedNumber: number
+  personalBest: number
 }
 
 export type Results = {
+  player: number | null
   place: number
-  name: string
-  prize?: number
+  prize: number
+  playerData?: Player
 }
 
 export type Matches = {
   id: number
   name: string
-  nextMatchId: number | null
-  tournamentRoundText: string
-  startTime: string
-  state: string
+  nextMatchId: number | string | null
+  maxRoundScore: number
+  startTime: number | null
+  state: string | null
   participants: Participant[] | []
 }
 
 export type Season = {
-  seasonId: number
-  currentSeason: boolean
+  season: number
+  players: Player[]
   matches: Matches[]
   results: Results[]
 }

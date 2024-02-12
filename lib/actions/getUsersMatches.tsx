@@ -1,6 +1,6 @@
 export default async function getUsersMatches(uuid: string, nickname: string) {
   const response = await fetch(
-    `http://127.0.0.1:17432/api/users/${nickname}/matches?filter=2`,
+    `https://mcsrranked.com/api/users/${nickname}/matches?type=2&excludedecay=false`,
     { cache: "no-cache" }
   )
 
@@ -8,16 +8,17 @@ export default async function getUsersMatches(uuid: string, nickname: string) {
   data = data.data
   let matches = []
   for (let i = 0; i < data.length; i++) {
-    if (!data[i].is_decay) {
+    if (!data[i].is_decayed) {
       matches.push({
-        match_id: data[i].match_id,
-        match_type: data[i].match_type,
-        match_date: data[i].match_date,
-        winner: data[i].winner,
-        opponent: getOpponent(data[i].members, uuid),
-        final_time: data[i].final_time,
+        match_id: data[i].id,
+        match_type: data[i].type,
+        match_date: data[i].date,
+        winner: data[i].result.uuid,
+        opponent: getOpponent(data[i].players, uuid),
+        playoff: data[i].players.length > 2 ? true : false,
+        final_time: data[i].result.time,
         // match_details: await getMatchDetails(data[i].match_id),
-        forfeit: data[i].forfeit,
+        forfeit: data[i].forfeited,
       })
     }
   }
@@ -38,9 +39,15 @@ export async function getMatchDetails(match_id: string) {
 }
 
 function getOpponent(members: any, uuid: string) {
-  for (let i = 0; i < members.length; i++) {
-    if (members[i].uuid !== uuid) {
-      return { nickname: members[i].nickname, uuid: members[i].uuid }
+  if (members.length !== 1) {
+    for (let i = 0; i < members.length; i++) {
+      if (members[i].eloRate !== null) {
+        if (members[i].uuid !== uuid) {
+          return { nickname: members[i].nickname, uuid: members[i].uuid }
+        }
+      }
     }
+  } else {
+    return { nickname: "N/A", uuid: "N/A" }
   }
 }

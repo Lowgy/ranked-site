@@ -10,10 +10,11 @@ export type Runner = {
   // Look at api docs for object structure
   uuid: string
   nickname: string
-  elo_rank?: number
-  elo_rate?: number
-  final_time_rank?: number
-  final_time?: number
+  eloRank?: number
+  eloRate?: number
+  rank?: number
+  time?: number
+  season?: number
 }
 
 function eloColor(elo: number) {
@@ -34,7 +35,7 @@ function eloColor(elo: number) {
 
 export const eloColumns: ColumnDef<Runner>[] = [
   {
-    accessorKey: "elo_rank",
+    accessorKey: "eloRank",
     header: "Rank",
   },
   {
@@ -70,12 +71,12 @@ export const eloColumns: ColumnDef<Runner>[] = [
       return (
         <div
           className={`flex items-center ${
-            row.original.elo_rate !== undefined
-              ? eloColor(row.original.elo_rate)
+            row.original.eloRate !== undefined
+              ? eloColor(row.original.eloRate)
               : ""
           }`}
         >
-          {row.original.elo_rate !== undefined ? row.original.elo_rate : "N/A"}
+          {row.original.eloRate !== undefined ? row.original.eloRate : "N/A"}
         </div>
       )
     },
@@ -84,7 +85,7 @@ export const eloColumns: ColumnDef<Runner>[] = [
 
 export const timeColumns: ColumnDef<Runner>[] = [
   {
-    accessorKey: "final_time_rank",
+    accessorKey: "rank",
     header: "Rank",
   },
   {
@@ -107,20 +108,23 @@ export const timeColumns: ColumnDef<Runner>[] = [
             prefetch={false}
           >
             {" "}
-            {row.original.nickname}
+            {row.original.nickname}{" "}
+            <span className="text-sm text-gray-400">
+              (Season: {row.original.season})
+            </span>
           </Link>
         </div>
       )
     },
   },
   {
-    accessorKey: "final_time",
+    accessorKey: "time",
     header: "Time",
     cell: ({ row }) => {
-      if (row.original.final_time !== undefined) {
+      if (row.original.time !== undefined) {
         return (
           <div className="flex items-center">
-            {timeFormat(row.original.final_time)}
+            {timeFormat(row.original.time)}
           </div>
         )
       }

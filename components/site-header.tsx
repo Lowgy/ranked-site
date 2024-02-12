@@ -1,7 +1,5 @@
-import { Oi } from "next/font/google"
 import Link from "next/link"
-import { faPatreon } from "@fortawesome/free-brands-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { ShoppingCart } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/button"
@@ -18,7 +16,7 @@ export function SiteHeader() {
         <div className="flex flex-1 items-center justify-end space-x-4">
           <nav className="flex items-center space-x-1">
             <Link
-              href={siteConfig.links.patreon}
+              href={siteConfig.links.store}
               target="_blank"
               rel="noreferrer"
               prefetch={false}
@@ -29,7 +27,7 @@ export function SiteHeader() {
                   variant: "ghost",
                 })}
               >
-                <FontAwesomeIcon icon={faPatreon} className="h-5 w-5" />
+                <ShoppingCart className="h-6 w-6" />
                 <span className="sr-only">GitHub</span>
               </div>
             </Link>

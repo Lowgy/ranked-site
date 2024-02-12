@@ -8,7 +8,7 @@ import {
   createTheme,
 } from "@lowgy/react-tournament-brackets"
 import { CalendarCheck, Trophy } from "lucide-react"
-import { Matches, Season } from "types/playoffs"
+import { Matches, Participant, Player, Results, Season } from "types/playoffs"
 
 import getPlayoffData from "@/lib/actions/getPlayoffData"
 import { nextMatchCheck } from "@/lib/utils"
@@ -36,78 +36,87 @@ const RankedTheme = createTheme({
 
 export default function PlayoffsPage() {
   const [loading, setLoading] = useState<boolean>(true)
-  const [playoffData, setPlayoffdata] = useState<Season[]>([])
-  const [seasons, setSeasons] = useState<number[]>([])
+  const [playoffData, setPlayoffdata] = useState<Season>()
+  const [seasons, setSeasons] = useState<number[]>([1, 2, 3])
+  const [nextFlag, setNextFlag] = useState<number | null>(null)
   const [selectedSeason, setSelectedSeason] = useState<number>(3)
   const [matches, setMatches] = useState<Matches[]>([])
-  const [roundHeaders, setRoundHeaders] = useState<number[]>([])
+  const [players, setPlayers] = useState<Player[]>([])
+  const [roundHeaders, setRoundHeaders] = useState<string[]>([])
   const [thirdPlace, setThirdPlace] = useState<Matches>()
-  const [nextNonActiveMatch, setNextNonActiveMatch] = useState("")
+  const [nextNonActiveMatch, setNextNonActiveMatch] = useState<number>(0)
 
-  const fetchInitalData = async () => {
-    const data = await getPlayoffData()
+  const fetchPlayoffData = async () => {
+    let data = await getPlayoffData(selectedSeason)
+    const nextSeasonCheck = data.next
+    setNextFlag(nextSeasonCheck)
+    data = data.data
     setPlayoffdata(data)
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].currentSeason) {
-        let removeThirdPlace: Matches[] = []
-        let headers: number[] = []
-        for (let j = 0; j < data[i].matches.length; j++) {
-          headers.push(parseInt(data[i].matches[j].tournamentRoundText))
-          if (data[i].matches[j].name !== "Third Place") {
-            removeThirdPlace.push(data[i].matches[j])
-          } else {
-            setThirdPlace(data[i].matches[j])
+    let removeThirdPlace: Matches[] = []
+    let headers: string[] = []
+    let players: Player[] = []
+    for (let i = 0; i < data.players.length; i++) {
+      players.push(data.players[i])
+    }
+
+    for (let i = 0; i < data.results.length; i++) {
+      if (data.results[i].player !== null) {
+        for (let j = 0; j < players.length; j++) {
+          if (data.results[i].player === players[j].seedNumber) {
+            ;(data.results[i] as Results).playerData = players[j]
           }
         }
-        let sortedHeaders = headers.filter((item, index) => {
-          return headers.indexOf(item) === index
-        })
-        setRoundHeaders(sortedHeaders.reverse())
-        setMatches(removeThirdPlace)
-        setNextNonActiveMatch(nextMatchCheck(data[i].matches))
       }
     }
-    const seasonDropdown = data.map((playoff: Season) => playoff.seasonId)
-    setSeasons(seasonDropdown)
-    setTimeout(() => {
-      setLoading(false)
-    }, 1000)
-  }
-
-  const fetchNewData = async () => {
-    const data = await getPlayoffData()
-    setPlayoffdata(data)
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].seasonId === selectedSeason) {
-        let removeThirdPlace: Matches[] = []
-        let headers: number[] = []
-        for (let j = 0; j < data[i].matches.length; j++) {
-          headers.push(parseInt(data[i].matches[j].tournamentRoundText))
-          if (data[i].matches[j].name !== "Third Place") {
-            removeThirdPlace.push(data[i].matches[j])
-          } else {
-            setThirdPlace(data[i].matches[j])
+    for (let i = 0; i < data.matches.length; i++) {
+      if (
+        data.matches[i].participants[0]?.player !== null &&
+        data.matches[i].participants[1]?.player !== null
+      ) {
+        for (let j = 0; j < players.length; j++) {
+          if (
+            players[j].seedNumber === data.matches[i].participants[0]?.player
+          ) {
+            ;(data.matches[i].participants[0] as Participant).playerData =
+              players[j]
+          }
+          if (
+            players[j].seedNumber === data.matches[i].participants[1]?.player
+          ) {
+            ;(data.matches[i].participants[1] as Participant).playerData =
+              players[j]
           }
         }
-        let sortedHeaders = headers.filter((item, index) => {
-          return headers.indexOf(item) === index
-        })
-        setRoundHeaders(sortedHeaders.reverse())
-        setMatches(removeThirdPlace)
-        setNextNonActiveMatch(nextMatchCheck(data[i].matches))
+      }
+      headers.push(data.matches[i].name)
+      if (data.matches[i].name === "3rd Place") {
+        setThirdPlace(data.matches[i])
+        removeThirdPlace.push(data.matches[i])
+      } else {
+        removeThirdPlace.push(data.matches[i])
       }
     }
+
+    let sortedHeaders = headers.filter((item, index) => {
+      return headers.indexOf(item) === index
+    })
+
+    setMatches(removeThirdPlace)
+    setPlayers(players)
+    setRoundHeaders(sortedHeaders)
+    setNextNonActiveMatch(nextMatchCheck(data.matches))
+
     setTimeout(() => {
       setLoading(false)
     }, 1000)
   }
 
   useEffect(() => {
-    fetchInitalData()
+    fetchPlayoffData()
   }, [])
 
   useEffect(() => {
-    fetchNewData()
+    fetchPlayoffData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSeason])
 
@@ -140,12 +149,12 @@ export default function PlayoffsPage() {
           <div className="mb-4 flex flex-col items-center">
             <Select onValueChange={handleSeasonSelection}>
               <SelectTrigger className="mt-1 w-[300px]">
-                <SelectValue placeholder="Current Season" />
+                <SelectValue placeholder="Current / Recent Season" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
                   {seasons.map((value) => (
-                    <SelectItem value={value.toString()}>
+                    <SelectItem value={value.toString()} key={value}>
                       Season {value}
                     </SelectItem>
                   ))}
@@ -154,98 +163,29 @@ export default function PlayoffsPage() {
             </Select>
           </div>
           <TabsContent value="bracket">
-            {roundHeaders.map((header) => (
+            {roundHeaders.map((header, index) => (
               <div className="mt-4 flex flex-col items-center">
-                <h1>
-                  {header < 3
-                    ? `Round ${header}`
-                    : header === 3
-                    ? "Semi-Final"
-                    : "Final / Third Place"}
-                </h1>
+                <h1>{header}</h1>
                 {matches.map(
                   (match) =>
-                    parseInt(match.tournamentRoundText) === header && (
+                    match.name === header && (
                       <>
-                        {match.tournamentRoundText === "4" && thirdPlace && (
-                          <div className="flex h-[70px] w-[300px] flex-col items-stretch justify-between font-medium text-bracketText">
-                            <div className="flex flex-1 flex-col justify-between bg-round">
-                              <div className="flex justify-center">
-                                <p className="min-h-5">
-                                  {thirdPlace.startTime !== ""
-                                    ? `${new Date(
-                                        parseInt(thirdPlace.startTime) * 1000
-                                      ).toLocaleDateString("en-US", {
-                                        year: "numeric",
-                                        month: "short",
-                                        day: "numeric",
-                                      })}  @ ${new Date(
-                                        parseInt(thirdPlace.startTime) * 1000
-                                      ).toLocaleTimeString([], {
-                                        timeZoneName: "short",
-                                        hour: "2-digit",
-                                        minute: "2-digit",
-                                      })}`
-                                    : "TBD"}
-                                </p>
-                              </div>
-                              <div
-                                className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-2 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
-                                  thirdPlace.participants[0]?.isWinner
-                                    ? "text-white"
-                                    : ""
-                                }`}
-                              >
-                                <div>
-                                  {thirdPlace.participants[0]?.name || "TBD"}
-                                </div>
-                                <div
-                                  className={`flex h-full w-1/5 items-center justify-center px-4 py-0.5 ${
-                                    thirdPlace.participants[0]?.isWinner
-                                      ? "bg-scoreWinner text-white"
-                                      : "bg-score"
-                                  }`}
-                                >
-                                  {thirdPlace.participants[0]?.resultText || ""}
-                                </div>
-                              </div>
-                              <div className="h-px border border-solid border-gray-300 opacity-0 transition duration-500 ease-in-out hover:opacity-100"></div>
-                              <div
-                                className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-2 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
-                                  thirdPlace.participants[1]?.isWinner
-                                    ? "text-white"
-                                    : ""
-                                }`}
-                              >
-                                <div>
-                                  {thirdPlace.participants[1]?.name || "TBD"}
-                                </div>
-                                <div
-                                  className={`flex h-full w-1/5 items-center justify-center px-4 py-0.5 ${
-                                    thirdPlace.participants[1]?.isWinner
-                                      ? "bg-scoreWinner text-white"
-                                      : "bg-score"
-                                  }`}
-                                >
-                                  {thirdPlace.participants[1]?.resultText || ""}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                        <div className="my-4 flex h-[70px] w-[300px] flex-col items-stretch justify-between font-medium text-bracketText">
+                        <div
+                          className="my-4 flex h-[70px] w-[300px] flex-col items-stretch justify-between font-medium text-bracketText"
+                          key={match.id}
+                        >
                           <div className="flex flex-col justify-between bg-round">
                             <div className="flex justify-center">
                               <p className="min-h-5">
-                                {match.startTime !== ""
+                                {match.startTime !== null
                                   ? `${new Date(
-                                      parseInt(match.startTime) * 1000
+                                      match.startTime * 1000
                                     ).toLocaleDateString("en-US", {
                                       year: "numeric",
                                       month: "short",
                                       day: "numeric",
                                     })}  @ ${new Date(
-                                      parseInt(match.startTime) * 1000
+                                      match.startTime * 1000
                                     ).toLocaleTimeString([], {
                                       timeZoneName: "short",
                                       hour: "2-digit",
@@ -255,40 +195,76 @@ export default function PlayoffsPage() {
                               </p>
                             </div>
                             <div
-                              className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-2 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
-                                match.participants[0]?.isWinner
+                              className={`border-t-1 border-b-1 flex h-full items-center border-x-2 border-round bg-bracket first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
+                                match.participants[0]?.roundScore ===
+                                match.maxRoundScore
                                   ? "text-white"
-                                  : ""
+                                  : " "
                               }`}
                             >
-                              <div>{match.participants[0]?.name || "TBD"}</div>
+                              <div className="flex h-full w-[10%] items-center justify-center bg-score px-4 py-0.5 text-bracketText">
+                                {match.participants[0]?.player ||
+                                match.participants[0]?.player === 0
+                                  ? match.participants[0]?.player + 1
+                                  : " "}
+                              </div>
+                              <div
+                                className={`ml-[10px] mr-auto ${
+                                  !match.participants[0]?.player &&
+                                  match.participants[0]?.player !== 0 &&
+                                  "p-[13px]"
+                                }`}
+                              >
+                                {match.participants[0]?.player ||
+                                match.participants[0]?.player === 0
+                                  ? players[match.participants[0].player]
+                                      .nickname
+                                  : " "}
+                              </div>
                               <div
                                 className={`flex h-full w-1/5 items-center justify-center px-4 py-0.5 ${
-                                  match.participants[0]?.isWinner
+                                  match.participants[0]?.roundScore ===
+                                  match.maxRoundScore
                                     ? "bg-scoreWinner text-white"
                                     : "bg-score"
                                 }`}
                               >
-                                {match.participants[0]?.resultText || ""}
+                                {match.participants[0]?.roundScore}
                               </div>
                             </div>
                             <div className="h-px border border-solid border-gray-300 opacity-0 transition duration-500 ease-in-out hover:opacity-100"></div>
                             <div
-                              className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-2 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
-                                match.participants[1]?.isWinner
+                              className={`border-t-1 border-b-1 flex h-full items-center border-x-2 border-round bg-bracket first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
+                                match.participants[1]?.roundScore ===
+                                match.maxRoundScore
                                   ? "text-white"
-                                  : ""
+                                  : " "
                               }`}
                             >
-                              <div>{match.participants[1]?.name || "TBD"}</div>
+                              <div className="flex h-full w-[10%] items-center justify-center bg-score px-4 py-0.5 text-bracketText">
+                                {match.participants[1]?.player
+                                  ? match.participants[1]?.player + 1
+                                  : " "}
+                              </div>
+                              <div
+                                className={`ml-[10px] mr-auto ${
+                                  !match.participants[1]?.player && "p-[13px]"
+                                }`}
+                              >
+                                {match.participants[1]?.player
+                                  ? players[match.participants[1].player]
+                                      .nickname
+                                  : " "}
+                              </div>
                               <div
                                 className={`flex h-full w-1/5 items-center justify-center px-4 py-0.5 ${
-                                  match.participants[1]?.isWinner
+                                  match.participants[1]?.roundScore ===
+                                  match.maxRoundScore
                                     ? "bg-scoreWinner text-white"
                                     : "bg-score"
                                 }`}
                               >
-                                {match.participants[1]?.resultText || ""}
+                                {match.participants[1]?.roundScore}
                               </div>
                             </div>
                           </div>
@@ -311,6 +287,7 @@ export default function PlayoffsPage() {
             <div className="container mx-auto text-center">
               <UpcomingResultsSection
                 playoffs={playoffData}
+                nextSeasonFlag={nextFlag}
                 selectedSeason={selectedSeason}
                 nextNonActiveMatch={nextNonActiveMatch}
               />
@@ -346,12 +323,12 @@ export default function PlayoffsPage() {
             <div className="flex justify-end">
               <Select onValueChange={handleSeasonSelection}>
                 <SelectTrigger className="mt-1 w-[300px]">
-                  <SelectValue placeholder="Current Season" />
+                  <SelectValue placeholder="Current / Recent Season" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     {seasons.map((value) => (
-                      <SelectItem value={value.toString()}>
+                      <SelectItem value={value.toString()} key={value}>
                         Season {value}
                       </SelectItem>
                     ))}
@@ -379,15 +356,15 @@ export default function PlayoffsPage() {
                     <div className="flex h-[70px] w-[300px] flex-col items-stretch justify-between font-medium text-bracketText">
                       <div className="flex justify-between">
                         <p className="min-h-5 mb-1">
-                          {thirdPlace.startTime !== ""
+                          {thirdPlace.startTime !== null
                             ? `${new Date(
-                                parseInt(thirdPlace.startTime) * 1000
+                                thirdPlace.startTime * 1000
                               ).toLocaleDateString("en-US", {
                                 year: "numeric",
                                 month: "long",
                                 day: "numeric",
                               })}  @ ${new Date(
-                                parseInt(thirdPlace.startTime) * 1000
+                                thirdPlace.startTime * 1000
                               ).toLocaleTimeString([], {
                                 timeZoneName: "short",
                                 hour: "2-digit",
@@ -396,46 +373,84 @@ export default function PlayoffsPage() {
                             : ""}
                         </p>
                       </div>
-                      <div className="flex flex-1 flex-col justify-between bg-round">
+                      <div className="flex flex-1 flex-col justify-between rounded-sm bg-round px-0.5 font-normal">
                         <div
-                          className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-4 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
-                            thirdPlace.participants[0]?.isWinner
+                          className={`border-t-1 border-b-1 flex h-full items-center border-x-4 border-round bg-bracket first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
+                            thirdPlace.participants[0]?.roundScore ===
+                            thirdPlace.maxRoundScore
                               ? "text-white"
                               : ""
                           }`}
                         >
-                          <div>{thirdPlace.participants[0]?.name || "TBD"}</div>
+                          <div className="flex h-full w-[10%] items-center justify-center bg-score px-4 py-0.5">
+                            {thirdPlace.participants[0]?.player !== null
+                              ? thirdPlace.participants[0].player + 1
+                              : ""}
+                          </div>
+                          <div
+                            className={`ml-[10px] mr-auto ${
+                              !thirdPlace.participants[0]?.player &&
+                              thirdPlace.participants[0]?.player === null &&
+                              "p-[13px]"
+                            }`}
+                          >
+                            {thirdPlace.participants[0]?.player !== null
+                              ? players[thirdPlace.participants[0].player]
+                                  .nickname
+                              : " "}
+                          </div>
                           <div
                             className={`flex h-full w-1/5 items-center justify-center px-4 py-0.5 ${
-                              thirdPlace.participants[0]?.isWinner
+                              thirdPlace.participants[0]?.roundScore ===
+                              thirdPlace.maxRoundScore
                                 ? "bg-scoreWinner text-white"
                                 : "bg-score"
                             }`}
                           >
-                            {thirdPlace.participants[0]?.resultText || ""}
+                            {thirdPlace.participants[0]?.roundScore !== null
+                              ? thirdPlace.participants[0]?.roundScore
+                              : ""}
                           </div>
                         </div>
-                        <div className="h-px border border-solid border-gray-300 opacity-0 transition duration-500 ease-in-out hover:opacity-100"></div>
+                        <div className="h-[8px] border border-solid border-gray-300 opacity-0 transition duration-500 ease-in-out hover:opacity-100"></div>
                         <div
-                          className={`border-t-1 border-b-1 flex h-full items-center justify-between border-x-4 border-round bg-bracket pl-4 first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
-                            thirdPlace.participants[1]?.isWinner
+                          className={`border-t-1 border-b-1 flex h-full items-center border-x-4 border-round bg-bracket first:rounded-t-md first:border-x-2 first:border-t-2 last:rounded-b-md last:border-x-2 last:border-b-2 ${
+                            thirdPlace.participants[1]?.roundScore ===
+                            thirdPlace.maxRoundScore
                               ? "text-white"
                               : ""
                           }`}
                         >
-                          <div>{thirdPlace.participants[1]?.name || "TBD"}</div>
+                          <div className="flex h-full w-[10%] items-center justify-center bg-score px-4 py-0.5">
+                            {thirdPlace.participants[1]?.player
+                              ? thirdPlace.participants[1].player + 1
+                              : ""}
+                          </div>
+                          <div
+                            className={`ml-[10px] mr-auto ${
+                              !thirdPlace.participants[1]?.player && "p-[13px]"
+                            }`}
+                          >
+                            {thirdPlace.participants[1]?.player
+                              ? players[thirdPlace.participants[1].player]
+                                  .nickname
+                              : " "}
+                          </div>
                           <div
                             className={`flex h-full w-1/5 items-center justify-center px-4 py-0.5 ${
-                              thirdPlace.participants[1]?.isWinner
+                              thirdPlace.participants[1]?.roundScore ===
+                              thirdPlace.maxRoundScore
                                 ? "bg-scoreWinner text-white"
                                 : "bg-score"
                             }`}
                           >
-                            {thirdPlace.participants[1]?.resultText || ""}
+                            {thirdPlace.participants[1]?.roundScore !== null
+                              ? thirdPlace.participants[1]?.roundScore
+                              : " "}
                           </div>
                         </div>
                       </div>
-                      <p>3rd Place</p>
+                      <p className="text-center text-[#707582]">3rd Place</p>
                     </div>
                   )}
                 </div>
@@ -453,6 +468,7 @@ export default function PlayoffsPage() {
             <div className="container mx-auto text-center">
               <UpcomingResultsSection
                 playoffs={playoffData}
+                nextSeasonFlag={nextFlag}
                 selectedSeason={selectedSeason}
                 nextNonActiveMatch={nextNonActiveMatch}
               />
