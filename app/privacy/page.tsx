@@ -314,7 +314,7 @@ export default function PrivacyPage() {
               <li>
                 By joining our Discord server:{" "}
                 <a
-                  href="https://discord.gg/nnjUSyDErj"
+                  href="https://mcsrranked.com/discord"
                   className="hover:text-green-400"
                 >
                   https://mcsrranked.com/discord
