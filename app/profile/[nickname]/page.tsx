@@ -75,8 +75,8 @@ function ProfileHeader({
 
 export default async function ProfilePage({ params: { nickname } }: Params) {
   const userData = await getProfile(nickname)
-  const matches = await getUsersEloChart(userData.data.uuid, nickname)
-  const test = await getUsersMatches(userData.data.uuid, nickname)
+  const eloMatches = await getUsersEloChart(userData.data.uuid, nickname)
+  const matches = await getUsersMatches(userData.data.uuid, nickname)
   return (
     <section className="container grid items-center pb-8 pl-10 pt-6 md:py-10">
       <Tabs defaultValue="general">
@@ -113,7 +113,7 @@ export default async function ProfilePage({ params: { nickname } }: Params) {
                 Matches
               </TabsTrigger>
             </TabsList>
-            <GeneralTab userData={userData} matches={matches} />
+            <GeneralTab userData={userData} matches={eloMatches} />
           </section>
         </TabsContent>
         <TabsContent value="stats">
@@ -150,7 +150,7 @@ export default async function ProfilePage({ params: { nickname } }: Params) {
               Matches
             </TabsTrigger>
           </TabsList>
-          <MatchesTab matches={test} userData={userData} />
+          <MatchesTab matches={matches} userData={userData} />
         </TabsContent>
       </Tabs>
     </section>
