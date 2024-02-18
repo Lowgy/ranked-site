@@ -27,7 +27,7 @@ export default async function getUsersMatches(uuid: string, nickname: string) {
 
 export async function getMatchDetails(match_id: string) {
   const response = await fetch(
-    `http://127.0.0.1:17432/api/matches/${match_id}`,
+    `https://mcsrranked.com/api/matches/${match_id}`,
     {
       cache: "no-cache",
     }
