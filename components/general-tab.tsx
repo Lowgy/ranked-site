@@ -5,8 +5,10 @@ import EloChart from "./elo-chart"
 import { Separator } from "./ui/separator"
 
 type Badge = {
-  achieve_type: number
-  tag_name: string
+  id: string
+  date: number
+  level: number
+  data: any
 }
 
 export default function GeneralTab(data: any) {
@@ -30,15 +32,24 @@ export default function GeneralTab(data: any) {
           Last played: {timeSince(data.userData.data.timestamp.lastRanked)}
         </h1>
       </div>
-      <Separator />
-      {/* <div className="mx-auto mt-4">
-        <h1 className="text-2xl">Achievements</h1>
-        <div className="mt-2 flex flex-row justify-center">
-          {data.userData.data.achievements.display.map((badge: Badge) => (
-            <AchievementBadge data={badge} />
-          ))}
-        </div>
-      </div> */}
+      {data.userData.data.achievements.display.length !== 0 && (
+        <>
+          <Separator />
+          <div className="mx-auto mt-4">
+            <h1 className="text-2xl">Achievements</h1>
+            <div className="mt-2 flex flex-row justify-center">
+              {data.userData.data.achievements.display.map(
+                (badge: Badge) =>
+                  (badge.id === "seasonResult" ||
+                    badge.id === "playoffsResult") && (
+                    <AchievementBadge key={badge.id} data={badge} />
+                  )
+              )}
+            </div>
+          </div>
+        </>
+      )}
+
     </>
   )
 }
