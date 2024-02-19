@@ -166,6 +166,7 @@ export default function BracketMatches(props: BracketMatchesProps) {
                           match.participants[0].playerData?.personalBest
                         )}
                       </h1>
+                      <h1>{timeFormat(match.participants[0].playerData?.personalBest)}</h1>
                     </div>
                   </div>
                   <h1 className="my-auto flex justify-center text-2xl font-semibold md:text-4xl">
@@ -203,6 +204,7 @@ export default function BracketMatches(props: BracketMatchesProps) {
                           match.participants[1].playerData?.personalBest
                         )}
                       </h1>
+                      <h1>{timeFormat(match.participants[1].playerData?.personalBest)}</h1>
                     </div>
                   </div>
                 </div>
