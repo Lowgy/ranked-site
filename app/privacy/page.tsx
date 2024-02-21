@@ -84,10 +84,30 @@ export default function PrivacyPage() {
                 Minecraft Account: Key Pair containing UUID data generated
                 through Minecraft Service API
               </li>
-              <li>Discord: User ID, User Tag</li>
-              <li>Patreon: User ID, User Name</li>
-              <li>Twitch: User ID, User Name</li>
-              <li>YouTube(Google): YouTube Channel ID, YouTube Channel Name</li>
+              <li>
+                Patreon: User ID, User Name
+                <ul>
+                  <li>Identifying Patreon Account ID for check subscribing special tiers</li>
+                </ul>
+              </li>
+              <li>
+                Discord: User ID, User Tag
+                <ul>
+                  <li>Identifying Discord User ID and display Discord tag on the MCSR Ranked profile</li>
+                </ul>
+              </li>
+              <li>
+                Twitch: User ID, User Name
+                <ul>
+                  <li>Identifying Twitch Channel ID and display Twitch channel link on the MCSR Ranked profile</li>
+                </ul>
+              </li>
+              <li>
+                YouTube(Google): YouTube Channel ID, YouTube Channel Name
+                <ul>
+                  <li>Identifying YouTube Channel ID and display YouTube channel link on the MCSR Ranked profile</li>
+                </ul>
+              </li>
             </ul>
           </div>
           <div className="border-b-2 p-3 text-xl">
@@ -307,8 +327,8 @@ export default function PrivacyPage() {
             <ol className="list-inside list-disc text-sm">
               <li>
                 By email:{" "}
-                <a href="mailto:mcsreloproject@email.com">
-                  mcsreloproject@email.com
+                <a href="mailto:mcsrranked@gmail.com">
+                  mcsrranked@gmail.com
                 </a>
               </li>
               <li>
@@ -321,6 +341,13 @@ export default function PrivacyPage() {
                 </a>
               </li>
             </ol>
+          </div>
+          <div className="border-b-2 p-3 text-xl">
+            <h1>Recent Changes</h1>
+            <Separator className="my-2" />
+            <ul>
+              <li>Fab 22, 2024: Described details on how to use third parties data used in Other Data(5).</li>
+            </ul>
           </div>
         </div>
       </div>
