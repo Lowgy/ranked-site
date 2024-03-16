@@ -49,6 +49,7 @@ export default function GeneralTab(data: any) {
           </div>
         </>
       )}
+
     </>
   )
 }
