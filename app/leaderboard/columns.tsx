@@ -15,6 +15,11 @@ export type Runner = {
   rank?: number
   time?: number
   season?: number
+  seasonResult?: SeasonResult
+}
+
+export type SeasonResult = {
+  phasePoint?: number
 }
 
 function eloColor(elo: number) {
@@ -65,7 +70,7 @@ export const eloColumns: ColumnDef<Runner>[] = [
     },
   },
   {
-    accessorKey: "elo_rate",
+    accessorKey: "eloRate",
     header: "Elo",
     cell: ({ row }) => {
       return (
@@ -128,6 +133,55 @@ export const timeColumns: ColumnDef<Runner>[] = [
           </div>
         )
       }
+    },
+  },
+]
+
+export const phasePointsColumns: ColumnDef<Runner>[] = [
+  {
+    accessorKey: "rank",
+    header: "Rank",
+    cell: ({ row }) => {
+      return <div className="flex items-center">{row.index + 1}</div>
+    },
+  },
+  {
+    accessorKey: "nickname",
+    header: "Name",
+    cell: ({ row }) => {
+      return (
+        <div className="flex items-center">
+          <img
+            src={`https://crafatar.com/avatars/${row.original.uuid}?overlay`}
+            alt={row.original.nickname}
+            height={32}
+            width={32}
+            className="mr-2 h-8 w-8 rounded-full"
+            loading="lazy"
+          />
+          <Link
+            href={`/profile/${row.original.nickname}`}
+            className="hover:underline"
+            prefetch={false}
+          >
+            {" "}
+            {row.original.nickname}
+          </Link>
+        </div>
+      )
+    },
+  },
+  {
+    accessorKey: "phasePoint",
+    header: "Phase Points",
+    cell: ({ row }) => {
+      return (
+        <div className={`flex items-center`}>
+          {row.original.seasonResult?.phasePoint !== undefined
+            ? `${row.original.seasonResult?.phasePoint} pts`
+            : "N/A"}
+        </div>
+      )
     },
   },
 ]
