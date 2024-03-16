@@ -117,7 +117,7 @@ export default function UpcomingResultsSection(props: UpcomingResultsProps) {
                       height={64}
                       width={64}
                       alt="Player"
-                      className="mr-3 h-11 w-11 overflow-hidden rounded-full shadow-sm"
+                      className="mr-3 h-11 w-11 overflow-hidden shadow-sm"
                       loading="lazy"
                     />
                     <div className="grow">

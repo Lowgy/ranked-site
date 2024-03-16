@@ -88,7 +88,7 @@ export default function MatchesTab(data: any) {
                   alt={match.opponent.nickname}
                   height={32}
                   width={32}
-                  className="mr-2 h-8 w-8 rounded-full"
+                  className="mr-2 h-8 w-8"
                   loading="lazy"
                 />
                 <Link

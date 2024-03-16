@@ -54,7 +54,7 @@ export const eloColumns: ColumnDef<Runner>[] = [
             alt={row.original.nickname}
             height={32}
             width={32}
-            className="mr-2 h-8 w-8 rounded-full"
+            className="mr-2 h-8 w-8"
             loading="lazy"
           />
           <Link
@@ -104,7 +104,7 @@ export const timeColumns: ColumnDef<Runner>[] = [
             alt={row.original.nickname}
             height={32}
             width={32}
-            className="mr-2 h-8 w-8 rounded-full"
+            className="mr-2 h-8 w-8"
             loading="lazy"
           />
           <Link
@@ -156,7 +156,7 @@ export const phasePointsColumns: ColumnDef<Runner>[] = [
             alt={row.original.nickname}
             height={32}
             width={32}
-            className="mr-2 h-8 w-8 rounded-full"
+            className="mr-2 h-8 w-8"
             loading="lazy"
           />
           <Link
